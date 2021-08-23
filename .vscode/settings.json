@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": true, // 自動フォーマット
+  "[dart]": {
+    "editor.rulers": [
+        200 // 行折り返しのガイドを表示
+    ]
+  },
+  "dart.lineLength": 200, // 行折り返しの長さ
+}
