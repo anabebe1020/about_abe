@@ -8,14 +8,20 @@ class SnsConst {
   final String qiitaUrl = 'https://qiita.com/api/v2';
 }
 
+Color mainLightColor = HexColor('E1F8FE'); // HexColor('B5F8FE');
+Color mainDarkColor = HexColor('36558F');
+
 /// Constants for style.
 class StyleConst {
+  // Common.
+  //Color mainLightColor = HexColor('E1F8FE'); // HexColor('B5F8FE');
+  //Color mainDarkColor = HexColor('36558F');
   // Application.
-  final Color appBarColor = HexColor('36558F');
-  final Color appBarTextColor = HexColor('B5F8FE');
+  final Color appBarColor = mainLightColor;
+  final Color appBarTextColor = mainDarkColor;
   final String backgroundImagePath = 'images/background_image.jpg';
-  final Color backgroundLightColor = HexColor('B5F8FE');
-  final Color backgroundDarkColor = HexColor('36558F');
+  final Color backgroundLightColor = mainLightColor;
+  final Color backgroundDarkColor = mainDarkColor;
   // Floating Action Button.
   final Color faButtonColor1 = HexColor('ff7f7f');
   final Color faButtonColor2 = HexColor('BF7FFF');
@@ -25,9 +31,10 @@ class StyleConst {
   final Color sampleButtonColor = Colors.white.withOpacity(0.9);
   final Color qiitaButtonColor = HexColor('9EFFCE').withOpacity(0.9);
   final double snsButtonFontSize = 45;
-  final Color snsButtonFontColor = HexColor('36558F');
+  final Color snsButtonFontColor = mainLightColor;
 }
 
+/// Constants for routes.
 class Routes {
   final String appHome = '/HomeScreen';
   final String setting = '/SettingScreen';

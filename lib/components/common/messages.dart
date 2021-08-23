@@ -41,32 +41,34 @@ class Messages {
   }
 
   factory Messages.ja() => Messages(
-      title: 'アナベベアプリ',
-      title2: 'Qiita View',
-      menu1: '＋ボタンを押した回数',
-      menu2: '次へ',
-      menu3: '最後の画面だよ',
-      qiita: 'Qiita',
-      id: 'ID',
-      password: 'Password',
-      setting: '設定画面',
-      locale: '言語設定',
-      japanese: '日本語',
-      english: '英語');
+        title: 'アナベベアプリ',
+        title2: 'Qiita View',
+        menu1: '＋ボタンを押した回数',
+        menu2: '次へ',
+        menu3: '最後の画面だよ',
+        qiita: 'Qiita',
+        id: 'ID',
+        password: 'Password',
+        setting: '設定画面',
+        locale: '言語設定',
+        japanese: '日本語',
+        english: '英語',
+      );
 
   factory Messages.en() => Messages(
-      title: 'AppByAnabebe',
-      title2: 'Qiita View',
-      menu1: 'num of touch, + button',
-      menu2: 'next',
-      menu3: 'the screen of last.',
-      qiita: 'Qiita',
-      id: 'ID',
-      password: 'Password',
-      setting: 'Settings',
-      locale: 'Locale',
-      japanese: 'Japanese',
-      english: 'English');
+        title: 'AppByAnabebe',
+        title2: 'Qiita View',
+        menu1: 'num of touch, + button',
+        menu2: 'next',
+        menu3: 'the screen of last.',
+        qiita: 'Qiita',
+        id: 'ID',
+        password: 'Password',
+        setting: 'Settings',
+        locale: 'Locale',
+        japanese: 'Japanese',
+        english: 'English',
+      );
 }
 
 class AppLocalizations {

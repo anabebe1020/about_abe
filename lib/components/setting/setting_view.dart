@@ -4,16 +4,21 @@ import '../importer.dart';
 class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        // Injects SettingViewModel into this widgets.
-        ChangeNotifierProvider(create: (_) => SettingViewModel()),
-      ],
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(AppLocalizations.of(context).setting),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context).setting,
+          style: TextStyle(
+            color: StyleConst().appBarTextColor,
+          )
         ),
-        body: _SettingScreenBody(),
+        iconTheme: IconThemeData(color: StyleConst().appBarTextColor),
+        backgroundColor: StyleConst().appBarColor,
+        foregroundColor: StyleConst().appBarTextColor,
+        elevation: 0.0,
+      ),
+      body: _SettingScreenBody(),
+      bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[]
       ),
     );
   }

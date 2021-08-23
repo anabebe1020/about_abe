@@ -9,29 +9,51 @@ final globalScaffoldKey = GlobalKey<ScaffoldState>();
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-        appBar: AppBar(
-          title: Text(AppLocalizations.of(context).title),
-          backgroundColor: StyleConst().appBarColor,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {
-                Navigator.of(context).pushNamed(Routes().setting);
-              },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context).title,
+            style: TextStyle(
+              color: StyleConst().appBarTextColor,
+            )),
+        backgroundColor: StyleConst().appBarColor,
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.settings,
+              color: StyleConst().appBarTextColor,
             ),
-          ],
-        ),
-        body: _HomeScreenBody(),
-        floatingActionButton: Column(
-          verticalDirection: VerticalDirection.up,
-          children: [
-            _AddFloatingActionButton(),
-            //_CheckFloatingActionButton(),
-            _CleanFloatingActionButton(),
-          ],
-        ),
-      );
+            onPressed: () {
+              Navigator.of(context).pushNamed(Routes().setting);
+            },
+          ),
+        ],
+      ),
+      body: _HomeScreenBody(),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: StyleConst().backgroundDarkColor,
+        selectedItemColor: StyleConst().backgroundLightColor,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'account',
+          ),
+        ],
+        currentIndex: 0,
+      ),
+      floatingActionButton: Column(
+        verticalDirection: VerticalDirection.up,
+        children: [
+          _AddFloatingActionButton(),
+          //_CheckFloatingActionButton(),
+          _CleanFloatingActionButton(),
+        ],
+      ),
+    );
   }
 }
 
@@ -40,21 +62,21 @@ class _HomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
-          //AppBackground(),
-          Center(
-            child: Column(
-              key: globalScaffoldKey,
-              mainAxisAlignment: MainAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              verticalDirection: VerticalDirection.down,
-              children: <Widget>[
-                Expanded(
-                  child: _ButtonList(),
-                ),
-              ],
+      //AppBackground(),
+      Center(
+        child: Column(
+          key: globalScaffoldKey,
+          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min,
+          verticalDirection: VerticalDirection.down,
+          children: <Widget>[
+            Expanded(
+              child: _ButtonList(),
             ),
-          ),
-        ]);
+          ],
+        ),
+      ),
+    ]);
   }
 }
 
@@ -64,17 +86,15 @@ class _ButtonList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomeViewModel>(
-        builder: (context, model, child) {
-          return ListView.builder(
-            itemCount: model.addedCount,
-            itemBuilder: (BuildContext context, int index) {
-              return _ButtonListTile(index: index);
-            },
-            //reverse: true,
-          );
-        }
-    );
+    return Consumer<HomeViewModel>(builder: (context, model, child) {
+      return ListView.builder(
+        itemCount: model.addedCount,
+        itemBuilder: (BuildContext context, int index) {
+          return _ButtonListTile(index: index);
+        },
+        //reverse: true,
+      );
+    });
   }
 }
 
@@ -85,35 +105,28 @@ class _ButtonListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomeViewModel>(
-        builder: (context, model, child) {
-          final currentSns = model.getSns(index);
-          return ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: StyleConst().snsButtonHeight,
-                maxHeight: StyleConst().snsButtonHeight,
-                //maxWidth: 50.0,
-              ),
-              child: ElevatedButton(
-                child:
-                Text(currentSns.initial,
-                    style: TextStyle(
-                      color: StyleConst().snsButtonFontColor,
-                      fontSize: StyleConst().snsButtonFontSize,
-                    )
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: currentSns.color,
-                  onPrimary: StyleConst().snsButtonFontColor,
-                  //shape: const CircleBorder(),
-                ),
-                onPressed: () => Navigator.of(context).pushNamed(
-                    Routes().qiitaView, arguments: { 'userId': currentSns.userId }
-                ),
-              )
-          );
-        }
-    );
+    return Consumer<HomeViewModel>(builder: (context, model, child) {
+      final currentSns = model.getSns(index);
+      return ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: StyleConst().snsButtonHeight,
+            maxHeight: StyleConst().snsButtonHeight,
+            //maxWidth: 50.0,
+          ),
+          child: ElevatedButton(
+            child: Text(currentSns.initial,
+                style: TextStyle(
+                  color: StyleConst().snsButtonFontColor,
+                  fontSize: StyleConst().snsButtonFontSize,
+                )),
+            style: ElevatedButton.styleFrom(
+              primary: currentSns.color,
+              onPrimary: StyleConst().snsButtonFontColor,
+              //shape: const CircleBorder(),
+            ),
+            onPressed: () => Navigator.of(context).pushNamed(Routes().qiitaView, arguments: {'userId': currentSns.userId}),
+          ));
+    });
   }
 }
 
@@ -141,19 +154,14 @@ class _CheckFloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-          heroTag: 'check',
-          child: Icon(Icons.remove_red_eye),
-          backgroundColor: Colors.pink,
-          onPressed: () {
-            debugLog(
-                'buttonList: ' +
-                    Provider.of<HomeViewModel>(context, listen: false)
-                        .addedCount
-                        .toString(),
-                logName);
-          },
-          tooltip: 'Check',
-        );
+      heroTag: 'check',
+      child: Icon(Icons.remove_red_eye),
+      backgroundColor: Colors.pink,
+      onPressed: () {
+        debugLog('buttonList: ' + Provider.of<HomeViewModel>(context, listen: false).addedCount.toString(), logName);
+      },
+      tooltip: 'Check',
+    );
   }
 }
 
@@ -163,13 +171,13 @@ class _CleanFloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-          heroTag: 'clean',
-          child: Icon(Icons.cleaning_services),
-          backgroundColor: StyleConst().faButtonColor2,
-          onPressed: () {
-            Provider.of<HomeViewModel>(context, listen: false).cleanSns();
-          },
-          tooltip: 'Clean',
-        );
+      heroTag: 'clean',
+      child: Icon(Icons.cleaning_services),
+      backgroundColor: StyleConst().faButtonColor2,
+      onPressed: () {
+        Provider.of<HomeViewModel>(context, listen: false).cleanSns();
+      },
+      tooltip: 'Clean',
+    );
   }
 }

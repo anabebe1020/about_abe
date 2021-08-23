@@ -19,10 +19,8 @@ class HomeViewModel with ChangeNotifier {
   bool isAddedSns(String initial) {
     var result = false;
     _sns.list.forEach((sns) => {
-      if (sns.initial == initial) {
-        result = true
-      }
-    });
+          if (sns.initial == initial) {result = true}
+        });
     debugLog('result: ${result.toString()}', logName);
     return result;
   }
