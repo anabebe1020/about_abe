@@ -6,6 +6,7 @@ class HomeViewModel with ChangeNotifier {
   String token = '';
   final String logName = '[HOME]';
   var _sns = SNSInfoStore();
+  int _currentIndex = 0;
   //
   int get addedCount => _sns.list.length;
   SNSInfoStore get info => _sns;

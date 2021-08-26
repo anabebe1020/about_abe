@@ -40,8 +40,16 @@ class HomeScreen extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
-            label: 'account',
+            label: 'Account',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history),
+            label: 'Discography',
+          ),
+          // BottomNavigationBarItem(
+          //   icon: FaIcon(FontAwesomeIcons.qq),
+          //   label: 'Qiita',
+          // ),
         ],
         currentIndex: 0,
       ),

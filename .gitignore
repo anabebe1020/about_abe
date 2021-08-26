@@ -39,3 +39,7 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+# 
+android/app/src/main/_res/
+ios/Runner/Assets.xcassets/_AppIcon.appiconset/

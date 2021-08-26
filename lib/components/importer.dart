@@ -4,6 +4,7 @@
 export 'package:flutter/material.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:provider/provider.dart';
+export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 export 'dart:convert';
 
 /// my codes.
