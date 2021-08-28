@@ -1,15 +1,31 @@
 import '../importer.dart';
 
+///
+enum PageIndex {
+  home,
+  myself,
+  career,
+}
+
 /// ViewModel for the HomeScreen.
 class HomeViewModel with ChangeNotifier {
   String userId = '';
   String token = '';
   final String logName = '[HOME]';
   var _sns = SNSInfoStore();
-  int _currentIndex = 0;
   //
   int get addedCount => _sns.list.length;
   SNSInfoStore get info => _sns;
+
+  // index
+  int _selectedIndex = 0;
+  int get currentIndex => _selectedIndex;
+  set currentIndex(int index) {
+    _selectedIndex = index;
+    notifyListeners();
+  }
+
+  void onPageChanged(int index) {}
 
   /// Get the specified SNS from the list.
   SNSModel getSns(int index) {

@@ -40,6 +40,6 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
-# 
+# Excluded launcher icon
 android/app/src/main/_res/
 ios/Runner/Assets.xcassets/_AppIcon.appiconset/

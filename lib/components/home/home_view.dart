@@ -7,61 +7,72 @@ final globalScaffoldKey = GlobalKey<ScaffoldState>();
 /// This screen serves as the home screen.
 /// By touching the + button, you can add a designated SNS.
 class HomeScreen extends StatelessWidget {
+  final pageController = PageController();
+  // Display page list.
+  static List<Widget> _pageList = [
+    _HomeScreenBody(),
+    QiitaScreenBody(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context).title,
-            style: TextStyle(
-              color: StyleConst().appBarTextColor,
-            )),
-        backgroundColor: StyleConst().appBarColor,
-        elevation: 0.0,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: StyleConst().appBarTextColor,
+    return Consumer<HomeViewModel>(builder: (context, model, child) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(AppLocalizations.of(context).title,
+              style: TextStyle(
+                color: StyleConst().appBarTextColor,
+              )),
+          backgroundColor: StyleConst().appBarColor,
+          elevation: 0.0,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.settings,
+                color: StyleConst().appBarTextColor,
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamed(Routes().setting);
+              },
             ),
-            onPressed: () {
-              Navigator.of(context).pushNamed(Routes().setting);
-            },
-          ),
-        ],
-      ),
-      body: _HomeScreenBody(),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: StyleConst().backgroundDarkColor,
-        selectedItemColor: StyleConst().backgroundLightColor,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Account',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: 'Discography',
-          ),
-          // BottomNavigationBarItem(
-          //   icon: FaIcon(FontAwesomeIcons.qq),
-          //   label: 'Qiita',
-          // ),
-        ],
-        currentIndex: 0,
-      ),
-      floatingActionButton: Column(
-        verticalDirection: VerticalDirection.up,
-        children: [
-          _AddFloatingActionButton(),
-          //_CheckFloatingActionButton(),
-          _CleanFloatingActionButton(),
-        ],
-      ),
-    );
+          ],
+        ),
+        body: PageView(
+          controller: pageController,
+          onPageChanged: (index) {
+            Provider.of<HomeViewModel>(context, listen: false).onPageChanged;
+          },
+          children: _pageList,
+        ),
+        // _pageList[Provider.of<HomeViewModel>(context).currentIndex]
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: StyleConst().backgroundDarkColor,
+          selectedItemColor: StyleConst().backgroundLightColor,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle),
+              label: 'Account',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.history),
+              label: 'Discography',
+            ),
+            // BottomNavigationBarItem(
+            //   icon: FaIcon(FontAwesomeIcons.qq),
+            //   label: 'Qiita',
+            // ),
+          ],
+          currentIndex: Provider.of<HomeViewModel>(context).currentIndex,
+          onTap: (index) {
+            Provider.of<HomeViewModel>(context, listen: false).currentIndex = index;
+          },
+        ),
+      );
+    });
   }
 }
 
