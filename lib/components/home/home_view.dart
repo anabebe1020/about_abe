@@ -7,7 +7,7 @@ final globalScaffoldKey = GlobalKey<ScaffoldState>();
 /// This screen serves as the home screen.
 /// By touching the + button, you can add a designated SNS.
 class HomeScreen extends StatelessWidget {
-  final pageController = PageController();
+  final _pageController = PageController();
   // Display page list.
   static List<Widget> _pageList = [
     _HomeScreenBody(),
@@ -38,9 +38,9 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         body: PageView(
-          controller: pageController,
+          controller: _pageController,
           onPageChanged: (index) {
-            Provider.of<HomeViewModel>(context, listen: false).onPageChanged;
+            model.onPageChanged(index);
           },
           children: _pageList,
         ),
@@ -66,9 +66,9 @@ class HomeScreen extends StatelessWidget {
             //   label: 'Qiita',
             // ),
           ],
-          currentIndex: Provider.of<HomeViewModel>(context).currentIndex,
+          currentIndex: model.currentIndex,
           onTap: (index) {
-            Provider.of<HomeViewModel>(context, listen: false).currentIndex = index;
+            model.onItemTapped(index, _pageController);
           },
         ),
       );
