@@ -52,35 +52,34 @@ class _QiitaScreenBodyState extends State<QiitaScreenBody> {
   @override
   Widget build(BuildContext context) {
     final double radius = 100;
-    return Stack(children: <Widget>[
-      Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              width: radius,
-              height: radius,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                    image: NetworkImage(Provider.of<QiitaViewModel>(context)
-                        .iconUrl
-                        .toString())),
+    return Consumer<QiitaViewModel>(builder: (context, model, child) {
+      return Stack(children: <Widget>[
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                width: radius,
+                height: radius,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(image: NetworkImage(model.iconUrl.toString())),
+                ),
+                //child: Image.network(
+                //Provider.of<SecondViewModel>(context).iconUrl.toString()),
               ),
-              //child: Image.network(
-              //Provider.of<SecondViewModel>(context).iconUrl.toString()),
-            ),
-            Text(
-              Provider.of<QiitaViewModel>(context).userId.toString(),
-              style: TextStyle(color: Colors.black),
-            ),
-            Text(
-              Provider.of<QiitaViewModel>(context).description.toString(),
-              style: TextStyle(color: Colors.black),
-            ),
-          ],
+              Text(
+                model.userId.toString(),
+                style: TextStyle(color: Colors.black),
+              ),
+              Text(
+                model.description.toString(),
+                style: TextStyle(color: Colors.black),
+              ),
+            ],
+          ),
         ),
-      ),
-    ]);
+      ]);
+    });
   }
 }

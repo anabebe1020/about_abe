@@ -76,8 +76,20 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+/// body in view.
+class _HomeScreenBody extends StatefulWidget {
+  @override
+  _HomeScreenBodyState createState() => new _HomeScreenBodyState();
+}
+
 /// Body in view.
-class _HomeScreenBody extends StatelessWidget {
+class _HomeScreenBodyState extends State<_HomeScreenBody> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<HomeViewModel>(context, listen: false).getItemsQiita();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
@@ -90,7 +102,7 @@ class _HomeScreenBody extends StatelessWidget {
           verticalDirection: VerticalDirection.down,
           children: <Widget>[
             Expanded(
-              child: _ButtonList(),
+              child: _TopixTile(), //_ButtonList(),
             ),
           ],
         ),
@@ -99,6 +111,76 @@ class _HomeScreenBody extends StatelessWidget {
   }
 }
 
+/// Button list in body.
+class _TopixTile extends StatelessWidget {
+  const _TopixTile({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<HomeViewModel>(builder: (context, model, child) {
+      return ListView.builder(
+        itemCount: 1, //model.addedCount,
+        itemBuilder: (BuildContext context, int index) {
+          return _TopixTileList(index: index);
+        },
+        //reverse: true,
+      );
+    });
+  }
+}
+
+/// Tile in button list.
+class _TopixTileList extends StatelessWidget {
+  const _TopixTileList({Key key, @required this.index}) : super(key: key);
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<HomeViewModel>(
+      builder: (context, model, child) {
+        return ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: StyleConst().snsButtonHeight,
+            maxHeight: StyleConst().snsButtonHeight,
+            //maxWidth: 50.0,
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 60, vertical: 20),
+            child: ElevatedButton(
+              child: Row(children: [
+                Image.asset(
+                  'images/icon_qiita.png',
+                  width: 60,
+                  height: 60,
+                ),
+                SizedBox(width: 10),
+                Flexible(
+                  child: Text(
+                    model.title,
+                    style: TextStyle(
+                      color: StyleConst().snsButtonFontColor,
+                      fontSize: StyleConst().snsButtonFontSize,
+                    ),
+                  ),
+                ),
+              ]),
+              style: ElevatedButton.styleFrom(
+                primary: StyleConst().snaButtonColor,
+                onPrimary: StyleConst().snsButtonFontColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              onPressed: () => {},
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+/*
 /// Button list in body.
 class _ButtonList extends StatelessWidget {
   const _ButtonList({Key key}) : super(key: key);
@@ -200,3 +282,4 @@ class _CleanFloatingActionButton extends StatelessWidget {
     );
   }
 }
+*/

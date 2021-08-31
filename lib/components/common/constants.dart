@@ -27,11 +27,12 @@ class StyleConst {
   final Color faButtonColor2 = HexColor('BF7FFF');
   // SNS Button.
   final double snsButtonSize = 80;
-  final double snsButtonHeight = 120;
+  final double snsButtonHeight = 160; //120;
+  final Color snaButtonColor = Colors.white.withOpacity(0.9);
   final Color sampleButtonColor = Colors.white.withOpacity(0.9);
   final Color qiitaButtonColor = HexColor('9EFFCE').withOpacity(0.9);
-  final double snsButtonFontSize = 45;
-  final Color snsButtonFontColor = mainLightColor;
+  final double snsButtonFontSize = 14; //45;
+  final Color snsButtonFontColor = mainDarkColor;
 }
 
 /// Constants for routes.

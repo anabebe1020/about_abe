@@ -30,18 +30,21 @@ class HomeViewModel with ChangeNotifier {
 
   ///
   String _title = "";
+  String get title => _title;
   String _url = "";
+  String get url => _url;
   String _imageUrl = "";
+  String get imageUrl => _imageUrl;
 
   ///
-  Future<void> getItemsQiita(String userId) async {
+  Future<void> getItemsQiita() async {
     HttpRequest request = HttpRequest();
     var res = await request.get('/authenticated_user/items?page=1&per_page=1'); // todo
     debugLog('body: $res', logName);
-    Map<String, dynamic> resJson = json.decode(res);
-    this._title = resJson['title'];
-    this._url = resJson['url'];
-    this._imageUrl = resJson['profile_image_url'];
+    List<dynamic> resJson = json.decode(res);
+    this._title = resJson[0]['title'];
+    this._url = resJson[0]['url'];
+    this._imageUrl = resJson[0]['profile_image_url'];
     notifyListeners();
   }
 
