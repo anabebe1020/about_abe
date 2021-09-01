@@ -101,8 +101,24 @@ class _HomeScreenBodyState extends State<_HomeScreenBody> {
           mainAxisSize: MainAxisSize.min,
           verticalDirection: VerticalDirection.down,
           children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left: StyleConst().topixPaddingH),
+              child: Container(
+                width: double.infinity,
+                child: Text(
+                  'Topix',
+                  textAlign: TextAlign.start,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: StyleConst().snsButtonFontColor,
+                  ),
+                ),
+              ),
+            ),
             Expanded(
-              child: _TopixTile(), //_ButtonList(),
+              child: _TopixTileList(), //_ButtonList(),
             ),
           ],
         ),
@@ -112,8 +128,8 @@ class _HomeScreenBodyState extends State<_HomeScreenBody> {
 }
 
 /// Button list in body.
-class _TopixTile extends StatelessWidget {
-  const _TopixTile({Key key}) : super(key: key);
+class _TopixTileList extends StatelessWidget {
+  const _TopixTileList({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +137,7 @@ class _TopixTile extends StatelessWidget {
       return ListView.builder(
         itemCount: 1, //model.addedCount,
         itemBuilder: (BuildContext context, int index) {
-          return _TopixTileList(index: index);
+          return _TopixTile(index: index);
         },
         //reverse: true,
       );
@@ -130,8 +146,8 @@ class _TopixTile extends StatelessWidget {
 }
 
 /// Tile in button list.
-class _TopixTileList extends StatelessWidget {
-  const _TopixTileList({Key key, @required this.index}) : super(key: key);
+class _TopixTile extends StatelessWidget {
+  const _TopixTile({Key key, @required this.index}) : super(key: key);
   final int index;
 
   @override
@@ -145,15 +161,18 @@ class _TopixTileList extends StatelessWidget {
             //maxWidth: 50.0,
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 60, vertical: 20),
+            padding: EdgeInsets.symmetric(
+              horizontal: StyleConst().topixPaddingH,
+              vertical: StyleConst().topixPaddingV,
+            ),
             child: ElevatedButton(
               child: Row(children: [
                 Image.asset(
-                  'images/icon_qiita.png',
-                  width: 60,
-                  height: 60,
+                  StyleConst().qiitaIconPath,
+                  width: StyleConst().topixIconSize,
+                  height: StyleConst().topixIconSize,
                 ),
-                SizedBox(width: 10),
+                StyleConst().verticalSeparator,
                 Flexible(
                   child: Text(
                     model.title,
@@ -168,15 +187,26 @@ class _TopixTileList extends StatelessWidget {
                 primary: StyleConst().snaButtonColor,
                 onPrimary: StyleConst().snsButtonFontColor,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(24),
                 ),
+                elevation: 0.0,
               ),
-              onPressed: () => {},
+              onPressed: () {
+                _launchURL(model);
+              },
             ),
           ),
         );
       },
     );
+  }
+
+  Future _launchURL(HomeViewModel model) async {
+    if (await canLaunch(model.url)) {
+      await launch(model.url);
+    } else {
+      throw 'Could not Launch ${model.url}';
+    }
   }
 }
 

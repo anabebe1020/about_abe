@@ -1,6 +1,9 @@
 import '../importer.dart';
 
 /// Constants common to all apps.
+class AppConst {
+  final String title = 'I\'m Abe';
+}
 
 /// Constants for SNS.
 class SnsConst {
@@ -26,13 +29,20 @@ class StyleConst {
   final Color faButtonColor1 = HexColor('ff7f7f');
   final Color faButtonColor2 = HexColor('BF7FFF');
   // SNS Button.
+  final double topixPaddingH = 50;
+  final double topixPaddingV = 20;
+  final double topixIconSize = 60;
   final double snsButtonSize = 80;
   final double snsButtonHeight = 160; //120;
   final Color snaButtonColor = Colors.white.withOpacity(0.9);
-  final Color sampleButtonColor = Colors.white.withOpacity(0.9);
-  final Color qiitaButtonColor = HexColor('9EFFCE').withOpacity(0.9);
-  final double snsButtonFontSize = 14; //45;
+  final double snsButtonFontSize = 16; //45;
   final Color snsButtonFontColor = mainDarkColor;
+  final Color sampleButtonColor = Colors.white.withOpacity(0.9);
+  final String qiitaIconPath = 'images/icon_qiita.png';
+  final Color qiitaButtonColor = HexColor('9EFFCE').withOpacity(0.9);
+  // Other.
+  final SizedBox verticalSeparator = SizedBox(width: 10);
+  final SizedBox horizontalSeparator = SizedBox(height: 10);
 }
 
 /// Constants for routes.

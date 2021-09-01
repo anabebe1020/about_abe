@@ -15,7 +15,7 @@ class App extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => QiitaViewModel()),
         ],
         child: MaterialApp(
-            title: 'AppByAnabebe',
+            title: AppConst().title,
             theme: ThemeData(
               primarySwatch: Colors.blue,
               visualDensity: VisualDensity.adaptivePlatformDensity,

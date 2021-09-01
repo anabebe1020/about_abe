@@ -41,7 +41,7 @@ class Messages {
   }
 
   factory Messages.ja() => Messages(
-        title: 'アナベベアプリ',
+        title: 'I\'m Abe',
         title2: 'Qiita View',
         menu1: '＋ボタンを押した回数',
         menu2: '次へ',
@@ -56,7 +56,7 @@ class Messages {
       );
 
   factory Messages.en() => Messages(
-        title: 'AppByAnabebe',
+        title: 'I\'m Abe',
         title2: 'Qiita View',
         menu1: 'num of touch, + button',
         menu2: 'next',
@@ -77,8 +77,7 @@ class AppLocalizations {
   AppLocalizations(Locale locale) : this.messages = Messages.of(locale);
 
   static Messages of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations)
-        .messages;
+    return Localizations.of<AppLocalizations>(context, AppLocalizations).messages;
   }
 }
 
@@ -89,8 +88,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   bool isSupported(Locale locale) => ['en', 'ja'].contains(locale.languageCode);
 
   @override
-  Future<AppLocalizations> load(Locale locale) async =>
-      AppLocalizations(locale);
+  Future<AppLocalizations> load(Locale locale) async => AppLocalizations(locale);
 
   @override
   bool shouldReload(AppLocalizationsDelegate old) => false;
