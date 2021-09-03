@@ -15,62 +15,143 @@ class _QiitaPageState extends State<QiitaPage> {
 
   @override
   Widget build(BuildContext context) {
-    final double radius = 100;
-    return Consumer<QiitaViewModel>(builder: (context, model, child) {
-      return Stack(children: <Widget>[
+    return Stack(
+      children: <Widget>[
         Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: StyleConst().topixPaddingH,
-                  vertical: StyleConst().topixPaddingV,
-                ),
-                child: Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Container(
-                          width: radius,
-                          height: radius,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image: NetworkImage(model.iconUrl.toString()),
-                            ),
-                          ),
-                        ),
-                        StyleConst().horizontalSeparator,
-                        Text(
-                          model.userId.toString(),
-                          style: TextStyle(
-                            color: StyleConst().snsButtonFontColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+              _TopArea(),
+              _BottomArea(),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _TopArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: StyleConst().topixPaddingH,
+        vertical: StyleConst().topixPaddingV,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          _TopLeftArea(),
+          _TopRightArea(),
+        ],
+      ),
+    );
+  }
+}
+
+class _TopLeftArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<QiitaViewModel>(
+      builder: (context, model, child) {
+        final double radius = 100;
+        return Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 0,
+            vertical: 0,
+          ),
+          child: Column(
+            children: <Widget>[
+              Container(
+                width: radius,
+                height: radius,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: NetworkImage(model.iconUrl.toString()),
+                  ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: StyleConst().topixPaddingH,
-                  vertical: StyleConst().topixPaddingV,
-                ),
-                child: Text(
-                  model.description.toString(),
-                  style: TextStyle(
-                    color: StyleConst().snsButtonFontColor,
-                    fontSize: StyleConst().qiitaDiscriptionFontSize,
-                    fontWeight: FontWeight.bold,
-                  ),
+              StyleConst().horizontalSeparator,
+              Text(
+                model.userId.toString(),
+                style: TextStyle(
+                  color: StyleConst().snsButtonFontColor,
                 ),
               ),
             ],
           ),
-        ),
-      ]);
-    });
+        );
+      },
+    );
+  }
+}
+
+class _TopRightArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<QiitaViewModel>(
+      builder: (context, model, child) {
+        return Padding(
+          padding: EdgeInsets.only(
+            left: 10,
+          ),
+          child: Container(
+            color: Colors.amber,
+            //constraints: BoxConstraints.expand(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(child: Text('フォロー:')),
+                      Expanded(child: Text('フォロワー:')),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(child: Text('フォロー:')),
+                      Expanded(child: Text('フォロワー:')),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _BottomArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<QiitaViewModel>(
+      builder: (context, model, child) {
+        return Expanded(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: StyleConst().topixPaddingH,
+              vertical: StyleConst().topixPaddingV,
+            ),
+            child: Text(
+              model.description.toString(),
+              style: TextStyle(
+                color: StyleConst().snsButtonFontColor,
+                fontSize: StyleConst().qiitaDiscriptionFontSize,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 }
