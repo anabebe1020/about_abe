@@ -12,8 +12,9 @@ class HomeViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  ///
+  /// on Item Tapped.
   void onItemTapped(int index, PageController pageController) {
+    // setting animation page.
     pageController.animateToPage(
       index,
       duration: const Duration(milliseconds: 300),
@@ -22,13 +23,13 @@ class HomeViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  ///
+  /// on Page Changed.
   void onPageChanged(int index) {
     _selectedIndex = index;
     notifyListeners();
   }
 
-  ///
+  /// got Info for Topix.
   String _title = "";
   String get title => _title;
   String _url = "";
@@ -36,7 +37,7 @@ class HomeViewModel with ChangeNotifier {
   String _imageUrl = "";
   String get imageUrl => _imageUrl;
 
-  ///
+  /// get Items from Qiita.
   Future<void> getItemsQiita() async {
     HttpRequest request = HttpRequest();
     var res = await request.get('/authenticated_user/items?page=1&per_page=1'); // todo

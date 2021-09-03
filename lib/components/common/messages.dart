@@ -2,19 +2,20 @@ import '../importer.dart';
 
 /// Languages common to all apps.
 class Messages {
-  Messages(
-      {@required this.title,
-      @required this.title2,
-      @required this.menu1,
-      @required this.menu2,
-      @required this.menu3,
-      @required this.qiita,
-      @required this.id,
-      @required this.password,
-      @required this.setting,
-      @required this.locale,
-      @required this.japanese,
-      @required this.english});
+  Messages({
+    @required this.title,
+    @required this.title2,
+    @required this.menu1,
+    @required this.menu2,
+    @required this.menu3,
+    @required this.qiita,
+    @required this.id,
+    @required this.password,
+    @required this.setting,
+    @required this.locale,
+    @required this.japanese,
+    @required this.english,
+  });
 
   final String title;
   final String title2;
@@ -40,6 +41,7 @@ class Messages {
     }
   }
 
+  /// Japanese
   factory Messages.ja() => Messages(
         title: 'I\'m Abe',
         title2: 'Qiita View',
@@ -55,6 +57,7 @@ class Messages {
         english: '英語',
       );
 
+  /// English
   factory Messages.en() => Messages(
         title: 'I\'m Abe',
         title2: 'Qiita View',

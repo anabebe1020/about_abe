@@ -10,8 +10,8 @@ class HomeScreen extends StatelessWidget {
   final _pageController = PageController();
   // Display page list.
   static List<Widget> _pageList = [
-    _HomeScreenBody(),
-    QiitaScreenBody(),
+    HomePage(),
+    QiitaPage(),
   ];
 
   @override
@@ -19,10 +19,12 @@ class HomeScreen extends StatelessWidget {
     return Consumer<HomeViewModel>(builder: (context, model, child) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(AppLocalizations.of(context).title,
-              style: TextStyle(
-                color: StyleConst().appBarTextColor,
-              )),
+          title: Text(
+            AppLocalizations.of(context).title,
+            style: TextStyle(
+              color: StyleConst().appBarTextColor,
+            ),
+          ),
           backgroundColor: StyleConst().appBarColor,
           elevation: 0.0,
           actions: <Widget>[
@@ -44,7 +46,6 @@ class HomeScreen extends StatelessWidget {
           },
           children: _pageList,
         ),
-        // _pageList[Provider.of<HomeViewModel>(context).currentIndex]
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: StyleConst().backgroundDarkColor,
           selectedItemColor: StyleConst().backgroundLightColor,
@@ -73,140 +74,6 @@ class HomeScreen extends StatelessWidget {
         ),
       );
     });
-  }
-}
-
-/// body in view.
-class _HomeScreenBody extends StatefulWidget {
-  @override
-  _HomeScreenBodyState createState() => new _HomeScreenBodyState();
-}
-
-/// Body in view.
-class _HomeScreenBodyState extends State<_HomeScreenBody> {
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<HomeViewModel>(context, listen: false).getItemsQiita();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(children: <Widget>[
-      //AppBackground(),
-      Center(
-        child: Column(
-          key: globalScaffoldKey,
-          mainAxisAlignment: MainAxisAlignment.end,
-          mainAxisSize: MainAxisSize.min,
-          verticalDirection: VerticalDirection.down,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(left: StyleConst().topixPaddingH),
-              child: Container(
-                width: double.infinity,
-                child: Text(
-                  'Topix',
-                  textAlign: TextAlign.start,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: StyleConst().snsButtonFontColor,
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: _TopixTileList(), //_ButtonList(),
-            ),
-          ],
-        ),
-      ),
-    ]);
-  }
-}
-
-/// Button list in body.
-class _TopixTileList extends StatelessWidget {
-  const _TopixTileList({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<HomeViewModel>(builder: (context, model, child) {
-      return ListView.builder(
-        itemCount: 1, //model.addedCount,
-        itemBuilder: (BuildContext context, int index) {
-          return _TopixTile(index: index);
-        },
-        //reverse: true,
-      );
-    });
-  }
-}
-
-/// Tile in button list.
-class _TopixTile extends StatelessWidget {
-  const _TopixTile({Key key, @required this.index}) : super(key: key);
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<HomeViewModel>(
-      builder: (context, model, child) {
-        return ConstrainedBox(
-          constraints: BoxConstraints(
-            minHeight: StyleConst().snsButtonHeight,
-            maxHeight: StyleConst().snsButtonHeight,
-            //maxWidth: 50.0,
-          ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: StyleConst().topixPaddingH,
-              vertical: StyleConst().topixPaddingV,
-            ),
-            child: ElevatedButton(
-              child: Row(children: [
-                Image.asset(
-                  StyleConst().qiitaIconPath,
-                  width: StyleConst().topixIconSize,
-                  height: StyleConst().topixIconSize,
-                ),
-                StyleConst().verticalSeparator,
-                Flexible(
-                  child: Text(
-                    model.title,
-                    style: TextStyle(
-                      color: StyleConst().snsButtonFontColor,
-                      fontSize: StyleConst().snsButtonFontSize,
-                    ),
-                  ),
-                ),
-              ]),
-              style: ElevatedButton.styleFrom(
-                primary: StyleConst().snaButtonColor,
-                onPrimary: StyleConst().snsButtonFontColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                elevation: 0.0,
-              ),
-              onPressed: () {
-                _launchURL(model);
-              },
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Future _launchURL(HomeViewModel model) async {
-    if (await canLaunch(model.url)) {
-      await launch(model.url);
-    } else {
-      throw 'Could not Launch ${model.url}';
-    }
   }
 }
 

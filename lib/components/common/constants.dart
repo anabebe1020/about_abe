@@ -28,10 +28,11 @@ class StyleConst {
   // Floating Action Button.
   final Color faButtonColor1 = HexColor('ff7f7f');
   final Color faButtonColor2 = HexColor('BF7FFF');
-  // SNS Button.
+  // Topix Tile.
   final double topixPaddingH = 50;
   final double topixPaddingV = 20;
   final double topixIconSize = 60;
+  // SNS Button.
   final double snsButtonSize = 80;
   final double snsButtonHeight = 160; //120;
   final Color snaButtonColor = Colors.white.withOpacity(0.9);
@@ -40,6 +41,8 @@ class StyleConst {
   final Color sampleButtonColor = Colors.white.withOpacity(0.9);
   final String qiitaIconPath = 'images/icon_qiita.png';
   final Color qiitaButtonColor = HexColor('9EFFCE').withOpacity(0.9);
+  // Qiita View.
+  final double qiitaDiscriptionFontSize = 20;
   // Other.
   final SizedBox verticalSeparator = SizedBox(width: 10);
   final SizedBox horizontalSeparator = SizedBox(height: 10);

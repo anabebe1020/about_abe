@@ -11,7 +11,7 @@ class App extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => HomeViewModel()),
           ChangeNotifierProvider(create: (_) => SettingViewModel()),
           ChangeNotifierProvider(create: (_) => LocaleViewModel()),
-          ChangeNotifierProvider(create: (_) => QiitaLoginViewModel()),
+          //ChangeNotifierProvider(create: (_) => QiitaLoginViewModel()),
           ChangeNotifierProvider(create: (_) => QiitaViewModel()),
         ],
         child: MaterialApp(
@@ -24,10 +24,10 @@ class App extends StatelessWidget {
             ),
             home: HomeScreen(),
             routes: {
-              '/QiitaLoginScreen': (_) => QiitaLoginScreen(),
+              //'/QiitaLoginScreen': (_) => QiitaLoginScreen(),
               '/SettingScreen': (_) => SettingScreen(),
               '/LocaleScreen': (_) => LocaleScreen(),
-              '/QiitaScreen': (_) => QiitaScreen(),
+              //'/QiitaScreen': (_) => QiitaScreen(),
             },
             localizationsDelegates: [
               const AppLocalizationsDelegate(), // <- 登録
