@@ -39,12 +39,15 @@ class _TopArea extends StatelessWidget {
         horizontal: StyleConst().topixPaddingH,
         vertical: StyleConst().topixPaddingV,
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          _TopLeftArea(),
-          _TopRightArea(),
-        ],
+      child: Container(
+        height: 140,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            _TopLeftArea(),
+            _TopRightArea(),
+          ],
+        ),
       ),
     );
   }
@@ -62,6 +65,7 @@ class _TopLeftArea extends StatelessWidget {
             vertical: 0,
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
                 width: radius,
@@ -93,35 +97,39 @@ class _TopRightArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<QiitaViewModel>(
       builder: (context, model, child) {
-        return Padding(
-          padding: EdgeInsets.only(
-            left: 10,
-          ),
-          child: Container(
-            color: Colors.amber,
-            //constraints: BoxConstraints.expand(),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(child: Text('フォロー:')),
-                      Expanded(child: Text('フォロワー:')),
-                    ],
+        return Expanded(
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: 20,
+            ),
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '${AppLocalizations.of(context).followees}：${model.followees}',
+                    style: TextStyle(
+                      color: StyleConst().snsButtonFontColor,
+                      fontSize: 16,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(child: Text('フォロー:')),
-                      Expanded(child: Text('フォロワー:')),
-                    ],
+                  Text(
+                    '${AppLocalizations.of(context).followers}：${model.followers}',
+                    style: TextStyle(
+                      color: StyleConst().snsButtonFontColor,
+                      fontSize: 16,
+                    ),
                   ),
-                ),
-              ],
+                  Text(
+                    '${AppLocalizations.of(context).items}：${model.items}',
+                    style: TextStyle(
+                      color: StyleConst().snsButtonFontColor,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         );
@@ -141,13 +149,26 @@ class _BottomArea extends StatelessWidget {
               horizontal: StyleConst().topixPaddingH,
               vertical: StyleConst().topixPaddingV,
             ),
-            child: Text(
-              model.description.toString(),
-              style: TextStyle(
-                color: StyleConst().snsButtonFontColor,
-                fontSize: StyleConst().qiitaDiscriptionFontSize,
-                fontWeight: FontWeight.bold,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Overview',
+                  style: TextStyle(
+                    color: StyleConst().snsButtonFontColor,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                StyleConst().horizontalSeparator,
+                Text(
+                  model.description.toString(),
+                  style: TextStyle(
+                    color: StyleConst().snsButtonFontColor,
+                    fontSize: StyleConst().qiitaDiscriptionFontSize,
+                  ),
+                ),
+              ],
             ),
           ),
         );

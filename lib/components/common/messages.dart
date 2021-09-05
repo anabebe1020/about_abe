@@ -10,6 +10,9 @@ class Messages {
     @required this.menu3,
     @required this.qiita,
     @required this.id,
+    @required this.followees,
+    @required this.followers,
+    @required this.items,
     @required this.password,
     @required this.setting,
     @required this.locale,
@@ -24,6 +27,9 @@ class Messages {
   final String menu3;
   final String qiita;
   final String id;
+  final String followees;
+  final String followers;
+  final String items;
   final String password;
   final String setting;
   final String locale;
@@ -50,6 +56,9 @@ class Messages {
         menu3: '最後の画面だよ',
         qiita: 'Qiita',
         id: 'ID',
+        followees: 'フォロー',
+        followers: 'フォロワー',
+        items: '投稿',
         password: 'Password',
         setting: '設定画面',
         locale: '言語設定',
@@ -66,6 +75,9 @@ class Messages {
         menu3: 'the screen of last.',
         qiita: 'Qiita',
         id: 'ID',
+        followees: 'Followees',
+        followers: 'Followers',
+        items: 'Items',
         password: 'Password',
         setting: 'Settings',
         locale: 'Locale',
