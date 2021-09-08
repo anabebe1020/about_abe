@@ -19,7 +19,19 @@ class StyleConst {
   // Common.
   //Color mainLightColor = HexColor('E1F8FE'); // HexColor('B5F8FE');
   //Color mainDarkColor = HexColor('36558F');
-  // Application.
+  // Theme Light.
+  final Color appColorLight = mainLightColor;
+  final Color appFontColorLight = mainDarkColor;
+  final Color barColorLight = mainDarkColor;
+  final Color barFontColorLight = mainLightColor;
+  final Color topixButtonColorLight = Colors.white.withOpacity(0.9);
+  // Theme Dark.
+  final Color appColorDark = mainDarkColor;
+  final Color appFontColorDark = mainLightColor;
+  final Color barColorDark = mainDarkColor;
+  final Color barFontColorDark = mainLightColor;
+  final Color topixButtonColordark = Colors.black.withOpacity(0.9);
+  // Application
   final Color appBarColor = mainLightColor;
   final Color appBarTextColor = mainDarkColor;
   final String backgroundImagePath = 'images/background_image.jpg';

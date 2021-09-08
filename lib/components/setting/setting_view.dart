@@ -6,20 +6,21 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).setting,
-          style: TextStyle(
-            color: StyleConst().appBarTextColor,
-          )
+        title: Text(
+          AppLocalizations.of(context).setting,
+          //style: TextStyle(
+          //  color: StyleConst().appBarTextColor,
+          //)
         ),
-        iconTheme: IconThemeData(color: StyleConst().appBarTextColor),
+        iconTheme: IconThemeData(
+          color: StyleConst().appBarTextColor,
+        ),
         backgroundColor: StyleConst().appBarColor,
         foregroundColor: StyleConst().appBarTextColor,
         elevation: 0.0,
       ),
       body: _SettingScreenBody(),
-      bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[]
-      ),
+      //bottomNavigationBar: BottomNavigationBar(items: const <BottomNavigationBarItem>[]),
     );
   }
 }

@@ -18,19 +18,9 @@ class App extends StatelessWidget {
         builder: (context, theme, child) {
           return MaterialApp(
             title: AppConst().title,
-            // theme: ThemeData(
-            //   primarySwatch: Colors.blue,
-            //   visualDensity: VisualDensity.adaptivePlatformDensity,
-            //   primaryColor: StyleConst().backgroundDarkColor,
-            //   scaffoldBackgroundColor: StyleConst().backgroundLightColor,
-            // ),
-            // darkTheme: ThemeData(
-            //   primarySwatch: Colors.blue,
-            //   visualDensity: VisualDensity.adaptivePlatformDensity,
-            //   primaryColor: StyleConst().backgroundDarkColor,
-            //   scaffoldBackgroundColor: StyleConst().backgroundLightColor,
-            // ),
-            theme: theme.current,
+            // theme: theme.light,
+            // darkTheme: theme.dark,
+            theme: theme._isDark ? theme.dark : theme.light,
             themeMode: ThemeMode.system,
             home: HomeScreen(),
             routes: {
@@ -58,13 +48,26 @@ class App extends StatelessWidget {
 
 /// State of fix theme.
 class AppTheme extends ChangeNotifier {
-  ThemeData current = ThemeData.light();
   bool _isDark = false;
-
+  // theme light.
+  ThemeData light = ThemeData(
+    //brightness: Brightness.light,
+    primaryColor: StyleConst().appColorLight,
+    scaffoldBackgroundColor: StyleConst().appColorLight,
+    backgroundColor: StyleConst().appColorLight,
+    bottomAppBarColor: StyleConst().barColorLight,
+  );
+  // theme light.
+  ThemeData dark = ThemeData(
+    //brightness: Brightness.dark,
+    primaryColor: StyleConst().appColorDark,
+    scaffoldBackgroundColor: StyleConst().appColorDark,
+    bottomAppBarColor: StyleConst().appColorDark,
+  );
   // switching theme.
   toggleTheme() {
     _isDark = !_isDark;
-    current = _isDark ? ThemeData.dark() : ThemeData.light();
+    //current = _isDark ? _dark : _light;
     notifyListeners();
   }
 }

@@ -21,9 +21,9 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             AppLocalizations.of(context).title,
-            style: TextStyle(
-              color: StyleConst().appBarTextColor,
-            ),
+            //style: TextStyle(
+            //  color: StyleConst().appBarTextColor,
+            //),
           ),
           backgroundColor: StyleConst().appBarColor,
           elevation: 0.0,
