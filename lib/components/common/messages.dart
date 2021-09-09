@@ -18,6 +18,7 @@ class Messages {
     @required this.locale,
     @required this.japanese,
     @required this.english,
+    @required this.darkMode,
   });
 
   final String title;
@@ -35,6 +36,7 @@ class Messages {
   final String locale;
   final String japanese;
   final String english;
+  final String darkMode;
 
   factory Messages.of(Locale locale) {
     switch (locale.languageCode) {
@@ -64,6 +66,7 @@ class Messages {
         locale: '言語設定',
         japanese: '日本語',
         english: '英語',
+        darkMode: 'ダークモード',
       );
 
   /// English
@@ -83,6 +86,7 @@ class Messages {
         locale: 'Locale',
         japanese: 'Japanese',
         english: 'English',
+        darkMode: 'Dark Mode',
       );
 }
 

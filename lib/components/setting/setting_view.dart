@@ -1,3 +1,5 @@
+import 'package:flutter_sample02/components/app.dart';
+
 import '../importer.dart';
 
 /// View for app setting.
@@ -29,25 +31,70 @@ class SettingScreen extends StatelessWidget {
 class _SettingScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(children: <Widget>[
-      Center(
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                child: Text(
-                  AppLocalizations.of(context).locale,
-                  textAlign: TextAlign.left,
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(Routes().locale);
-                },
-              ),
-            ),
-          ],
+    return ListView(
+      children: [
+        locale(context),
+        darkMode(context),
+      ],
+    );
+    //Stack(children: <Widget>[
+    //  Center(
+    //    child: Column(
+    //      children: <Widget>[
+    //        locale(context),
+    //        darkMode(context),
+    //      ],
+    //    ),
+    //  ),
+    //],);
+  }
+
+  Widget locale(BuildContext context) {
+    return Container(
+      child: ListTile(
+        leading: Icon(
+          Icons.language,
+          //size: 24,
         ),
+        title: Text(
+          AppLocalizations.of(context).locale,
+          style: TextStyle(fontSize: 24),
+        ),
+        trailing: Icon(
+          Icons.arrow_forward_ios,
+        ),
+        onTap: () {
+          Navigator.of(context).pushNamed(Routes().locale);
+        },
       ),
-    ]);
+    );
+  }
+
+  Widget darkMode(BuildContext context) {
+    return Consumer<AppTheme>(
+      builder: (context, model, child) {
+        return ListTile(
+          leading: Icon(
+            Icons.language,
+            //size: 24,
+          ),
+          title: Text(
+            AppLocalizations.of(context).darkMode,
+            style: TextStyle(fontSize: 24),
+          ),
+          trailing: new Switch(
+            value: model.isDark,
+            activeColor: Colors.orange,
+            activeTrackColor: Colors.grey,
+            inactiveThumbColor: Colors.grey,
+            inactiveTrackColor: Colors.grey,
+            onChanged: (bool) {},
+          ),
+          onTap: () {
+            model.toggleTheme();
+          },
+        );
+      },
+    );
   }
 }

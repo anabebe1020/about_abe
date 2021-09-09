@@ -20,7 +20,7 @@ class App extends StatelessWidget {
             title: AppConst().title,
             // theme: theme.light,
             // darkTheme: theme.dark,
-            theme: theme._isDark ? theme.dark : theme.light,
+            theme: theme.isDark ? theme.dark : theme.light,
             themeMode: ThemeMode.system,
             home: HomeScreen(),
             routes: {
@@ -48,7 +48,7 @@ class App extends StatelessWidget {
 
 /// State of fix theme.
 class AppTheme extends ChangeNotifier {
-  bool _isDark = false;
+  bool isDark = false;
   // theme light.
   ThemeData light = ThemeData(
     //brightness: Brightness.light,
@@ -66,7 +66,7 @@ class AppTheme extends ChangeNotifier {
   );
   // switching theme.
   toggleTheme() {
-    _isDark = !_isDark;
+    isDark = !isDark;
     //current = _isDark ? _dark : _light;
     notifyListeners();
   }
