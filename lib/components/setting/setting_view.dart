@@ -10,19 +10,10 @@ class SettingScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context).setting,
-          //style: TextStyle(
-          //  color: StyleConst().appBarTextColor,
-          //)
         ),
-        iconTheme: IconThemeData(
-          color: StyleConst().appBarTextColor,
-        ),
-        backgroundColor: StyleConst().appBarColor,
-        foregroundColor: StyleConst().appBarTextColor,
         elevation: 0.0,
       ),
       body: _SettingScreenBody(),
-      //bottomNavigationBar: BottomNavigationBar(items: const <BottomNavigationBarItem>[]),
     );
   }
 }
@@ -37,16 +28,6 @@ class _SettingScreenBody extends StatelessWidget {
         darkMode(context),
       ],
     );
-    //Stack(children: <Widget>[
-    //  Center(
-    //    child: Column(
-    //      children: <Widget>[
-    //        locale(context),
-    //        darkMode(context),
-    //      ],
-    //    ),
-    //  ),
-    //],);
   }
 
   Widget locale(BuildContext context) {

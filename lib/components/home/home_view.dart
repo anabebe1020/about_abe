@@ -21,17 +21,12 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             AppLocalizations.of(context).title,
-            //style: TextStyle(
-            //  color: StyleConst().appBarTextColor,
-            //),
           ),
-          backgroundColor: StyleConst().appBarColor,
           elevation: 0.0,
           actions: <Widget>[
             IconButton(
               icon: Icon(
                 Icons.settings,
-                color: StyleConst().appBarTextColor,
               ),
               onPressed: () {
                 Navigator.of(context).pushNamed(Routes().setting);

@@ -51,17 +51,23 @@ class AppTheme extends ChangeNotifier {
   bool isDark = false;
   // theme light.
   ThemeData light = ThemeData(
-    //brightness: Brightness.light,
+    brightness: Brightness.light,
     primaryColor: StyleConst().appColorLight,
+    //primarySwatch: StyleConst().appColorLight,
+    accentColor: StyleConst().appColorDark,
+    //textTheme: TextTheme(bodyText1: StyleConst().appColorDark),
     scaffoldBackgroundColor: StyleConst().appColorLight,
     backgroundColor: StyleConst().appColorLight,
     bottomAppBarColor: StyleConst().barColorLight,
   );
   // theme light.
   ThemeData dark = ThemeData(
-    //brightness: Brightness.dark,
+    brightness: Brightness.dark,
     primaryColor: StyleConst().appColorDark,
+    //primarySwatch: StyleConst().appColorDark,
+    accentColor: StyleConst().appColorLight,
     scaffoldBackgroundColor: StyleConst().appColorDark,
+    backgroundColor: StyleConst().appColorDark,
     bottomAppBarColor: StyleConst().appColorDark,
   );
   // switching theme.

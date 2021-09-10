@@ -80,9 +80,9 @@ class _TopLeftArea extends StatelessWidget {
               StyleConst().horizontalSeparator,
               Text(
                 model.userId.toString(),
-                style: TextStyle(
-                  color: StyleConst().snsButtonFontColor,
-                ),
+                // style: TextStyle(
+                //   color: StyleConst().snsButtonFontColor,
+                // ),
               ),
             ],
           ),
@@ -110,21 +110,21 @@ class _TopRightArea extends StatelessWidget {
                   Text(
                     '${AppLocalizations.of(context).followees}：${model.followees}',
                     style: TextStyle(
-                      color: StyleConst().snsButtonFontColor,
+                      //color: StyleConst().snsButtonFontColor,
                       fontSize: 16,
                     ),
                   ),
                   Text(
                     '${AppLocalizations.of(context).followers}：${model.followers}',
                     style: TextStyle(
-                      color: StyleConst().snsButtonFontColor,
+                      // color: StyleConst().snsButtonFontColor,
                       fontSize: 16,
                     ),
                   ),
                   Text(
                     '${AppLocalizations.of(context).items}：${model.items}',
                     style: TextStyle(
-                      color: StyleConst().snsButtonFontColor,
+                      // color: StyleConst().snsButtonFontColor,
                       fontSize: 16,
                     ),
                   ),
@@ -155,7 +155,7 @@ class _BottomArea extends StatelessWidget {
                 Text(
                   'Overview',
                   style: TextStyle(
-                    color: StyleConst().snsButtonFontColor,
+                    // color: StyleConst().snsButtonFontColor,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -164,7 +164,7 @@ class _BottomArea extends StatelessWidget {
                 Text(
                   model.description.toString(),
                   style: TextStyle(
-                    color: StyleConst().snsButtonFontColor,
+                    // color: StyleConst().snsButtonFontColor,
                     fontSize: StyleConst().qiitaDiscriptionFontSize,
                   ),
                 ),
