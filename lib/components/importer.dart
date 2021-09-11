@@ -15,6 +15,7 @@ export 'common/messages.dart';
 export 'common/request.dart';
 export 'common/alert_dialog.dart';
 export 'common/constants.dart';
+export 'common/theme.dart';
 export 'home/home_view.dart';
 export 'home/home_view_model.dart';
 export '_archive/half_modal.dart';
