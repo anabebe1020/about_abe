@@ -42,8 +42,8 @@ class HomeScreen extends StatelessWidget {
           children: _pageList,
         ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: StyleConst().backgroundDarkColor,
-          selectedItemColor: StyleConst().backgroundLightColor,
+          //backgroundColor: StyleConst().backgroundDarkColor,
+          //selectedItemColor: StyleConst().backgroundLightColor,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
