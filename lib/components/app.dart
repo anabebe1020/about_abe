@@ -57,7 +57,6 @@ class AppTheme extends ChangeNotifier {
     //primarySwatch: StyleConst().appColorLight,
     accentColor: StyleConst().appColorDark,
     accentColorBrightness: Brightness.light,
-    //textTheme: TextTheme(bodyText1: StyleConst().appColorDark),
     scaffoldBackgroundColor: StyleConst().appColorLight,
     backgroundColor: StyleConst().appColorLight,
     bottomAppBarColor: StyleConst().barColorLight,
@@ -92,7 +91,19 @@ class AppTheme extends ChangeNotifier {
     cardColor: StyleConst().appColorDark,
     canvasColor: StyleConst().barColorDark,
     buttonColor: StyleConst().buttonColorDark,
-    textTheme: TextTheme(),
+    textTheme: TextTheme(
+      headline1: TextStyle(color: StyleConst().appFontColorDark),
+      headline2: TextStyle(color: StyleConst().appFontColorDark),
+      headline3: TextStyle(color: StyleConst().appFontColorDark),
+      headline4: TextStyle(color: StyleConst().appFontColorDark),
+      subtitle1: TextStyle(color: StyleConst().appFontColorDark),
+      subtitle2: TextStyle(color: StyleConst().appFontColorDark),
+      bodyText1: TextStyle(color: StyleConst().appFontColorDark),
+      bodyText2: TextStyle(color: StyleConst().appFontColorDark),
+      caption: TextStyle(color: StyleConst().appFontColorDark),
+      button: TextStyle(color: StyleConst().appFontColorDark),
+      overline: TextStyle(color: StyleConst().appFontColorDark),
+    ),
   );
   // switching theme.
   toggleTheme() {
