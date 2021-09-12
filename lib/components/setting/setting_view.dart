@@ -1,5 +1,3 @@
-import 'package:flutter_sample02/components/app.dart';
-
 import '../importer.dart';
 
 /// View for app setting.

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "829654777654",
+    "project_id": "i-am-abe",
+    "storage_bucket": "i-am-abe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829654777654:android:f76b7ee1948ed9fccb3d97",
+        "android_client_info": {
+          "package_name": "com.anabebe1020.i_am_abe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "829654777654-rsqlruvni6emf98nq251555l240a5vk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjvxJxYG37eyEtjfsEMxsgfMtiGnWlCBs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "829654777654-rsqlruvni6emf98nq251555l240a5vk8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "829654777654-e2p26knpf92onrd03smsjpi28mt6l6n4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anabebe1020.i-am-abe"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
