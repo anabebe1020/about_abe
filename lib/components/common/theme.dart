@@ -14,9 +14,10 @@ class AppTheme extends ChangeNotifier {
     scaffoldBackgroundColor: StyleConst().appColorLight,
     backgroundColor: StyleConst().appColorLight,
     bottomAppBarColor: StyleConst().barColorLight,
-    cardColor: StyleConst().appColorLight,
+    cardColor: StyleConst().topixButtonColorLight,
     canvasColor: StyleConst().barColorLight,
     buttonColor: StyleConst().buttonColorLight,
+    unselectedWidgetColor: StyleConst().unSelectedButtonColorLight,
     textTheme: TextTheme(
       headline1: TextStyle(color: StyleConst().appFontColorLight),
       headline2: TextStyle(color: StyleConst().appFontColorLight),
@@ -27,7 +28,7 @@ class AppTheme extends ChangeNotifier {
       bodyText1: TextStyle(color: StyleConst().appFontColorLight),
       bodyText2: TextStyle(color: StyleConst().appFontColorLight),
       caption: TextStyle(color: StyleConst().appFontColorLight),
-      button: TextStyle(color: StyleConst().appFontColorLight),
+      button: TextStyle(color: StyleConst().topixFontColorLight),
       overline: TextStyle(color: StyleConst().appFontColorLight),
     ),
   );
@@ -42,9 +43,10 @@ class AppTheme extends ChangeNotifier {
     scaffoldBackgroundColor: StyleConst().appColorDark,
     backgroundColor: StyleConst().appColorDark,
     bottomAppBarColor: StyleConst().barColorDark,
-    cardColor: StyleConst().appColorDark,
+    cardColor: StyleConst().topixButtonColordark,
     canvasColor: StyleConst().barColorDark,
     buttonColor: StyleConst().buttonColorDark,
+    unselectedWidgetColor: StyleConst().unSelectedButtonColorDark,
     textTheme: TextTheme(
       headline1: TextStyle(color: StyleConst().appFontColorDark),
       headline2: TextStyle(color: StyleConst().appFontColorDark),
@@ -55,7 +57,10 @@ class AppTheme extends ChangeNotifier {
       bodyText1: TextStyle(color: StyleConst().appFontColorDark),
       bodyText2: TextStyle(color: StyleConst().appFontColorDark),
       caption: TextStyle(color: StyleConst().appFontColorDark),
-      button: TextStyle(color: StyleConst().appFontColorDark),
+      button: TextStyle(
+        color: StyleConst().topixFontColorDark,
+        fontSize: StyleConst().snsButtonFontSize,
+      ),
       overline: TextStyle(color: StyleConst().appFontColorDark),
     ),
   );

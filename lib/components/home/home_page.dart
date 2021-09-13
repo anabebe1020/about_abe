@@ -103,16 +103,13 @@ class _TopixTile extends StatelessWidget {
                 Flexible(
                   child: Text(
                     model.title,
-                    style: TextStyle(
-                      color: StyleConst().snsButtonFontColor,
-                      fontSize: StyleConst().snsButtonFontSize,
-                    ),
+                    style: Theme.of(context).textTheme.button,
                   ),
                 ),
               ]),
               style: ElevatedButton.styleFrom(
-                primary: StyleConst().snaButtonColor,
-                onPrimary: StyleConst().snsButtonFontColor,
+                primary: Theme.of(context).cardColor,
+                //onPrimary: ,//StyleConst().snsButtonFontColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24),
                 ),
