@@ -32,7 +32,7 @@ target 'Runner' do
   use_modular_headers!
   # add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
-  # pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '6.33.0'
+  pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '8.6.0'
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
 

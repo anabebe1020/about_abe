@@ -7,6 +7,8 @@ export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:provider/provider.dart';
 export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 export 'package:url_launcher/url_launcher.dart';
+export 'package:firebase_core/firebase_core.dart';
+export 'package:cloud_firestore/cloud_firestore.dart';
 
 /// my codes.
 export 'common/background.dart';
