@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   static List<Widget> _pageList = [
     HomePage(),
     QiitaPage(),
+    HistoryPage(),
   ];
 
   @override

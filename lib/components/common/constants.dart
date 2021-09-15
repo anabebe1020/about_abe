@@ -75,6 +75,11 @@ class Routes {
   final String qiitaView = '/QiitaScreen';
 }
 
+class FirebaseConst {
+  final String storeHistoryConId = 'discography';
+  final String storeHistoryDocId = 'rVm8XbCfhJqL9q88iebh';
+}
+
 /// Get the [Color] class value from the hex color code.
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
