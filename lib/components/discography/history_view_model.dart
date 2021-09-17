@@ -6,14 +6,15 @@ class HistoryViewModel extends ChangeNotifier {
   //String _iconUrl = '';
   //String get iconUrl => _iconUrl;
 
-  /// Get user Historyy from FireStore.
+  /// Get user History from FireStore.
   Future<void> getHistory() async {
+    await Firebase.initializeApp();
     //
-    final document = await FirebaseFirestore.instance //
+    final snapshot = await FirebaseFirestore.instance //
         .collection(FirebaseConst().storeHistoryConId) //
         .doc(FirebaseConst().storeHistoryDocId) //
         .get();
-    debugLog('docs: $document', 'discography');
+    debugLog('docs: ${snapshot.data()}', '[discography]');
     notifyListeners();
   }
 }

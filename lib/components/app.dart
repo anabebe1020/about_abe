@@ -13,6 +13,7 @@ class App extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SettingViewModel()),
         ChangeNotifierProvider(create: (_) => LocaleViewModel()),
         ChangeNotifierProvider(create: (_) => QiitaViewModel()),
+        ChangeNotifierProvider(create: (_) => HistoryViewModel()),
       ],
       child: Consumer<AppTheme>(
         builder: (context, theme, child) {

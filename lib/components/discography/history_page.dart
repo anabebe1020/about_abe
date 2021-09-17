@@ -1,69 +1,69 @@
 import '../importer.dart';
 
 /// body in view.
-class HomePage extends StatefulWidget {
+class HistoryPage extends StatefulWidget {
   @override
-  _HomePageState createState() => new _HomePageState();
+  _HistoryPageState createState() => new _HistoryPageState();
 }
 
-/// Body in view.
-class _HomePageState extends State<HomePage> {
+class _HistoryPageState extends State<HistoryPage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<HomeViewModel>(context, listen: false).getItemsQiita();
+    //Firebase.initializeApp();
+    Provider.of<HistoryViewModel>(context, listen: false).getHistory();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: <Widget>[
-      Center(
-        child: Column(
-          key: globalScaffoldKey,
-          mainAxisAlignment: MainAxisAlignment.end,
-          mainAxisSize: MainAxisSize.min,
-          verticalDirection: VerticalDirection.down,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(
-                left: StyleConst().topixPaddingH,
-                top: StyleConst().topixPaddingV,
-              ),
-              child: Container(
-                width: double.infinity,
-                child: Text(
-                  'Topix',
-                  textAlign: TextAlign.start,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: StyleConst().snsButtonFontColor,
+    return Stack(
+      children: <Widget>[
+        Center(
+          child: Column(
+            //key: globalScaffoldKey,
+            //mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                  left: StyleConst().topixPaddingH,
+                  top: StyleConst().topixPaddingV,
+                ),
+                child: Container(
+                  width: double.infinity,
+                  child: Text(
+                    'Topix',
+                    textAlign: TextAlign.start,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: StyleConst().snsButtonFontColor,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: _TopixTileList(), //_ButtonList(),
-            ),
-          ],
+              Expanded(
+                child: _HistoryTileList(),
+              ),
+            ],
+          ),
         ),
-      ),
-    ]);
+      ],
+    );
   }
 }
 
-/// Button list in body.
-class _TopixTileList extends StatelessWidget {
-  const _TopixTileList({Key key}) : super(key: key);
+class _HistoryTileList extends StatelessWidget {
+  const _HistoryTileList({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomeViewModel>(builder: (context, model, child) {
+    return Consumer<HistoryViewModel>(builder: (context, model, child) {
       return ListView.builder(
         itemCount: 1, //model.addedCount,
         itemBuilder: (BuildContext context, int index) {
-          return _TopixTile(index: index);
+          return _HistoryTile(index: index);
         },
         //reverse: true,
       );
@@ -71,14 +71,13 @@ class _TopixTileList extends StatelessWidget {
   }
 }
 
-/// Tile in button list.
-class _TopixTile extends StatelessWidget {
-  const _TopixTile({Key key, @required this.index}) : super(key: key);
+class _HistoryTile extends StatelessWidget {
+  const _HistoryTile({Key key, @required this.index}) : super(key: key);
   final int index;
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomeViewModel>(
+    return Consumer<HistoryViewModel>(
       builder: (context, model, child) {
         return ConstrainedBox(
           constraints: BoxConstraints(
@@ -101,7 +100,7 @@ class _TopixTile extends StatelessWidget {
                 StyleConst().verticalSeparator,
                 Flexible(
                   child: Text(
-                    model.title,
+                    'あああ',
                     style: Theme.of(context).textTheme.button,
                   ),
                 ),
@@ -115,20 +114,12 @@ class _TopixTile extends StatelessWidget {
                 elevation: 0.0,
               ),
               onPressed: () {
-                _launchURL(model);
+                //_launchURL(model);
               },
             ),
           ),
         );
       },
     );
-  }
-
-  Future _launchURL(HomeViewModel model) async {
-    if (await canLaunch(model.url)) {
-      await launch(model.url);
-    } else {
-      throw 'Could not Launch ${model.url}';
-    }
   }
 }

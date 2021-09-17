@@ -25,8 +25,8 @@ export 'home/home_view_model.dart';
 export 'home/home_page.dart';
 export 'qiita/qiita_page.dart';
 export 'qiita/qiita_view_model.dart';
-export 'discography/discography_page.dart';
-export 'discography/discography_view_model.dart';
+export 'discography/history_page.dart';
+export 'discography/history_view_model.dart';
 //
 export 'setting/setting_view.dart';
 export 'setting/setting_view_model.dart';
