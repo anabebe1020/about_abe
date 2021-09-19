@@ -32,7 +32,9 @@ export 'setting/setting_view.dart';
 export 'setting/setting_view_model.dart';
 export 'setting/locale_view.dart';
 export 'setting/locale_view_model.dart';
+//
 export 'stores/sns_info_store.dart';
+export 'stores/history_store.dart';
 // archives
 //export '_archive/half_modal.dart';
 //export 'stores/user_info_store.dart';
