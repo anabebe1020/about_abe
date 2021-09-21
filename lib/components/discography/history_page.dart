@@ -16,54 +16,37 @@ class _HistoryPageState extends State<HistoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Center(
-          child: Column(
-            //key: globalScaffoldKey,
-            //mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(
-                  left: StyleConst().topixPaddingH,
-                  top: StyleConst().topixPaddingV,
-                ),
-                child: Container(
-                  width: double.infinity,
-                  child: Text(
-                    'Topix',
-                    textAlign: TextAlign.start,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: StyleConst().snsButtonFontColor,
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: _HistoryTileList(),
-              ),
-            ],
+    return Consumer<HistoryViewModel>(builder: (context, model, child) {
+      final keys = model.history.keys;
+      List<Widget> tiles = [];
+      keys.forEach((key) {
+        tiles.insert(0, Expanded(child: _HistoryTileList(name: key)));
+      });
+      return Stack(
+        children: <Widget>[
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: tiles,
+            ),
           ),
-        ),
-      ],
-    );
+        ],
+      );
+    });
   }
 }
 
 class _HistoryTileList extends StatelessWidget {
-  const _HistoryTileList({Key key}) : super(key: key);
+  const _HistoryTileList({Key key, @required this.name}) : super(key: key);
+  final String name;
 
   @override
   Widget build(BuildContext context) {
     return Consumer<HistoryViewModel>(builder: (context, model, child) {
       return ListView.builder(
-        itemCount: 1, //model.addedCount,
+        itemCount: model.history[name].length,
         itemBuilder: (BuildContext context, int index) {
-          return _HistoryTile(index: index);
+          return _HistoryTile(career: model.history[name], index: index);
         },
         //reverse: true,
       );
@@ -72,54 +55,54 @@ class _HistoryTileList extends StatelessWidget {
 }
 
 class _HistoryTile extends StatelessWidget {
-  const _HistoryTile({Key key, @required this.index}) : super(key: key);
+  const _HistoryTile({Key key, @required this.career, @required this.index}) : super(key: key);
+  final dynamic career;
   final int index;
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HistoryViewModel>(
-      builder: (context, model, child) {
-        return ConstrainedBox(
-          constraints: BoxConstraints(
-            minHeight: StyleConst().snsButtonHeight,
-            maxHeight: StyleConst().snsButtonHeight,
-            //maxWidth: 50.0,
+    return Consumer<HistoryViewModel>(builder: (context, model, child) {
+      return Expanded(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: StyleConst().topixPaddingH,
+            vertical: StyleConst().topixPaddingV,
           ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: StyleConst().topixPaddingH,
-              vertical: StyleConst().topixPaddingV,
-            ),
-            child: ElevatedButton(
-              child: Row(children: [
-                Image.asset(
-                  StyleConst().qiitaIconPath,
-                  width: StyleConst().topixIconSize,
-                  height: StyleConst().topixIconSize,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '${career[index]['to']} ~ ${career[index]['from']}',
+                style: TextStyle(
+                  fontSize: StyleConst().qiitaDiscriptionFontSize,
+                  fontWeight: FontWeight.bold,
                 ),
-                StyleConst().verticalSeparator,
-                Flexible(
-                  child: Text(
-                    'あああ',
-                    style: Theme.of(context).textTheme.button,
-                  ),
-                ),
-              ]),
-              style: ElevatedButton.styleFrom(
-                primary: Theme.of(context).cardColor,
-                //onPrimary: ,//StyleConst().snsButtonFontColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                elevation: 0.0,
               ),
-              onPressed: () {
-                //_launchURL(model);
-              },
-            ),
+              StyleConst().horizontalSeparator,
+              Text(
+                '- ${career[index]['job']}',
+                style: TextStyle(
+                  fontSize: StyleConst().qiitaDiscriptionFontSize,
+                ),
+              ),
+              StyleConst().horizontalSeparator,
+              Text(
+                '- ${career[index]['overview']}',
+                style: TextStyle(
+                  fontSize: StyleConst().qiitaDiscriptionFontSize,
+                ),
+              ),
+              StyleConst().horizontalSeparator,
+              Text(
+                '- ${career[index]['skills'].toString()}',
+                style: TextStyle(
+                  fontSize: StyleConst().qiitaDiscriptionFontSize,
+                ),
+              ),
+            ],
           ),
-        );
-      },
-    );
+        ),
+      );
+    });
   }
 }
