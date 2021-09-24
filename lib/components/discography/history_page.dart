@@ -10,58 +10,68 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   void initState() {
     super.initState();
-    //Firebase.initializeApp();
     Provider.of<HistoryViewModel>(context, listen: false).getHistory();
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<HistoryViewModel>(builder: (context, model, child) {
-      final keys = model.history.keys;
-      List<Widget> tiles = [];
-      keys.forEach((key) {
-        tiles.insert(0, Expanded(child: _HistoryTileList(name: key)));
-      });
-      return Stack(
-        children: <Widget>[
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: tiles,
-            ),
-          ),
-        ],
-      );
+      //debugLog('number of company: ${model.history.length}', '[history]');
+      //debugLog('histories: ${model.history.toString()}', '[history]');
+      //debugLog('history of lis: ${model.history[0].toString()}', '[history]');
+      //debugLog('name of lis: ${model.history[0]['name']}', '[history]');
+      //debugLog('number of lis: ${model.history[0]['career'][0]['position']}', '[history]');
+      //debugLog('skills of lis: ${model.history[0]['career'][0]['overview']}', '[history]');
+      return Column(children: <Widget>[
+        ListView.builder(
+          itemCount: model.history.length,
+          itemBuilder: (BuildContext context, int index) {
+            return _HistoryTileList(company: model.history[index]);
+          },
+        )
+      ]);
     });
   }
 }
 
 class _HistoryTileList extends StatelessWidget {
-  const _HistoryTileList({Key key, @required this.name}) : super(key: key);
-  final String name;
+  const _HistoryTileList({Key key, @required this.company}) : super(key: key);
+  final Map<String, dynamic> company;
 
   @override
   Widget build(BuildContext context) {
     return Consumer<HistoryViewModel>(builder: (context, model, child) {
-      return ListView.builder(
-        itemCount: model.history[name].length,
-        itemBuilder: (BuildContext context, int index) {
-          return _HistoryTile(career: model.history[name], index: index);
-        },
-        //reverse: true,
-      );
+      debugLog('_HistoryTileList', '[history]');
+      debugLog('company ${company.toString()}', '[history]');
+      //debugLog('company name ${company['name']}', '[history]');
+      //debugLog('company order ${company['order']}', '[history]');
+      final List<Widget> careers = [];
+      company.forEach((key, value) {
+        careers.add(_HistoryTile(career: value['career']));
+      });
+      return Column(children: careers
+          //<Widget>[
+          //ListView.builder(
+          //  physics: const NeverScrollableScrollPhysics(),
+          //  itemCount: careers.length,
+          //  itemBuilder: (BuildContext context, int index) {
+          //    return _HistoryTile(career: careers[index]);
+          //  },
+          //)
+          //]
+          );
     });
   }
 }
 
 class _HistoryTile extends StatelessWidget {
-  const _HistoryTile({Key key, @required this.career, @required this.index}) : super(key: key);
+  const _HistoryTile({Key key, @required this.career}) : super(key: key);
   final dynamic career;
-  final int index;
 
   @override
   Widget build(BuildContext context) {
     return Consumer<HistoryViewModel>(builder: (context, model, child) {
+      debugLog('$career', '[history]');
       return Expanded(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -72,7 +82,7 @@ class _HistoryTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '${career[index]['to']} ~ ${career[index]['from']}',
+                '${career['to']} ~ ${career['from']}',
                 style: TextStyle(
                   fontSize: StyleConst().qiitaDiscriptionFontSize,
                   fontWeight: FontWeight.bold,
@@ -80,21 +90,21 @@ class _HistoryTile extends StatelessWidget {
               ),
               StyleConst().horizontalSeparator,
               Text(
-                '- ${career[index]['job']}',
+                '- ${career['position']}',
                 style: TextStyle(
                   fontSize: StyleConst().qiitaDiscriptionFontSize,
                 ),
               ),
               StyleConst().horizontalSeparator,
               Text(
-                '- ${career[index]['overview']}',
+                '- ${career['overview']}',
                 style: TextStyle(
                   fontSize: StyleConst().qiitaDiscriptionFontSize,
                 ),
               ),
               StyleConst().horizontalSeparator,
               Text(
-                '- ${career[index]['skills'].toString()}',
+                '- ${career['skills'].toString()}',
                 style: TextStyle(
                   fontSize: StyleConst().qiitaDiscriptionFontSize,
                 ),
