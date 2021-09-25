@@ -2,7 +2,7 @@ import '../importer.dart';
 
 /// ViewModel for the HomeScreen.
 class HomeViewModel with ChangeNotifier {
-  final String logName = '[HOME]';
+  final String logName = 'HOME';
 
   // index
   int _selectedIndex = 0;

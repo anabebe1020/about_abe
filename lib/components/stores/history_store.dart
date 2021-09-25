@@ -7,7 +7,7 @@ class HistoryStore {
   static Future<void> createList(Map<String, dynamic> fields) async {
     // pageにて使用するListをここで生成する
     fields.forEach((name, value) {
-      debugLog('company name: $name', '[discography]');
+      debugLog('company name: $name', 'HISTORY');
       _history[name] = value;
       //CompanyModel company = value;
       //value.forEach((career) {

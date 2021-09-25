@@ -61,6 +61,9 @@ class StyleConst {
   final Color qiitaButtonColor = HexColor('9EFFCE').withOpacity(0.9);
   // Qiita View.
   final double qiitaDiscriptionFontSize = 20;
+  // History View.
+  final double historycompanyNameFontSize = 26;
+  final double historyDiscriptionFontSize = 20;
   // Other.
   final SizedBox verticalSeparator = SizedBox(width: 10);
   final SizedBox horizontalSeparator = SizedBox(height: 10);
