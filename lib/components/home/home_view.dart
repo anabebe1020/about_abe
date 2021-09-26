@@ -22,6 +22,7 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             AppLocalizations.of(context).title,
+            style: TextStyle(color: Theme.of(context).textTheme.headline6.color),
           ),
           elevation: 0.0,
           actions: <Widget>[
@@ -59,10 +60,6 @@ class HomeScreen extends StatelessWidget {
               icon: Icon(Icons.history),
               label: 'Discography',
             ),
-            // BottomNavigationBarItem(
-            //   icon: FaIcon(FontAwesomeIcons.qq),
-            //   label: 'Qiita',
-            // ),
           ],
           currentIndex: model.currentIndex,
           onTap: (index) {

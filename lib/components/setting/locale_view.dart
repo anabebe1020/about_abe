@@ -6,7 +6,10 @@ class LocaleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).locale),
+        title: Text(
+          AppLocalizations.of(context).locale,
+          style: TextStyle(color: Theme.of(context).textTheme.headline6.color),
+        ),
       ),
       body: _LocaleScreenBody(),
     );
@@ -18,8 +21,13 @@ class _LocaleScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
-      Center(
+      Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: StyleConst().topixPaddingH,
+          vertical: StyleConst().topixPaddingV,
+        ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
               AppLocalizations.of(context).english,
@@ -27,7 +35,6 @@ class _LocaleScreenBody extends StatelessWidget {
             ),
             Text(
               AppLocalizations.of(context).japanese,
-              style: TextStyle(color: Colors.black, fontSize: 32),
               textAlign: TextAlign.left,
             ),
           ],

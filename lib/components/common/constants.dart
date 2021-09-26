@@ -11,14 +11,11 @@ class SnsConst {
   final String qiitaUrl = 'https://qiita.com/api/v2';
 }
 
-Color mainLightColor = HexColor('E1F8FE'); // HexColor('B5F8FE');
+Color mainLightColor = HexColor('E1F8FE');
 Color mainDarkColor = HexColor('36558F');
 
 /// Constants for style.
 class StyleConst {
-  // Common.
-  //Color mainLightColor = HexColor('E1F8FE'); // HexColor('B5F8FE');
-  //Color mainDarkColor = HexColor('36558F');
   // Theme Light.
   final Color appColorLight = mainLightColor;
   final Color appFontColorLight = mainDarkColor;

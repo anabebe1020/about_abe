@@ -18,11 +18,14 @@ class AppTheme extends ChangeNotifier {
     canvasColor: StyleConst().barColorLight,
     buttonColor: StyleConst().buttonColorLight,
     unselectedWidgetColor: StyleConst().unSelectedButtonColorLight,
+    // theme of text.
     textTheme: TextTheme(
       headline1: TextStyle(color: StyleConst().appFontColorLight),
       headline2: TextStyle(color: StyleConst().appFontColorLight),
       headline3: TextStyle(color: StyleConst().appFontColorLight),
       headline4: TextStyle(color: StyleConst().appFontColorLight),
+      headline5: TextStyle(color: StyleConst().appFontColorLight),
+      headline6: TextStyle(color: StyleConst().appFontColorLight),
       subtitle1: TextStyle(color: StyleConst().appFontColorLight),
       subtitle2: TextStyle(color: StyleConst().appFontColorLight),
       bodyText1: TextStyle(color: StyleConst().appFontColorLight),
@@ -47,11 +50,14 @@ class AppTheme extends ChangeNotifier {
     canvasColor: StyleConst().barColorDark,
     buttonColor: StyleConst().buttonColorDark,
     unselectedWidgetColor: StyleConst().unSelectedButtonColorDark,
+    // theme of text.
     textTheme: TextTheme(
       headline1: TextStyle(color: StyleConst().appFontColorDark),
       headline2: TextStyle(color: StyleConst().appFontColorDark),
       headline3: TextStyle(color: StyleConst().appFontColorDark),
       headline4: TextStyle(color: StyleConst().appFontColorDark),
+      headline5: TextStyle(color: StyleConst().appFontColorDark),
+      headline6: TextStyle(color: StyleConst().appFontColorDark),
       subtitle1: TextStyle(color: StyleConst().appFontColorDark),
       subtitle2: TextStyle(color: StyleConst().appFontColorDark),
       bodyText1: TextStyle(color: StyleConst().appFontColorDark),

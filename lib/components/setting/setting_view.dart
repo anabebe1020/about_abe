@@ -8,6 +8,7 @@ class SettingScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context).setting,
+          style: TextStyle(color: Theme.of(context).textTheme.headline6.color),
         ),
         elevation: 0.0,
       ),
