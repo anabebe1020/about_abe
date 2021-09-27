@@ -5,9 +5,6 @@ class Messages {
   Messages({
     @required this.title,
     @required this.title2,
-    @required this.menu1,
-    @required this.menu2,
-    @required this.menu3,
     @required this.qiita,
     @required this.id,
     @required this.followees,
@@ -23,9 +20,6 @@ class Messages {
 
   final String title;
   final String title2;
-  final String menu1;
-  final String menu2;
-  final String menu3;
   final String qiita;
   final String id;
   final String followees;
@@ -53,9 +47,6 @@ class Messages {
   factory Messages.ja() => Messages(
         title: 'I\'m Abe',
         title2: 'Qiita View',
-        menu1: '＋ボタンを押した回数',
-        menu2: '次へ',
-        menu3: '最後の画面だよ',
         qiita: 'Qiita',
         id: 'ID',
         followees: 'フォロー',
@@ -73,9 +64,6 @@ class Messages {
   factory Messages.en() => Messages(
         title: 'I\'m Abe',
         title2: 'Qiita View',
-        menu1: 'num of touch, + button',
-        menu2: 'next',
-        menu3: 'the screen of last.',
         qiita: 'Qiita',
         id: 'ID',
         followees: 'Followees',

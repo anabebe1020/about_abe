@@ -2,6 +2,7 @@ import '../importer.dart';
 
 /// State of fix theme.
 class AppTheme extends ChangeNotifier {
+  // default theme.
   bool isDark = false;
   // theme light.
   ThemeData light = ThemeData(
@@ -70,10 +71,21 @@ class AppTheme extends ChangeNotifier {
       overline: TextStyle(color: StyleConst().appFontColorDark),
     ),
   );
+
   // switching theme.
   toggleTheme() {
     isDark = !isDark;
-    //current = _isDark ? _dark : _light;
+    notifyListeners();
+  }
+
+  // default locale;
+  Locale currentLocale = Locale('ja');
+
+  // switching locale.
+  switchLocale(Locale locale) {
+    if (AppLocalizationsDelegate().isSupported(locale)) {
+      currentLocale = locale;
+    }
     notifyListeners();
   }
 }

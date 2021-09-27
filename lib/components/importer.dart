@@ -14,7 +14,6 @@ export 'package:cloud_firestore/cloud_firestore.dart';
 // common for app.
 export 'common/background.dart';
 export 'common/log.dart';
-export 'common/messages.dart';
 export 'common/request.dart';
 export 'common/alert_dialog.dart';
 export 'common/constants.dart';
@@ -27,6 +26,8 @@ export 'qiita/qiita_page.dart';
 export 'qiita/qiita_view_model.dart';
 export 'discography/history_page.dart';
 export 'discography/history_view_model.dart';
+//
+export 'language/messages.dart';
 //
 export 'setting/setting_view.dart';
 export 'setting/setting_view_model.dart';

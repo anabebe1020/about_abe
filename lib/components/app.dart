@@ -25,21 +25,20 @@ class App extends StatelessWidget {
             themeMode: ThemeMode.system,
             home: HomeScreen(),
             routes: {
-              //'/QiitaLoginScreen': (_) => QiitaLoginScreen(),
               '/SettingScreen': (_) => SettingScreen(),
               '/LocaleScreen': (_) => LocaleScreen(),
-              //'/QiitaScreen': (_) => QiitaScreen(),
             },
             localizationsDelegates: [
-              const AppLocalizationsDelegate(), // <- 登録
+              const AppLocalizationsDelegate(),
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: [
-              const Locale('en'), // <- 対応している言語を登録
-              const Locale('ja'), // <- 対応している言語を登録
+              const Locale('en'),
+              const Locale('ja'),
             ],
+            locale: theme.currentLocale,
           );
         },
       ),

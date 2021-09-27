@@ -20,26 +20,44 @@ class LocaleScreen extends StatelessWidget {
 class _LocaleScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(children: <Widget>[
-      Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: StyleConst().topixPaddingH,
-          vertical: StyleConst().topixPaddingV,
+    return Consumer<LocaleViewModel>(builder: (context, model, child) {
+      return Stack(children: <Widget>[
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: StyleConst().topixPaddingH,
+            vertical: StyleConst().topixPaddingV,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              RadioListTile(
+                title: Text(
+                  AppLocalizations.of(context).english,
+                  textAlign: TextAlign.left,
+                ),
+                value: RadioValue.FIRST,
+                groupValue: model.gValue,
+                onChanged: (value) => {
+                  Provider.of<AppTheme>(context, listen: false).switchLocale(Locale('en')),
+                  model.onRadioSelected(value),
+                },
+              ),
+              RadioListTile(
+                title: Text(
+                  AppLocalizations.of(context).japanese,
+                  textAlign: TextAlign.left,
+                ),
+                value: RadioValue.SECOND,
+                groupValue: model.gValue,
+                onChanged: (value) => {
+                  Provider.of<AppTheme>(context, listen: false).switchLocale(Locale('ja')),
+                  model.onRadioSelected(value),
+                },
+              ),
+            ],
+          ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              AppLocalizations.of(context).english,
-              textAlign: TextAlign.left,
-            ),
-            Text(
-              AppLocalizations.of(context).japanese,
-              textAlign: TextAlign.left,
-            ),
-          ],
-        ),
-      ),
-    ]);
+      ]);
+    });
   }
 }
