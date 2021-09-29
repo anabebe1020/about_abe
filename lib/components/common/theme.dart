@@ -39,15 +39,19 @@ class AppTheme extends ChangeNotifier {
         fontSize: StyleConst().appFontSizeS,
         fontWeight: FontWeight.bold,
       ),
-      subtitle1: TextStyle(color: StyleConst().appFontColorLight),
+      subtitle1: TextStyle(
+        color: StyleConst().appFontColorLight,
+        fontSize: StyleConst().appFontSizeM,
+        fontWeight: FontWeight.bold,
+      ),
       subtitle2: TextStyle(color: StyleConst().appFontColorLight),
       bodyText1: TextStyle(
         color: StyleConst().appFontColorLight,
-        fontSize: StyleConst().appFontSizeS,
+        fontSize: StyleConst().appFontSizeM,
       ),
       bodyText2: TextStyle(
         color: StyleConst().appFontColorLight,
-        fontSize: StyleConst().appFontSizeSS,
+        fontSize: StyleConst().appFontSizeS,
       ),
       caption: TextStyle(color: StyleConst().appFontColorLight),
       button: TextStyle(color: StyleConst().topixFontColorLight),
@@ -89,15 +93,19 @@ class AppTheme extends ChangeNotifier {
         fontSize: StyleConst().appFontSizeS,
         fontWeight: FontWeight.bold,
       ),
-      subtitle1: TextStyle(color: StyleConst().appFontColorDark),
+      subtitle1: TextStyle(
+        color: StyleConst().appFontColorDark,
+        fontSize: StyleConst().appFontSizeM,
+        fontWeight: FontWeight.bold,
+      ),
       subtitle2: TextStyle(color: StyleConst().appFontColorDark),
       bodyText1: TextStyle(
         color: StyleConst().appFontColorDark,
-        fontSize: StyleConst().appFontSizeS,
+        fontSize: StyleConst().appFontSizeM,
       ),
       bodyText2: TextStyle(
         color: StyleConst().appFontColorDark,
-        fontSize: StyleConst().appFontSizeSS,
+        fontSize: StyleConst().appFontSizeS,
       ),
       caption: TextStyle(color: StyleConst().appFontColorDark),
       button: TextStyle(

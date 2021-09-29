@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             AppLocalizations.of(context).title,
-            style: TextStyle(color: Theme.of(context).textTheme.headline6.color),
+            style: Theme.of(context).textTheme.subtitle1,
           ),
           elevation: 0.0,
           actions: <Widget>[

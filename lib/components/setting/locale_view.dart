@@ -8,7 +8,7 @@ class LocaleScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           AppLocalizations.of(context).locale,
-          style: TextStyle(color: Theme.of(context).textTheme.headline6.color),
+          style: Theme.of(context).textTheme.subtitle1,
         ),
       ),
       body: _LocaleScreenBody(),

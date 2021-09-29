@@ -83,17 +83,17 @@ class _HistoryTile extends StatelessWidget {
             StyleConst().horizontalSeparator,
             Text(
               '- ${career['position']}',
-              style: Theme.of(context).textTheme.bodyText1,
+              style: Theme.of(context).textTheme.bodyText2,
             ),
             StyleConst().horizontalSeparator,
             Text(
               '- ${career['overview']}',
-              style: Theme.of(context).textTheme.bodyText1,
+              style: Theme.of(context).textTheme.bodyText2,
             ),
             StyleConst().horizontalSeparator,
             Text(
               '- ${career['skills'].toString()}',
-              style: Theme.of(context).textTheme.bodyText1,
+              style: Theme.of(context).textTheme.bodyText2,
             ),
           ],
         ),
