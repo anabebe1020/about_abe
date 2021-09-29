@@ -32,19 +32,15 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 width: double.infinity,
                 child: Text(
-                  'Topix',
+                  AppLocalizations.of(context).topix,
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: StyleConst().snsButtonFontColor,
-                  ),
+                  style: Theme.of(context).textTheme.headline4,
                 ),
               ),
             ),
             Expanded(
-              child: _TopixTileList(), //_ButtonList(),
+              child: _TopixTileList(),
             ),
           ],
         ),

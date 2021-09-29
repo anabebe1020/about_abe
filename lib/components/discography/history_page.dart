@@ -18,14 +18,14 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Consumer<HistoryViewModel>(builder: (context, model, child) {
+      final _history = List.from(model.history.reversed);
       return Column(children: <Widget>[
         Expanded(
           child: ListView.builder(
-            itemCount: model.history.length,
+            itemCount: _history.length,
             itemBuilder: (BuildContext context, int index) {
-              return _HistoryTileList(company: model.history[index]);
+              return _HistoryTileList(company: _history[index]);
             },
-            reverse: true,
           ),
         )
       ]);
@@ -44,10 +44,7 @@ class _HistoryTileList extends StatelessWidget {
       return Column(children: <Widget>[
         Text(
           '${company['name']}',
-          style: TextStyle(
-            fontSize: StyleConst().historycompanyNameFontSize,
-            fontWeight: FontWeight.bold,
-          ),
+          style: Theme.of(context).textTheme.headline5,
         ),
         ListView.builder(
           shrinkWrap: true,
@@ -81,31 +78,22 @@ class _HistoryTile extends StatelessWidget {
           children: [
             Text(
               '${career['to']} ~ ${career['from']}',
-              style: TextStyle(
-                fontSize: StyleConst().historyDiscriptionFontSize,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.headline6,
             ),
             StyleConst().horizontalSeparator,
             Text(
               '- ${career['position']}',
-              style: TextStyle(
-                fontSize: StyleConst().historyDiscriptionFontSize,
-              ),
+              style: Theme.of(context).textTheme.bodyText1,
             ),
             StyleConst().horizontalSeparator,
             Text(
               '- ${career['overview']}',
-              style: TextStyle(
-                fontSize: StyleConst().historyDiscriptionFontSize,
-              ),
+              style: Theme.of(context).textTheme.bodyText1,
             ),
             StyleConst().horizontalSeparator,
             Text(
               '- ${career['skills'].toString()}',
-              style: TextStyle(
-                fontSize: StyleConst().historyDiscriptionFontSize,
-              ),
+              style: Theme.of(context).textTheme.bodyText1,
             ),
           ],
         ),

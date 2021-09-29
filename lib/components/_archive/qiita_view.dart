@@ -14,7 +14,7 @@ class QiitaScreen extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: AppBar(
-          title: Text(AppLocalizations.of(context).title2),
+          title: Text('' /*AppLocalizations.of(context).title2*/),
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.settings),

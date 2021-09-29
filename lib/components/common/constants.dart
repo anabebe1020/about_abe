@@ -40,6 +40,12 @@ class StyleConst {
   final String backgroundImagePath = 'images/background_image.jpg';
   final Color backgroundLightColor = mainLightColor;
   final Color backgroundDarkColor = mainDarkColor;
+  // Font
+  final double appFontSizeSS = 12;
+  final double appFontSizeS = 16;
+  final double appFontSizeM = 20;
+  final double appFontSizeL = 24;
+  final double appFontSizeLL = 30;
   // Floating Action Button.
   final Color faButtonColor1 = HexColor('ff7f7f');
   final Color faButtonColor2 = HexColor('BF7FFF');

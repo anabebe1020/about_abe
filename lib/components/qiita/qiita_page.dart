@@ -20,6 +20,7 @@ class _QiitaPageState extends State<QiitaPage> {
         Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               _TopArea(),
               _BottomArea(),
@@ -80,9 +81,7 @@ class _TopLeftArea extends StatelessWidget {
               StyleConst().horizontalSeparator,
               Text(
                 model.userId.toString(),
-                // style: TextStyle(
-                //   color: StyleConst().snsButtonFontColor,
-                // ),
+                style: Theme.of(context).textTheme.bodyText2,
               ),
             ],
           ),
@@ -109,24 +108,15 @@ class _TopRightArea extends StatelessWidget {
                 children: [
                   Text(
                     '${AppLocalizations.of(context).followees}：${model.followees}',
-                    style: TextStyle(
-                      //color: StyleConst().snsButtonFontColor,
-                      fontSize: 16,
-                    ),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                   Text(
                     '${AppLocalizations.of(context).followers}：${model.followers}',
-                    style: TextStyle(
-                      // color: StyleConst().snsButtonFontColor,
-                      fontSize: 16,
-                    ),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                   Text(
                     '${AppLocalizations.of(context).items}：${model.items}',
-                    style: TextStyle(
-                      // color: StyleConst().snsButtonFontColor,
-                      fontSize: 16,
-                    ),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ],
               ),
@@ -153,20 +143,13 @@ class _BottomArea extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Overview',
-                  style: TextStyle(
-                    // color: StyleConst().snsButtonFontColor,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  AppLocalizations.of(context).overview,
+                  style: Theme.of(context).textTheme.headline5,
                 ),
                 StyleConst().horizontalSeparator,
                 Text(
                   model.description.toString(),
-                  style: TextStyle(
-                    // color: StyleConst().snsButtonFontColor,
-                    fontSize: StyleConst().qiitaDiscriptionFontSize,
-                  ),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ],
             ),

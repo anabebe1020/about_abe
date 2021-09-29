@@ -38,7 +38,7 @@ class _SettingScreenBody extends StatelessWidget {
         ),
         title: Text(
           AppLocalizations.of(context).locale,
-          style: TextStyle(fontSize: 24),
+          style: Theme.of(context).textTheme.bodyText1,
         ),
         trailing: Icon(
           Icons.arrow_forward_ios,
@@ -60,7 +60,7 @@ class _SettingScreenBody extends StatelessWidget {
           ),
           title: Text(
             AppLocalizations.of(context).darkMode,
-            style: TextStyle(fontSize: 24),
+            style: Theme.of(context).textTheme.bodyText1,
           ),
           trailing: new Switch(
             value: model.isDark,

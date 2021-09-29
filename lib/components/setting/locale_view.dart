@@ -34,6 +34,7 @@ class _LocaleScreenBody extends StatelessWidget {
                 title: Text(
                   AppLocalizations.of(context).english,
                   textAlign: TextAlign.left,
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
                 value: RadioValue.FIRST,
                 groupValue: model.gValue,
@@ -46,6 +47,7 @@ class _LocaleScreenBody extends StatelessWidget {
                 title: Text(
                   AppLocalizations.of(context).japanese,
                   textAlign: TextAlign.left,
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
                 value: RadioValue.SECOND,
                 groupValue: model.gValue,

@@ -4,33 +4,35 @@ import '../importer.dart';
 class Messages {
   Messages({
     @required this.title,
-    @required this.title2,
-    @required this.qiita,
-    @required this.id,
-    @required this.followees,
-    @required this.followers,
-    @required this.items,
-    @required this.password,
+    @required this.homeTab,
+    @required this.accountTab,
+    @required this.discographyTab,
     @required this.setting,
     @required this.locale,
     @required this.japanese,
     @required this.english,
     @required this.darkMode,
+    @required this.topix,
+    @required this.followees,
+    @required this.followers,
+    @required this.overview,
+    @required this.items,
   });
 
   final String title;
-  final String title2;
-  final String qiita;
-  final String id;
-  final String followees;
-  final String followers;
-  final String items;
-  final String password;
+  final String homeTab;
+  final String accountTab;
+  final String discographyTab;
   final String setting;
   final String locale;
   final String japanese;
   final String english;
   final String darkMode;
+  final String topix;
+  final String followees;
+  final String followers;
+  final String items;
+  final String overview;
 
   factory Messages.of(Locale locale) {
     switch (locale.languageCode) {
@@ -46,35 +48,37 @@ class Messages {
   /// Japanese
   factory Messages.ja() => Messages(
         title: 'I\'m Abe',
-        title2: 'Qiita View',
-        qiita: 'Qiita',
-        id: 'ID',
-        followees: 'フォロー',
-        followers: 'フォロワー',
-        items: '投稿',
-        password: 'Password',
+        homeTab: 'ホーム',
+        accountTab: 'アカウント',
+        discographyTab: '略歴',
         setting: '設定画面',
         locale: '言語設定',
         japanese: '日本語',
         english: '英語',
         darkMode: 'ダークモード',
+        topix: 'トピックス',
+        followees: 'フォロー',
+        followers: 'フォロワー',
+        items: '投稿',
+        overview: '説明',
       );
 
   /// English
   factory Messages.en() => Messages(
         title: 'I\'m Abe',
-        title2: 'Qiita View',
-        qiita: 'Qiita',
-        id: 'ID',
-        followees: 'Followees',
-        followers: 'Followers',
-        items: 'Items',
-        password: 'Password',
+        homeTab: 'Home',
+        accountTab: 'Account',
+        discographyTab: 'Discography',
         setting: 'Settings',
         locale: 'Locale',
         japanese: 'Japanese',
         english: 'English',
         darkMode: 'Dark Mode',
+        topix: 'Topix',
+        followees: 'Followees',
+        followers: 'Followers',
+        items: 'Items',
+        overview: 'overview',
       );
 }
 

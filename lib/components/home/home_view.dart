@@ -47,18 +47,18 @@ class HomeScreen extends StatelessWidget {
           //backgroundColor: StyleConst().backgroundDarkColor,
           selectedItemColor: Theme.of(context).buttonColor,
           unselectedItemColor: Theme.of(context).unselectedWidgetColor,
-          items: const <BottomNavigationBarItem>[
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: 'Home',
+              label: AppLocalizations.of(context).homeTab,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.account_circle),
-              label: 'Account',
+              label: AppLocalizations.of(context).accountTab,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.history),
-              label: 'Discography',
+              label: AppLocalizations.of(context).discographyTab,
             ),
           ],
           currentIndex: model.currentIndex,
