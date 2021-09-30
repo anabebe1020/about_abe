@@ -149,7 +149,7 @@ class _BottomArea extends StatelessWidget {
                 StyleConst().horizontalSeparator,
                 Text(
                   model.description.toString(),
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
               ],
             ),

@@ -38,6 +38,7 @@ class _LocaleScreenBody extends StatelessWidget {
                 ),
                 value: RadioValue.FIRST,
                 groupValue: model.gValue,
+                activeColor: Theme.of(context).accentColor,
                 onChanged: (value) => {
                   Provider.of<AppTheme>(context, listen: false).switchLocale(Locale('en')),
                   model.onRadioSelected(value),
@@ -51,6 +52,7 @@ class _LocaleScreenBody extends StatelessWidget {
                 ),
                 value: RadioValue.SECOND,
                 groupValue: model.gValue,
+                activeColor: Theme.of(context).accentColor,
                 onChanged: (value) => {
                   Provider.of<AppTheme>(context, listen: false).switchLocale(Locale('ja')),
                   model.onRadioSelected(value),

@@ -34,7 +34,7 @@ class _SettingScreenBody extends StatelessWidget {
       child: ListTile(
         leading: Icon(
           Icons.language,
-          //size: 24,
+          size: StyleConst().appIconSizeM,
         ),
         title: Text(
           AppLocalizations.of(context).locale,
@@ -42,6 +42,7 @@ class _SettingScreenBody extends StatelessWidget {
         ),
         trailing: Icon(
           Icons.arrow_forward_ios,
+          size: StyleConst().appIconSizeM,
         ),
         onTap: () {
           Navigator.of(context).pushNamed(Routes().locale);
@@ -56,7 +57,7 @@ class _SettingScreenBody extends StatelessWidget {
         return ListTile(
           leading: Icon(
             Icons.language,
-            //size: 24,
+            size: StyleConst().appIconSizeM,
           ),
           title: Text(
             AppLocalizations.of(context).darkMode,
@@ -64,15 +65,14 @@ class _SettingScreenBody extends StatelessWidget {
           ),
           trailing: new Switch(
             value: model.isDark,
-            activeColor: Colors.orange,
+            activeColor: StyleConst().appColorLight,
             activeTrackColor: Colors.grey,
-            inactiveThumbColor: Colors.grey,
+            inactiveThumbColor: StyleConst().appColorDark,
             inactiveTrackColor: Colors.grey,
-            onChanged: (bool) {},
+            onChanged: (bool) {
+              model.toggleTheme();
+            },
           ),
-          onTap: () {
-            model.toggleTheme();
-          },
         );
       },
     );

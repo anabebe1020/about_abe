@@ -55,6 +55,7 @@ class _HistoryTileList extends StatelessWidget {
           },
           reverse: true,
         ),
+        StyleConst().horizontalSeparator,
       ]);
     });
   }

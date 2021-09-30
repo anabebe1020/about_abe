@@ -41,11 +41,14 @@ class StyleConst {
   final Color backgroundLightColor = mainLightColor;
   final Color backgroundDarkColor = mainDarkColor;
   // Font
-  final double appFontSizeSS = 12;
-  final double appFontSizeS = 16;
-  final double appFontSizeM = 20;
-  final double appFontSizeL = 24;
-  final double appFontSizeLL = 30;
+  final double appFontSizeSS = 8;
+  final double appFontSizeS = 12;
+  final double appFontSizeM = 16;
+  final double appFontSizeL = 20;
+  final double appFontSizeLL = 24;
+  // Icon
+  final double appIconSizeS = 14;
+  final double appIconSizeM = 18;
   // Floating Action Button.
   final Color faButtonColor1 = HexColor('ff7f7f');
   final Color faButtonColor2 = HexColor('BF7FFF');
