@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 /// Http request common to all apps.
 class HttpRequest {
-  String content;
+  dynamic content;
   final _url = SnsConst().qiitaUrl;
   final _token = '819ef4e03a5073fc5b72c2e75f277116a8fca0db';
 
@@ -23,11 +23,8 @@ class HttpRequest {
   }
 
   //
-  Future<String> get(String path) async {
-    Map<String, String> headers = {
-      'content-type': 'application/json',
-      'Authorization': 'Bearer ${this._token}'
-    };
+  Future<dynamic> get(String path) async {
+    Map<String, String> headers = {'content-type': 'application/json', 'Authorization': 'Bearer ${this._token}'};
     final uri = Uri.parse(_url + path);
     print('URI: $uri');
     http.Response resp = await http.get(uri, headers: headers);

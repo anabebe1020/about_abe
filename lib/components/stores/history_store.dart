@@ -1,12 +1,12 @@
 import '../importer.dart';
 
 class HistoryStore {
-  static Map<String, dynamic> _history = {};
-  static Map<String, dynamic> get history => _history;
+  final Map<String, dynamic> _history = <String, dynamic>{};
+  Map<String, dynamic> get history => _history;
   //
-  static Future<void> createList(Map<String, dynamic> fields) async {
+  Future<void> createList(Map<String, dynamic> fields) async {
     // pageにて使用するListをここで生成する
-    fields.forEach((name, value) {
+    fields.forEach((String name, dynamic value) {
       debugLog('company name: $name', 'HISTORY');
       _history[name] = value;
       //CompanyModel company = value;

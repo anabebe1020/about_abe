@@ -10,14 +10,14 @@ class AppTheme extends ChangeNotifier {
     primaryColor: StyleConst().appColorLight,
     primaryColorLight: StyleConst().appColorDark,
     //primarySwatch: StyleConst().appColorLight,
-    accentColor: StyleConst().appColorDark,
-    accentColorBrightness: Brightness.light,
+    //accentColor: StyleConst().appColorDark,
+    //accentColorBrightness: Brightness.light,
     scaffoldBackgroundColor: StyleConst().appColorLight,
     backgroundColor: StyleConst().appColorLight,
     bottomAppBarColor: StyleConst().barColorLight,
     cardColor: StyleConst().topixButtonColorLight,
     canvasColor: StyleConst().barColorLight,
-    buttonColor: StyleConst().buttonColorLight,
+    //buttonColor: StyleConst().buttonColorLight,
     unselectedWidgetColor: StyleConst().unSelectedButtonColorLight,
     // theme of text.
     textTheme: TextTheme(
@@ -64,14 +64,14 @@ class AppTheme extends ChangeNotifier {
     primaryColor: StyleConst().appColorDark,
     primaryColorDark: StyleConst().appColorLight,
     //primarySwatch: StyleConst().appColorDark,
-    accentColor: StyleConst().appColorLight,
-    accentColorBrightness: Brightness.dark,
+    //accentColor: StyleConst().appColorLight,
+    //accentColorBrightness: Brightness.dark,
     scaffoldBackgroundColor: StyleConst().appColorDark,
     backgroundColor: StyleConst().appColorDark,
     bottomAppBarColor: StyleConst().barColorDark,
     cardColor: StyleConst().topixButtonColordark,
     canvasColor: StyleConst().barColorDark,
-    buttonColor: StyleConst().buttonColorDark,
+    //buttonColor: StyleConst().buttonColorDark,
     unselectedWidgetColor: StyleConst().unSelectedButtonColorDark,
     // theme of text.
     textTheme: TextTheme(
@@ -117,7 +117,7 @@ class AppTheme extends ChangeNotifier {
   );
 
   // switching theme.
-  toggleTheme() {
+  void toggleTheme() {
     isDark = !isDark;
     notifyListeners();
   }
@@ -126,7 +126,7 @@ class AppTheme extends ChangeNotifier {
   Locale currentLocale = Locale('ja');
 
   // switching locale.
-  switchLocale(Locale locale) {
+  void switchLocale(Locale locale) {
     if (AppLocalizationsDelegate().isSupported(locale)) {
       currentLocale = locale;
     }

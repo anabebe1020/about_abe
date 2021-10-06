@@ -18,7 +18,7 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Consumer<HistoryViewModel>(builder: (context, model, child) {
-      final _history = List.from(model.history.reversed);
+      final _history = List<Map<String, dynamic>>.from(model.history.reversed);
       return Column(children: <Widget>[
         Expanded(
           child: ListView.builder(
@@ -40,7 +40,7 @@ class _HistoryTileList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<HistoryViewModel>(builder: (context, model, child) {
-      final _career = company['career'];
+      final _career = company['career'] as List<dynamic>;
       return Column(children: <Widget>[
         Text(
           '${company['name']}',
@@ -48,7 +48,7 @@ class _HistoryTileList extends StatelessWidget {
         ),
         ListView.builder(
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: _career.length,
           itemBuilder: (BuildContext context, int index) {
             return _HistoryTile(career: _career[index]);

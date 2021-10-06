@@ -17,16 +17,16 @@ class QiitaViewModel extends ChangeNotifier {
 
   /// Get user information from QiitaAPI.
   Future<void> getUserInfo(String userId) async {
-    HttpRequest request = HttpRequest();
-    var res = await request.get('/users/$userId'); // todo
-    print('body: $res');
-    Map<String, dynamic> resJson = json.decode(res);
-    this._iconUrl = resJson['profile_image_url'];
-    this._userId = '@' + resJson['id'];
-    this._description = resJson['description'];
-    this._followees = resJson['followees_count'];
-    this._followers = resJson['followers_count'];
-    this._items = resJson['items_count'];
+    final request = HttpRequest();
+    final res = await request.get('/users/$userId') as String;
+    //print('body: $res');
+    final resJson = json.decode(res) as Map<String, dynamic>;
+    _iconUrl = resJson['profile_image_url'] as String;
+    _userId = '@${resJson['id'] as String}';
+    _description = resJson['description'] as String;
+    _followees = resJson['followees_count'] as int;
+    _followers = resJson['followers_count'] as int;
+    _items = resJson['items_count'] as int;
     notifyListeners();
   }
 }
