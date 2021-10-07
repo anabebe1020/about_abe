@@ -30,11 +30,11 @@ class HomeViewModel with ChangeNotifier {
   }
 
   /// got Info for Topix.
-  String _title = "";
+  String _title = '';
   String get title => _title;
-  String _url = "";
+  String _url = '';
   String get url => _url;
-  String _imageUrl = "";
+  String _imageUrl = '';
   String get imageUrl => _imageUrl;
 
   /// get Items from Qiita.

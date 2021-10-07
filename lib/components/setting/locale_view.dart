@@ -2,6 +2,7 @@ import '../importer.dart';
 
 /// View for setting locales.
 class LocaleScreen extends StatelessWidget {
+  const LocaleScreen({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +22,7 @@ class _LocaleScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<LocaleViewModel>(builder: (context, model, child) {
+      final appTheme = Provider.of<AppTheme>(context, listen: false);
       return Stack(children: <Widget>[
         Padding(
           padding: EdgeInsets.symmetric(
@@ -36,11 +38,11 @@ class _LocaleScreenBody extends StatelessWidget {
                   textAlign: TextAlign.left,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                value: RadioValue.FIRST,
+                value: RadioValue.first,
                 groupValue: model.gValue,
-                activeColor: Theme.of(context).accentColor,
+                //activeColor: Theme.of(context).accentColor,
                 onChanged: (RadioValue value) => {
-                  Provider.of<AppTheme>(context, listen: false).switchLocale(Locale('en')),
+                  appTheme.switchLocale(const Locale('en')),
                   model.gValue = value,
                 },
               ),
@@ -50,11 +52,11 @@ class _LocaleScreenBody extends StatelessWidget {
                   textAlign: TextAlign.left,
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
-                value: RadioValue.SECOND,
+                value: RadioValue.second,
                 groupValue: model.gValue,
-                activeColor: Theme.of(context).accentColor,
+                //activeColor: Theme.of(context).accentColor,
                 onChanged: (RadioValue value) => {
-                  Provider.of<AppTheme>(context, listen: false).switchLocale(Locale('ja')),
+                  appTheme.switchLocale(const Locale('ja')),
                   model.gValue = value,
                 },
               ),

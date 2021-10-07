@@ -1,5 +1,5 @@
-import '../importer.dart';
 import 'package:http/http.dart' as http;
+import '../importer.dart';
 
 /// Http request common to all apps.
 class HttpRequest {
@@ -8,12 +8,12 @@ class HttpRequest {
   final _token = '819ef4e03a5073fc5b72c2e75f277116a8fca0db';
 
   //
-  void post(String path, Map params) async {
-    Map<String, String> headers = {'content-type': 'application/json'};
+  Future<void> post(String path) async {
+    final headers = <String, String>{'content-type': 'application/json'};
     final uri = Uri.parse(_url + path);
-    String body = json.encode({'name': 'moke'});
+    final body = json.encode({'name': 'moke'});
 
-    http.Response resp = await http.post(uri, headers: headers, body: body);
+    final resp = await http.post(uri, headers: headers, body: body);
     if (resp.statusCode == 200) {
       content = json.decode(resp.body);
     } else {
@@ -24,10 +24,10 @@ class HttpRequest {
 
   //
   Future<dynamic> get(String path) async {
-    Map<String, String> headers = {'content-type': 'application/json', 'Authorization': 'Bearer ${this._token}'};
+    final headers = <String, String>{'content-type': 'application/json', 'Authorization': 'Bearer $_token'};
     final uri = Uri.parse(_url + path);
-    print('URI: $uri');
-    http.Response resp = await http.get(uri, headers: headers);
+    //print('URI: $uri');
+    final resp = await http.get(uri, headers: headers);
     if (resp.statusCode == 200) {
       content = resp.body;
       //print('body: $content');

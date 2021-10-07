@@ -2,8 +2,9 @@ import '../importer.dart';
 
 /// body in view.
 class HomePage extends StatefulWidget {
+  const HomePage({Key key}) : super(key: key);
   @override
-  _HomePageState createState() => new _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
 /// Body in view.
@@ -29,7 +30,7 @@ class _HomePageState extends State<HomePage> {
                 left: StyleConst().topixPaddingH,
                 top: StyleConst().topixPaddingV,
               ),
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 child: Text(
                   AppLocalizations.of(context).topix,
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            Expanded(
+            const Expanded(
               child: _TopixTileList(),
             ),
           ],
@@ -88,27 +89,29 @@ class _TopixTile extends StatelessWidget {
               vertical: StyleConst().topixPaddingV,
             ),
             child: ElevatedButton(
-              child: Row(children: [
-                Image.asset(
-                  StyleConst().qiitaIconPath,
-                  width: StyleConst().topixIconSize,
-                  height: StyleConst().topixIconSize,
-                ),
-                StyleConst().verticalSeparator,
-                Flexible(
-                  child: Text(
-                    model.title,
-                    style: Theme.of(context).textTheme.button,
-                  ),
-                ),
-              ]),
               style: ElevatedButton.styleFrom(
                 primary: Theme.of(context).cardColor,
                 //onPrimary: ,//StyleConst().snsButtonFontColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24),
                 ),
-                elevation: 0.0,
+                elevation: 0,
+              ),
+              child: Row(
+                children: [
+                  Image.asset(
+                    StyleConst().qiitaIconPath,
+                    width: StyleConst().topixIconSize,
+                    height: StyleConst().topixIconSize,
+                  ),
+                  StyleConst().verticalSeparator,
+                  Flexible(
+                    child: Text(
+                      model.title,
+                      style: Theme.of(context).textTheme.button,
+                    ),
+                  ),
+                ],
               ),
               onPressed: () {
                 _launchURL(model);
@@ -120,11 +123,12 @@ class _TopixTile extends StatelessWidget {
     );
   }
 
-  Future _launchURL(HomeViewModel model) async {
+  Future<dynamic> _launchURL(HomeViewModel model) async {
     if (await canLaunch(model.url)) {
       await launch(model.url);
     } else {
-      throw 'Could not Launch ${model.url}';
+      final Error err = ArgumentError('Could not Launch ${model.url}');
+      throw err;
     }
   }
 }

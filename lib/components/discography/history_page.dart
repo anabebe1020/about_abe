@@ -1,11 +1,12 @@
 import '../importer.dart';
 
-final String logName = 'HISTORY';
+const String logName = 'HISTORY';
 
 /// body in view.
 class HistoryPage extends StatefulWidget {
+  const HistoryPage({Key key}) : super(key: key);
   @override
-  _HistoryPageState createState() => new _HistoryPageState();
+  _HistoryPageState createState() => _HistoryPageState();
 }
 
 class _HistoryPageState extends State<HistoryPage> {
@@ -40,7 +41,7 @@ class _HistoryTileList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<HistoryViewModel>(builder: (context, model, child) {
-      final _career = company['career'] as List<dynamic>;
+      final _career = company['career'] as List<Map<String, dynamic>>;
       return Column(children: <Widget>[
         Text(
           '${company['name']}',

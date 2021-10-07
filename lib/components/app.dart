@@ -2,6 +2,7 @@ import 'importer.dart';
 
 /// Application.
 class App extends StatelessWidget {
+  const App({Key key}) : super(key: key);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -25,18 +26,18 @@ class App extends StatelessWidget {
             themeMode: ThemeMode.system,
             home: HomeScreen(),
             routes: {
-              '/SettingScreen': (_) => SettingScreen(),
-              '/LocaleScreen': (_) => LocaleScreen(),
+              '/SettingScreen': (_) => const SettingScreen(),
+              '/LocaleScreen': (_) => const LocaleScreen(),
             },
-            localizationsDelegates: [
-              const AppLocalizationsDelegate(),
+            localizationsDelegates: const [
+              AppLocalizationsDelegate(),
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            supportedLocales: [
-              const Locale('en'),
-              const Locale('ja'),
+            supportedLocales: const [
+              Locale('en'),
+              Locale('ja'),
             ],
             locale: theme.currentLocale,
           );

@@ -71,8 +71,8 @@ class StyleConst {
   final double historycompanyNameFontSize = 26;
   final double historyDiscriptionFontSize = 20;
   // Other.
-  final SizedBox verticalSeparator = SizedBox(width: 10);
-  final SizedBox horizontalSeparator = SizedBox(height: 10);
+  final SizedBox verticalSeparator = const SizedBox(width: 10);
+  final SizedBox horizontalSeparator = const SizedBox(height: 10);
 }
 
 /// Constants for routes.
@@ -91,13 +91,12 @@ class FirebaseConst {
 
 /// Get the [Color] class value from the hex color code.
 class HexColor extends Color {
-  static int _getColorFromHex(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll('#', '');
-    if (hexColor.length == 6) {
-      hexColor = 'FF' + hexColor;
-    }
-    return int.parse(hexColor, radix: 16);
-  }
-
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
+  static int _getColorFromHex(String hexColor) {
+    var fixedHexColor = hexColor.toUpperCase().replaceAll('#', '');
+    if (hexColor.length == 6) {
+      fixedHexColor = 'FF$fixedHexColor';
+    }
+    return int.parse(fixedHexColor, radix: 16);
+  }
 }

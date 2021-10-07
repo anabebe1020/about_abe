@@ -2,6 +2,7 @@ import '../importer.dart';
 
 /// View for app setting.
 class SettingScreen extends StatelessWidget {
+  const SettingScreen({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +11,7 @@ class SettingScreen extends StatelessWidget {
           AppLocalizations.of(context).setting,
           style: Theme.of(context).textTheme.subtitle1,
         ),
-        elevation: 0.0,
+        elevation: 0,
       ),
       body: _SettingScreenBody(),
     );
@@ -30,24 +31,22 @@ class _SettingScreenBody extends StatelessWidget {
   }
 
   Widget locale(BuildContext context) {
-    return Container(
-      child: ListTile(
-        leading: Icon(
-          Icons.language,
-          size: StyleConst().appIconSizeM,
-        ),
-        title: Text(
-          AppLocalizations.of(context).locale,
-          style: Theme.of(context).textTheme.bodyText1,
-        ),
-        trailing: Icon(
-          Icons.arrow_forward_ios,
-          size: StyleConst().appIconSizeM,
-        ),
-        onTap: () {
-          Navigator.of(context).pushNamed(Routes().locale);
-        },
+    return ListTile(
+      leading: Icon(
+        Icons.language,
+        size: StyleConst().appIconSizeM,
       ),
+      title: Text(
+        AppLocalizations.of(context).locale,
+        style: Theme.of(context).textTheme.bodyText1,
+      ),
+      trailing: Icon(
+        Icons.arrow_forward_ios,
+        size: StyleConst().appIconSizeM,
+      ),
+      onTap: () {
+        Navigator.of(context).pushNamed(Routes().locale);
+      },
     );
   }
 
@@ -63,13 +62,13 @@ class _SettingScreenBody extends StatelessWidget {
             AppLocalizations.of(context).darkMode,
             style: Theme.of(context).textTheme.bodyText1,
           ),
-          trailing: new Switch(
+          trailing: Switch(
             value: model.isDark,
             activeColor: StyleConst().appColorLight,
             activeTrackColor: Colors.grey,
             inactiveThumbColor: StyleConst().appColorDark,
             inactiveTrackColor: Colors.grey,
-            onChanged: (bool) {
+            onChanged: (bool bl) {
               model.toggleTheme();
             },
           ),

@@ -7,12 +7,13 @@ final globalScaffoldKey = GlobalKey<ScaffoldState>();
 /// This screen serves as the home screen.
 /// By touching the + button, you can add a designated SNS.
 class HomeScreen extends StatelessWidget {
+  HomeScreen({Key key}) : super(key: key);
   final _pageController = PageController();
   // Display page list.
-  static List<Widget> _pageList = [
-    HomePage(),
-    QiitaPage(),
-    HistoryPage(),
+  static final List<Widget> _pageList = [
+    const HomePage(),
+    const QiitaPage(),
+    const HistoryPage(),
   ];
 
   @override
@@ -24,10 +25,10 @@ class HomeScreen extends StatelessWidget {
             AppLocalizations.of(context).title,
             style: Theme.of(context).textTheme.subtitle1,
           ),
-          elevation: 0.0,
+          elevation: 0,
           actions: <Widget>[
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.settings,
               ),
               onPressed: () {
@@ -45,19 +46,19 @@ class HomeScreen extends StatelessWidget {
         ),
         bottomNavigationBar: BottomNavigationBar(
           //backgroundColor: StyleConst().backgroundDarkColor,
-          selectedItemColor: Theme.of(context).buttonColor,
+          selectedItemColor: Theme.of(context).primaryColor,
           unselectedItemColor: Theme.of(context).unselectedWidgetColor,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: const Icon(Icons.home),
               label: AppLocalizations.of(context).homeTab,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle),
+              icon: const Icon(Icons.account_circle),
               label: AppLocalizations.of(context).accountTab,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.history),
+              icon: const Icon(Icons.history),
               label: AppLocalizations.of(context).discographyTab,
             ),
           ],

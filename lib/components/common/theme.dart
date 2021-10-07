@@ -123,11 +123,11 @@ class AppTheme extends ChangeNotifier {
   }
 
   // default locale;
-  Locale currentLocale = Locale('ja');
+  Locale currentLocale = const Locale('ja');
 
   // switching locale.
   void switchLocale(Locale locale) {
-    if (AppLocalizationsDelegate().isSupported(locale)) {
+    if (const AppLocalizationsDelegate().isSupported(locale)) {
       currentLocale = locale;
     }
     notifyListeners();

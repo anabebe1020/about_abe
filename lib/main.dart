@@ -3,5 +3,5 @@ import 'components/app.dart';
 
 /// main.
 void main() {
-  runApp(App());
+  runApp(const App());
 }

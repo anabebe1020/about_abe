@@ -2,8 +2,9 @@ import '../importer.dart';
 
 /// body in view.
 class QiitaPage extends StatefulWidget {
+  const QiitaPage({Key key}) : super(key: key);
   @override
-  _QiitaPageState createState() => new _QiitaPageState();
+  _QiitaPageState createState() => _QiitaPageState();
 }
 
 class _QiitaPageState extends State<QiitaPage> {
@@ -40,7 +41,7 @@ class _TopArea extends StatelessWidget {
         horizontal: StyleConst().topixPaddingH,
         vertical: StyleConst().topixPaddingV,
       ),
-      child: Container(
+      child: SizedBox(
         height: 140,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,18 +60,14 @@ class _TopLeftArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<QiitaViewModel>(
       builder: (context, model, child) {
-        final double radius = 100;
         return Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 0,
-            vertical: 0,
-          ),
+          padding: EdgeInsets.zero,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
-                width: radius,
-                height: radius,
+                width: 100,
+                height: 100,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
@@ -96,30 +93,29 @@ class _TopRightArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<QiitaViewModel>(
       builder: (context, model, child) {
+        final appLocal = AppLocalizations.of(context);
         return Expanded(
           child: Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 20,
             ),
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '${AppLocalizations.of(context).followees}：${model.followees}',
-                    style: Theme.of(context).textTheme.bodyText2,
-                  ),
-                  Text(
-                    '${AppLocalizations.of(context).followers}：${model.followers}',
-                    style: Theme.of(context).textTheme.bodyText2,
-                  ),
-                  Text(
-                    '${AppLocalizations.of(context).items}：${model.items}',
-                    style: Theme.of(context).textTheme.bodyText2,
-                  ),
-                ],
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${appLocal.followees}：${model.followees}',
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+                Text(
+                  '${appLocal.followers}：${model.followers}',
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+                Text(
+                  '${appLocal.items}：${model.items}',
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+              ],
             ),
           ),
         );

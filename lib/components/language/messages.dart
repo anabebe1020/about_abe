@@ -19,21 +19,6 @@ class Messages {
     @required this.items,
   });
 
-  final String title;
-  final String homeTab;
-  final String accountTab;
-  final String discographyTab;
-  final String setting;
-  final String locale;
-  final String japanese;
-  final String english;
-  final String darkMode;
-  final String topix;
-  final String followees;
-  final String followers;
-  final String items;
-  final String overview;
-
   factory Messages.of(Locale locale) {
     switch (locale.languageCode) {
       case 'ja':
@@ -80,15 +65,33 @@ class Messages {
         items: 'Items',
         overview: 'overview',
       );
+
+  final String title;
+  final String homeTab;
+  final String accountTab;
+  final String discographyTab;
+  final String setting;
+  final String locale;
+  final String japanese;
+  final String english;
+  final String darkMode;
+  final String topix;
+  final String followees;
+  final String followers;
+  final String items;
+  final String overview;
 }
 
 class AppLocalizations {
+  AppLocalizations(Locale locale) : messages = Messages.of(locale);
+
   final Messages messages;
 
-  AppLocalizations(Locale locale) : this.messages = Messages.of(locale);
-
   static Messages of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations).messages;
+    return Localizations.of<AppLocalizations>(
+      context,
+      AppLocalizations,
+    ).messages;
   }
 }
 
@@ -99,7 +102,10 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   bool isSupported(Locale locale) => ['en', 'ja'].contains(locale.languageCode);
 
   @override
-  Future<AppLocalizations> load(Locale locale) async => AppLocalizations(locale);
+  Future<AppLocalizations> load(
+    Locale locale,
+  ) async =>
+      AppLocalizations(locale);
 
   @override
   bool shouldReload(AppLocalizationsDelegate old) => false;

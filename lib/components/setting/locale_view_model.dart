@@ -1,12 +1,7 @@
 import '../importer.dart';
 
-enum RadioValue { FIRST, SECOND, THIRD }
+enum RadioValue { first, second, third }
 
 class LocaleViewModel extends ChangeNotifier {
-  RadioValue _gValue = RadioValue.SECOND;
-  RadioValue get gValue => _gValue;
-  //
-  set gValue(RadioValue value) {
-    _gValue = value;
-  }
+  RadioValue gValue = RadioValue.second;
 }
