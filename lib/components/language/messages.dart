@@ -3,20 +3,20 @@ import '../importer.dart';
 /// Languages common to all apps.
 class Messages {
   Messages({
-    @required this.title,
-    @required this.homeTab,
-    @required this.accountTab,
-    @required this.discographyTab,
-    @required this.setting,
-    @required this.locale,
-    @required this.japanese,
-    @required this.english,
-    @required this.darkMode,
-    @required this.topix,
-    @required this.followees,
-    @required this.followers,
-    @required this.overview,
-    @required this.items,
+    this.title,
+    this.homeTab,
+    this.accountTab,
+    this.discographyTab,
+    this.setting,
+    this.locale,
+    this.japanese,
+    this.english,
+    this.darkMode,
+    this.topix,
+    this.followees,
+    this.followers,
+    this.overview,
+    this.items,
   });
 
   factory Messages.of(Locale locale) {
@@ -66,20 +66,20 @@ class Messages {
         overview: 'overview',
       );
 
-  final String title;
-  final String homeTab;
-  final String accountTab;
-  final String discographyTab;
-  final String setting;
-  final String locale;
-  final String japanese;
-  final String english;
-  final String darkMode;
-  final String topix;
-  final String followees;
-  final String followers;
-  final String items;
-  final String overview;
+  final String? title;
+  final String? homeTab;
+  final String? accountTab;
+  final String? discographyTab;
+  final String? setting;
+  final String? locale;
+  final String? japanese;
+  final String? english;
+  final String? darkMode;
+  final String? topix;
+  final String? followees;
+  final String? followers;
+  final String? items;
+  final String? overview;
 }
 
 class AppLocalizations {
@@ -88,10 +88,11 @@ class AppLocalizations {
   final Messages messages;
 
   static Messages of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(
+    final localization = Localizations.of<AppLocalizations>(
       context,
       AppLocalizations,
-    ).messages;
+    );
+    return localization!.messages;
   }
 }
 

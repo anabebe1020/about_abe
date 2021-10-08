@@ -2,7 +2,7 @@ import '../importer.dart';
 
 /// body in view.
 class QiitaPage extends StatefulWidget {
-  const QiitaPage({Key key}) : super(key: key);
+  const QiitaPage({Key? key}) : super(key: key);
   @override
   _QiitaPageState createState() => _QiitaPageState();
 }
@@ -139,7 +139,7 @@ class _BottomArea extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppLocalizations.of(context).overview,
+                  AppLocalizations.of(context).overview ?? '',
                   style: Theme.of(context).textTheme.headline5,
                 ),
                 StyleConst().horizontalSeparator,

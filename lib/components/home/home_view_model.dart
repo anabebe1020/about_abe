@@ -1,5 +1,7 @@
 import '../importer.dart';
 
+typedef JsonMap = Map<String, dynamic>;
+
 /// ViewModel for the HomeScreen.
 class HomeViewModel with ChangeNotifier {
   final String logName = 'HOME';
@@ -42,7 +44,8 @@ class HomeViewModel with ChangeNotifier {
     final request = HttpRequest();
     final res = await request.get('/authenticated_user/items?page=1&per_page=1') as String; // todo
     debugLog('body: $res', logName);
-    final resJson = json.decode(res) as List<dynamic>;
+    
+    final resJson = json.decode(res) as List<Map<String, dynamic>>;
     _title = resJson[0]['title'] as String;
     _url = resJson[0]['url'] as String;
     _imageUrl = resJson[0]['profile_image_url'] as String;

@@ -18,13 +18,13 @@ class HistoryStore {
 }
 
 class CompanyModel {
-  List<CareerModel> company;
+  List<CareerModel>? company;
 }
 
 class CareerModel {
-  String from;
-  String to;
-  String job;
-  List<String> skills;
-  String overview;
+  String? from;
+  String? to;
+  String? job;
+  List<String>? skills;
+  String? overview;
 }

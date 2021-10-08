@@ -14,7 +14,7 @@ class HistoryViewModel extends ChangeNotifier {
         .collection(FirebaseConst().storeHistoryConId) //
         .doc(FirebaseConst().storeHistoryDocId) //
         .get();
-    _history = snapshot.data()['history'] as List<dynamic>;
+    _history = snapshot.data()?['history'] as List<dynamic>;
     notifyListeners();
   }
 }

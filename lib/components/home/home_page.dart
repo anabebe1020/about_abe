@@ -2,7 +2,7 @@ import '../importer.dart';
 
 /// body in view.
 class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
               child: SizedBox(
                 width: double.infinity,
                 child: Text(
-                  AppLocalizations.of(context).topix,
+                  AppLocalizations.of(context).topix ?? '',
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.headline4,
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
 
 /// Button list in body.
 class _TopixTileList extends StatelessWidget {
-  const _TopixTileList({Key key}) : super(key: key);
+  const _TopixTileList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +70,8 @@ class _TopixTileList extends StatelessWidget {
 
 /// Tile in button list.
 class _TopixTile extends StatelessWidget {
-  const _TopixTile({Key key, @required this.index}) : super(key: key);
-  final int index;
+  const _TopixTile({Key? key, @required this.index}) : super(key: key);
+  final int? index;
 
   @override
   Widget build(BuildContext context) {

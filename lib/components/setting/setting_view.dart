@@ -2,13 +2,13 @@ import '../importer.dart';
 
 /// View for app setting.
 class SettingScreen extends StatelessWidget {
-  const SettingScreen({Key key}) : super(key: key);
+  const SettingScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context).setting,
+          AppLocalizations.of(context).setting ?? '',
           style: Theme.of(context).textTheme.subtitle1,
         ),
         elevation: 0,
@@ -37,7 +37,7 @@ class _SettingScreenBody extends StatelessWidget {
         size: StyleConst().appIconSizeM,
       ),
       title: Text(
-        AppLocalizations.of(context).locale,
+        AppLocalizations.of(context).locale ?? '',
         style: Theme.of(context).textTheme.bodyText1,
       ),
       trailing: Icon(
@@ -59,7 +59,7 @@ class _SettingScreenBody extends StatelessWidget {
             size: StyleConst().appIconSizeM,
           ),
           title: Text(
-            AppLocalizations.of(context).darkMode,
+            AppLocalizations.of(context).darkMode ?? '',
             style: Theme.of(context).textTheme.bodyText1,
           ),
           trailing: Switch(
