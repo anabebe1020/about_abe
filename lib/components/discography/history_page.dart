@@ -41,7 +41,7 @@ class _HistoryTileList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<HistoryViewModel>(builder: (context, model, child) {
-      final _career = company?['career'] as List<Map<String, dynamic>>;
+      final _career = company?['career'].cast<Map<String, dynamic>>() as List<Map<String, dynamic>>;
       return Column(children: <Widget>[
         Text(
           '${company?['name']}',
