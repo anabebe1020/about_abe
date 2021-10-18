@@ -19,7 +19,7 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Consumer<HistoryViewModel>(builder: (context, model, child) {
-      final _history = List<Map<String, dynamic>>.from(model.history.reversed);
+      final _history = List<HistoryModel>.from(model.histories.reversed);
       return Column(children: <Widget>[
         Expanded(
           child: ListView.builder(
@@ -36,23 +36,23 @@ class _HistoryPageState extends State<HistoryPage> {
 
 class _HistoryTileList extends StatelessWidget {
   const _HistoryTileList({Key? key, @required this.company}) : super(key: key);
-  final Map<String, dynamic>? company;
+  final HistoryModel? company;
 
   @override
   Widget build(BuildContext context) {
     return Consumer<HistoryViewModel>(builder: (context, model, child) {
-      final _career = company?['career'].cast<Map<String, dynamic>>() as List<Map<String, dynamic>>;
+      final _career = company?.career;
       return Column(children: <Widget>[
         Text(
-          '${company?['name']}',
+          '${company?.name}',
           style: Theme.of(context).textTheme.headline5,
         ),
         ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: _career.length,
+          itemCount: _career?.length,
           itemBuilder: (BuildContext context, int index) {
-            return _HistoryTile(career: _career[index]);
+            return _HistoryTile(career: _career?[index]);
           },
           reverse: true,
         ),
@@ -64,7 +64,7 @@ class _HistoryTileList extends StatelessWidget {
 
 class _HistoryTile extends StatelessWidget {
   const _HistoryTile({Key? key, @required this.career}) : super(key: key);
-  final Map<String, dynamic>? career;
+  final CareerModel? career;
 
   @override
   Widget build(BuildContext context) {
@@ -79,22 +79,22 @@ class _HistoryTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${career?['to']} ~ ${career?['from']}',
+              '${career?.to} ~ ${career?.from}',
               style: Theme.of(context).textTheme.headline6,
             ),
             StyleConst().horizontalSeparator,
             Text(
-              '- ${career?['position']}',
+              '- ${career?.position}',
               style: Theme.of(context).textTheme.bodyText2,
             ),
             StyleConst().horizontalSeparator,
             Text(
-              '- ${career?['overview']}',
+              '- ${career?.overview}',
               style: Theme.of(context).textTheme.bodyText2,
             ),
             StyleConst().horizontalSeparator,
             Text(
-              '- ${career?['skills'].toString()}',
+              '- ${career?.skills.toString()}',
               style: Theme.of(context).textTheme.bodyText2,
             ),
           ],
