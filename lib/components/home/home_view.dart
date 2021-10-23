@@ -23,8 +23,9 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             AppLocalizations.of(context).title ?? '',
-            style: Theme.of(context).textTheme.subtitle1,
+            //style: Theme.of(context).textTheme.subtitle1,
           ),
+          backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
           elevation: 0,
           actions: <Widget>[
             IconButton(

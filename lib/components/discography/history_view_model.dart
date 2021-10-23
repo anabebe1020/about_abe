@@ -3,9 +3,9 @@ import '../importer.dart';
 /// ViewModel for the HistoryScreen.
 class HistoryViewModel extends ChangeNotifier {
   ///
-  List<dynamic> _history = <dynamic>[];
+  List<Map<String, dynamic>> _history = <Map<String, dynamic>>[];
   //List<HistoryModel> _history = [];
-  List<dynamic> get history => _history;
+  List<Map<String, dynamic>> get history => _history;
   List<HistoryModel> histories = [];
 
   /// Get user History from FireStore.
@@ -17,11 +17,16 @@ class HistoryViewModel extends ChangeNotifier {
         .doc(FirebaseConst().storeHistoryDocId) //
         .get();
     //
-    final data = snapshot.data();
-    _history = data?['history'] as List<dynamic>;
+    final data = snapshot.data()!;
+    debugLog('data: $data', 'history');
+    _history = data['history'] //
+        .cast<Map<String, dynamic>>() as List<Map<String, dynamic>>;
+    //
+    histories.clear();
     //
     for (final company in _history) {
-      final _careers = company['career'].cast<Map<String, dynamic>>() as List<Map<String, dynamic>>;
+      final _careers = company['career'] //
+          .cast<Map<String, dynamic>>() as List<Map<String, dynamic>>;
       final _cmodels = <CareerModel>[];
       //
       for (final _career in _careers) {
@@ -34,6 +39,7 @@ class HistoryViewModel extends ChangeNotifier {
         );
         _cmodels.add(_cmodel);
       }
+      debugLog('cmodels: ${_cmodels.length.toString()}', 'history');
       //
       final _model = HistoryModel(
         _cmodels,
@@ -42,6 +48,7 @@ class HistoryViewModel extends ChangeNotifier {
       );
       histories.add(_model);
     }
+    debugLog('histories: ${histories.length.toString()}', 'history');
     notifyListeners();
   }
 }
