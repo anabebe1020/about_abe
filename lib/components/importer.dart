@@ -23,6 +23,7 @@ export 'discography/history_view_model.dart';
 export 'home/home_page.dart';
 export 'home/home_view.dart';
 export 'home/home_view_model.dart';
+export 'home/qiita_model.dart';
 export 'language/messages.dart';
 export 'qiita/qiita_page.dart';
 export 'qiita/qiita_view_model.dart';

@@ -42,15 +42,14 @@ class HomeViewModel with ChangeNotifier {
   /// get Items from Qiita.
   Future<void> getItemsQiita() async {
     final request = HttpRequest();
-    final res = await request.get('/authenticated_user/items?page=1&per_page=1') as String; // todo
+    final res = await request.get(SnsConst().getItemsUrl) as String;
     debugLog('body: $res', logName);
 
-    final resJson = json
-        .decode(res) //
-        .cast<Map<String, dynamic>>() as List<Map<String, dynamic>>;
-    _title = resJson[0]['title'].toString();
-    _url = resJson[0]['url'].toString();
-    _imageUrl = resJson[0]['profile_image_url'].toString();
+    final list = jsonDecode(res) as List<dynamic>;
+    final model = QiitaItemsModel.fromJson(list[0]);
+    _title = model.title;
+    _url = model.url;
+    _imageUrl = model.imageUrl;
     notifyListeners();
   }
 }
