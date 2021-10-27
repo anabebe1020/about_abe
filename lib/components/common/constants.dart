@@ -29,12 +29,12 @@ class StyleConst {
   // Theme Dark.
   final Color appColorDark = mainDarkColor;
   final Color appFontColorDark = mainLightColor;
-  final Color barColorDark = mainLightColor;
+  final Color barColorDark = Colors.black54.withOpacity(0.5);
   final Color barFontColorDark = mainDarkColor;
   final Color topixButtonColordark = Colors.black54.withOpacity(0.5);
   final Color topixFontColorDark = mainLightColor;
   final Color buttonColorDark = mainDarkColor;
-  final Color unSelectedButtonColorDark = mainDarkColor.withOpacity(0.3);
+  final Color unSelectedButtonColorDark = mainDarkColor.withOpacity(0.9);
   // Application
   final Color appBarColor = mainLightColor;
   final Color appBarTextColor = mainDarkColor;

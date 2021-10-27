@@ -16,6 +16,9 @@ class AppTheme extends ChangeNotifier {
       backgroundColor: StyleConst().appColorLight,
       foregroundColor: StyleConst().appColorDark,
     ),
+    bottomAppBarTheme: BottomAppBarTheme(
+      color: StyleConst().appColorLight,
+    ),
     scaffoldBackgroundColor: StyleConst().appColorLight,
     backgroundColor: StyleConst().appColorLight,
     bottomAppBarColor: StyleConst().barColorLight,
@@ -73,6 +76,9 @@ class AppTheme extends ChangeNotifier {
     appBarTheme: AppBarTheme(
       backgroundColor: StyleConst().appColorDark,
       foregroundColor: StyleConst().appColorLight,
+    ),
+    bottomAppBarTheme: BottomAppBarTheme(
+      color: StyleConst().appColorLight,
     ),
     scaffoldBackgroundColor: StyleConst().appColorDark,
     backgroundColor: StyleConst().appColorDark,

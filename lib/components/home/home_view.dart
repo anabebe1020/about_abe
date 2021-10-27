@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             AppLocalizations.of(context).title ?? '',
-            //style: Theme.of(context).textTheme.subtitle1,
+            style: Theme.of(context).textTheme.subtitle1,
           ),
           backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
           elevation: 0,
@@ -46,8 +46,8 @@ class HomeScreen extends StatelessWidget {
           children: _pageList,
         ),
         bottomNavigationBar: BottomNavigationBar(
-          //backgroundColor: StyleConst().backgroundDarkColor,
-          selectedItemColor: Theme.of(context).primaryColor,
+          backgroundColor: Theme.of(context).bottomAppBarColor,
+          selectedItemColor: Theme.of(context).bottomAppBarTheme.color,
           unselectedItemColor: Theme.of(context).unselectedWidgetColor,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
