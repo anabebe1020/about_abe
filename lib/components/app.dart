@@ -20,8 +20,6 @@ class App extends StatelessWidget {
         builder: (context, theme, child) {
           return MaterialApp(
             title: AppConst().title,
-            // theme: theme.light,
-            // darkTheme: theme.dark,
             theme: theme.isDark ? theme.dark : theme.light,
             themeMode: ThemeMode.system,
             home: HomeScreen(),

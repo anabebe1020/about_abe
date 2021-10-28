@@ -70,6 +70,7 @@ class _HistoryTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<HistoryViewModel>(builder: (context, model, child) {
       //debugLog('$career', logName);
+      final appLocal = AppLocalizations.of(context);
       return Padding(
         padding: EdgeInsets.symmetric(
           horizontal: StyleConst().topixPaddingH,
@@ -84,17 +85,17 @@ class _HistoryTile extends StatelessWidget {
             ),
             StyleConst().horizontalSeparator,
             Text(
-              '- ${career?.position}',
+              '- ${appLocal.job} : ${career?.position}',
               style: Theme.of(context).textTheme.bodyText2,
             ),
             StyleConst().horizontalSeparator,
             Text(
-              '- ${career?.overview}',
+              '- ${appLocal.work} : ${career?.overview}',
               style: Theme.of(context).textTheme.bodyText2,
             ),
             StyleConst().horizontalSeparator,
             Text(
-              '- ${career?.skills.toString()}',
+              '- ${appLocal.skills} : ${career?.skills.toString()}',
               style: Theme.of(context).textTheme.bodyText2,
             ),
           ],

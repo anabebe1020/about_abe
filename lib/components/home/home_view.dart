@@ -5,7 +5,6 @@ final globalScaffoldKey = GlobalKey<ScaffoldState>();
 /// View for home screen.
 ///
 /// This screen serves as the home screen.
-/// By touching the + button, you can add a designated SNS.
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
   final _pageController = PageController();

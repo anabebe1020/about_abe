@@ -17,6 +17,9 @@ class Messages {
     this.followers,
     this.overview,
     this.items,
+    this.job,
+    this.work,
+    this.skills,
   });
 
   factory Messages.of(Locale locale) {
@@ -46,6 +49,9 @@ class Messages {
         followers: 'フォロワー',
         items: '投稿',
         overview: '説明',
+        job: '役割',
+        work: '業務',
+        skills: 'スキル',
       );
 
   /// English
@@ -64,6 +70,9 @@ class Messages {
         followers: 'Followers',
         items: 'Items',
         overview: 'overview',
+        job: 'Position',
+        work: 'Work',
+        skills: 'Skills',
       );
 
   final String? title;
@@ -80,6 +89,9 @@ class Messages {
   final String? followers;
   final String? items;
   final String? overview;
+  final String? job;
+  final String? work;
+  final String? skills;
 }
 
 class AppLocalizations {

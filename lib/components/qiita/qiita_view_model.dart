@@ -18,7 +18,12 @@ class QiitaViewModel extends ChangeNotifier {
   /// Get user information from QiitaAPI.
   Future<void> getUserInfo(String userId) async {
     final request = HttpRequest();
-    final res = await request.get('/users/$userId') as String;
+    final uri = Uri.parse('${SnsConst().qiitaUrl}/users/$userId');
+    final headers = <String, String>{
+      'content-type': 'application/json',
+      'Authorization': 'Bearer 819ef4e03a5073fc5b72c2e75f277116a8fca0db',
+    };
+    final res = await request.get(uri, headers) as String;
     //print('body: $res');
     final resJson = json.decode(res) as Map<String, dynamic>;
     _iconUrl = resJson['profile_image_url'] as String;

@@ -10,8 +10,6 @@ class AppTheme extends ChangeNotifier {
     primaryColor: StyleConst().appColorLight,
     primaryColorLight: StyleConst().appColorDark,
     //primarySwatch: StyleConst().appColorLight,
-    //accentColor: StyleConst().appColorDark,
-    //accentColorBrightness: Brightness.light,
     appBarTheme: AppBarTheme(
       backgroundColor: StyleConst().appColorLight,
       foregroundColor: StyleConst().appColorDark,
@@ -71,8 +69,6 @@ class AppTheme extends ChangeNotifier {
     primaryColor: StyleConst().appColorDark,
     primaryColorDark: StyleConst().appColorLight,
     //primarySwatch: StyleConst().appColorDark,
-    //accentColor: StyleConst().appColorLight,
-    //accentColorBrightness: Brightness.dark,
     appBarTheme: AppBarTheme(
       backgroundColor: StyleConst().appColorDark,
       foregroundColor: StyleConst().appColorLight,

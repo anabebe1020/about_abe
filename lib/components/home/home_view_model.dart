@@ -42,7 +42,12 @@ class HomeViewModel with ChangeNotifier {
   /// get Items from Qiita.
   Future<void> getItemsQiita() async {
     final request = HttpRequest();
-    final res = await request.get(SnsConst().getItemsUrl) as String;
+    final uri = Uri.parse('${SnsConst().qiitaUrl}${SnsConst().getItemsUrl}');
+    final headers = <String, String>{
+      'content-type': 'application/json',
+      'Authorization': 'Bearer 819ef4e03a5073fc5b72c2e75f277116a8fca0db',
+    };
+    final res = await request.get(uri, headers) as String;
     debugLog('body: $res', logName);
 
     final list = jsonDecode(res) as List<dynamic>;

@@ -10,6 +10,7 @@ class SnsConst {
   final String qiita = 'Qiita';
   final String qiitaUrl = 'https://qiita.com/api/v2';
   final String getItemsUrl = '/authenticated_user/items?page=1&per_page=1';
+  final String githubUrl = 'https://api.github.com';
 }
 
 Color mainLightColor = HexColor('E1F8FE');
