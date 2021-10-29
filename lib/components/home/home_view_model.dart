@@ -39,13 +39,31 @@ class HomeViewModel with ChangeNotifier {
   String _imageUrl = '';
   String get imageUrl => _imageUrl;
 
+  Future<void> initialize() async {
+    await _getAccountInfo();
+    await _getItemsQiita();
+  }
+
+  Future<void> _getAccountInfo() async {
+    await Firebase.initializeApp();
+    //
+    final snapshot = await FirebaseFirestore.instance //
+        .collection(FirebaseConst().storeAccountConId) //
+        .doc(FirebaseConst().storeAccountDocId) //
+        .get();
+    //
+    final data = snapshot.data()!;
+    debugLog('data: $data', 'ACCOUNT');
+    AccountStore().setData(data);
+  }
+
   /// get Items from Qiita.
-  Future<void> getItemsQiita() async {
+  Future<void> _getItemsQiita() async {
     final request = HttpRequest();
     final uri = Uri.parse('${SnsConst().qiitaUrl}${SnsConst().getItemsUrl}');
     final headers = <String, String>{
       'content-type': 'application/json',
-      'Authorization': 'Bearer 819ef4e03a5073fc5b72c2e75f277116a8fca0db',
+      'Authorization': 'Bearer ${AccountStore().qiita.token}',
     };
     final res = await request.get(uri, headers) as String;
     debugLog('body: $res', logName);

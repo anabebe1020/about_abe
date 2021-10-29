@@ -11,7 +11,7 @@ class _QiitaPageState extends State<QiitaPage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<QiitaViewModel>(context, listen: false).getUserInfo('anabebe');
+    Provider.of<AccountViewModel>(context, listen: false).initialize();
   }
 
   @override
@@ -58,7 +58,7 @@ class _TopArea extends StatelessWidget {
 class _TopLeftArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<QiitaViewModel>(
+    return Consumer<AccountViewModel>(
       builder: (context, model, child) {
         return Padding(
           padding: EdgeInsets.zero,
@@ -71,13 +71,13 @@ class _TopLeftArea extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                    image: NetworkImage(model.iconUrl.toString()),
+                    image: NetworkImage(model.qiita.iconUrl.toString()),
                   ),
                 ),
               ),
               StyleConst().horizontalSeparator,
               Text(
-                model.userId.toString(),
+                model.qiita.userId.toString(),
                 style: Theme.of(context).textTheme.bodyText2,
               ),
             ],
@@ -91,7 +91,7 @@ class _TopLeftArea extends StatelessWidget {
 class _TopRightArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<QiitaViewModel>(
+    return Consumer<AccountViewModel>(
       builder: (context, model, child) {
         final appLocal = AppLocalizations.of(context);
         return Expanded(
@@ -104,15 +104,15 @@ class _TopRightArea extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${appLocal.followees}：${model.followees}',
+                  '${appLocal.followees}：${model.qiita.followees}',
                   style: Theme.of(context).textTheme.bodyText2,
                 ),
                 Text(
-                  '${appLocal.followers}：${model.followers}',
+                  '${appLocal.followers}：${model.qiita.followers}',
                   style: Theme.of(context).textTheme.bodyText2,
                 ),
                 Text(
-                  '${appLocal.items}：${model.items}',
+                  '${appLocal.items}：${model.qiita.items}',
                   style: Theme.of(context).textTheme.bodyText2,
                 ),
               ],
@@ -127,7 +127,7 @@ class _TopRightArea extends StatelessWidget {
 class _BottomArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<QiitaViewModel>(
+    return Consumer<AccountViewModel>(
       builder: (context, model, child) {
         return Expanded(
           child: Padding(
@@ -144,7 +144,7 @@ class _BottomArea extends StatelessWidget {
                 ),
                 StyleConst().horizontalSeparator,
                 Text(
-                  model.description.toString(),
+                  model.qiita.description.toString(),
                   style: Theme.of(context).textTheme.bodyText2,
                 ),
               ],

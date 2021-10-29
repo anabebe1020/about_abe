@@ -12,7 +12,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<HomeViewModel>(context, listen: false).getItemsQiita();
+    Provider.of<HomeViewModel>(context, listen: false).initialize();
   }
 
   @override

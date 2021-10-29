@@ -25,6 +25,7 @@ class HttpRequest {
     if (headers.isEmpty) {
       headers['content-type'] = 'application/json';
     }
+    debugLog('URI: ${uri.toString()}', 'REQUEST');
     final resp = await http.get(uri, headers: headers);
     if (resp.statusCode == 200) {
       content = resp.body;

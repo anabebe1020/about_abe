@@ -11,6 +11,10 @@ export 'package:provider/provider.dart';
 export 'package:url_launcher/url_launcher.dart';
 
 /// my codes.
+export 'account/account_models.dart';
+export 'account/account_page.dart';
+export 'account/account_store.dart';
+export 'account/account_view_model.dart';
 export 'common/alert_dialog.dart';
 export 'common/background.dart';
 export 'common/constants.dart';
@@ -25,8 +29,6 @@ export 'home/home_view.dart';
 export 'home/home_view_model.dart';
 export 'home/qiita_model.dart';
 export 'language/messages.dart';
-export 'qiita/qiita_page.dart';
-export 'qiita/qiita_view_model.dart';
 export 'setting/locale_view.dart';
 export 'setting/locale_view_model.dart';
 export 'setting/setting_view.dart';
