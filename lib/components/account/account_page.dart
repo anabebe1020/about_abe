@@ -1,13 +1,13 @@
 import '../importer.dart';
 
 /// body in view.
-class QiitaPage extends StatefulWidget {
-  const QiitaPage({Key? key}) : super(key: key);
+class AccountPage extends StatefulWidget {
+  const AccountPage({Key? key}) : super(key: key);
   @override
-  _QiitaPageState createState() => _QiitaPageState();
+  _AccountPageState createState() => _AccountPageState();
 }
 
-class _QiitaPageState extends State<QiitaPage> {
+class _AccountPageState extends State<AccountPage> {
   @override
   void initState() {
     super.initState();
@@ -23,8 +23,8 @@ class _QiitaPageState extends State<QiitaPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              _TopArea(),
-              _BottomArea(),
+              _GitHubArea(),
+              _QiitaArea(),
             ],
           ),
         ),
@@ -33,7 +33,81 @@ class _QiitaPageState extends State<QiitaPage> {
   }
 }
 
-class _TopArea extends StatelessWidget {
+class _GitHubArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.zero,
+      child: SizedBox(
+        height: 360,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            _GitHubTopArea(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _GitHubTopArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final title = 'GitHub';
+    final size = 28.0;
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: StyleConst().topixPaddingH,
+        vertical: 0,
+      ),
+      child: Center(
+        child: Text(title, style: TextStyle(fontSize: size)),
+      ),
+    );
+  }
+}
+
+class _QiitaArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.zero,
+      child: SizedBox(
+        height: 360,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            _QiitaTopArea(),
+            _QiitaCenterArea(),
+            _QiitaBottomArea(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _QiitaTopArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final qiita = 'Qiita';
+    final size = 28.0;
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: StyleConst().topixPaddingH,
+        vertical: 0,
+      ),
+      child: Center(
+        child: Text(qiita, style: TextStyle(fontSize: size)),
+      ),
+    );
+  }
+}
+
+class _QiitaCenterArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -124,7 +198,7 @@ class _TopRightArea extends StatelessWidget {
   }
 }
 
-class _BottomArea extends StatelessWidget {
+class _QiitaBottomArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AccountViewModel>(

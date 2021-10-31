@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   // Display page list.
   static final List<Widget> _pageList = [
     const HomePage(),
-    const QiitaPage(),
+    const AccountPage(),
     const HistoryPage(),
   ];
 
