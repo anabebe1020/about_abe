@@ -7,4 +7,17 @@ class QiitaModel {
   int items = 0;
 }
 
-class GitHubModel {}
+class GitHubModel {
+  String iconUrl = '';
+  String userId = '';
+  String name = '';
+  String description = '';
+  String company = '';
+  String location = '';
+  String link = '';
+  String mail = '';
+  String twitter = '';
+  int followees = 0;
+  int followers = 0;
+  int items = 0;
+}

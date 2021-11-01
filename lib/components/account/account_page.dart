@@ -18,7 +18,7 @@ class _AccountPageState extends State<AccountPage> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Center(
+        SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -45,6 +45,8 @@ class _GitHubArea extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             _GitHubTopArea(),
+            _GitHubCenterArea(),
+            _GitHubBottomArea(),
           ],
         ),
       ),
@@ -55,16 +57,140 @@ class _GitHubArea extends StatelessWidget {
 class _GitHubTopArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final title = 'GitHub';
-    final size = 28.0;
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: StyleConst().topixPaddingH,
         vertical: 0,
       ),
       child: Center(
-        child: Text(title, style: TextStyle(fontSize: size)),
+        child: Text(
+          AppLocalizations.of(context).github.toString(),
+          style: TextStyle(fontSize: StyleConst().appFontSizeLL),
+        ),
       ),
+    );
+  }
+}
+
+class _GitHubCenterArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: StyleConst().topixPaddingH,
+        vertical: StyleConst().topixPaddingV,
+      ),
+      child: SizedBox(
+        height: 140,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            _GitHubTopLeftArea(),
+            _GitHubTopRightArea(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _GitHubTopLeftArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<AccountViewModel>(
+      builder: (context, model, child) {
+        return Padding(
+          padding: EdgeInsets.zero,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: NetworkImage(model.github.iconUrl.toString()),
+                  ),
+                ),
+              ),
+              StyleConst().horizontalSeparator,
+              Text(
+                model.github.userId.toString(),
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _GitHubTopRightArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<AccountViewModel>(
+      builder: (context, model, child) {
+        final appLocal = AppLocalizations.of(context);
+        return Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 20,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${appLocal.followees}：${model.github.followees}',
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+                Text(
+                  '${appLocal.followers}：${model.github.followers}',
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+                Text(
+                  '${appLocal.items}：${model.github.items}',
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _GitHubBottomArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<AccountViewModel>(
+      builder: (context, model, child) {
+        return Expanded(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: StyleConst().topixPaddingH,
+              vertical: StyleConst().topixPaddingV,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  AppLocalizations.of(context).overview ?? '',
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+                StyleConst().horizontalSeparator,
+                Text(
+                  model.github.description.toString(),
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
@@ -93,15 +219,16 @@ class _QiitaArea extends StatelessWidget {
 class _QiitaTopArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final qiita = 'Qiita';
-    final size = 28.0;
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: StyleConst().topixPaddingH,
         vertical: 0,
       ),
       child: Center(
-        child: Text(qiita, style: TextStyle(fontSize: size)),
+        child: Text(
+          AppLocalizations.of(context).qiita.toString(),
+          style: TextStyle(fontSize: StyleConst().appFontSizeLL),
+        ),
       ),
     );
   }
@@ -120,8 +247,8 @@ class _QiitaCenterArea extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            _TopLeftArea(),
-            _TopRightArea(),
+            _QiitaTopLeftArea(),
+            _QiitaTopRightArea(),
           ],
         ),
       ),
@@ -129,7 +256,7 @@ class _QiitaCenterArea extends StatelessWidget {
   }
 }
 
-class _TopLeftArea extends StatelessWidget {
+class _QiitaTopLeftArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AccountViewModel>(
@@ -162,7 +289,7 @@ class _TopLeftArea extends StatelessWidget {
   }
 }
 
-class _TopRightArea extends StatelessWidget {
+class _QiitaTopRightArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AccountViewModel>(

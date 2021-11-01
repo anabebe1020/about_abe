@@ -13,6 +13,8 @@ class Messages {
     this.english,
     this.darkMode,
     this.topix,
+    this.github,
+    this.qiita,
     this.followees,
     this.followers,
     this.overview,
@@ -45,6 +47,8 @@ class Messages {
         english: '英語',
         darkMode: 'ダークモード',
         topix: 'トピックス',
+        github: 'GitHub',
+        qiita: 'Qiita',
         followees: 'フォロー',
         followers: 'フォロワー',
         items: '投稿',
@@ -66,6 +70,8 @@ class Messages {
         english: 'English',
         darkMode: 'Dark Mode',
         topix: 'Topix',
+        github: 'GitHub',
+        qiita: 'Qiita',
         followees: 'Followees',
         followers: 'Followers',
         items: 'Items',
@@ -85,6 +91,8 @@ class Messages {
   final String? english;
   final String? darkMode;
   final String? topix;
+  final String? github;
+  final String? qiita;
   final String? followees;
   final String? followers;
   final String? items;

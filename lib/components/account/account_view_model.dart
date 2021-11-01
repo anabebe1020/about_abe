@@ -2,7 +2,9 @@ import '../importer.dart';
 
 /// ViewModel for the QiitaScreen.
 class AccountViewModel extends ChangeNotifier {
+  final _github = GitHubModel();
   final _qiita = QiitaModel();
+  GitHubModel get github => _github;
   QiitaModel get qiita => _qiita;
 
   Future<void> initialize() async {
@@ -41,12 +43,17 @@ class AccountViewModel extends ChangeNotifier {
     final res = await request.get(uri, headers) as String;
     debugLog('body: $res', 'GITHUB');
     final resJson = json.decode(res) as Map<String, dynamic>;
-    //_iconUrl = resJson['profile_image_url'] as String;
-    //_userId = '@${resJson['id'] as String}';
-    //_description = resJson['description'] as String;
-    //_followees = resJson['followees_count'] as int;
-    //_followers = resJson['followers_count'] as int;
-    //_items = resJson['items_count'] as int;
+    _github
+      ..iconUrl = resJson['avatar_url'] as String
+      ..userId = '@${resJson['login'] as String}'
+      ..name = resJson['name'] as String
+      ..description = resJson['bio'] as String
+      ..company = resJson['company'] as String
+      ..location = resJson['location'] as String
+      ..link = resJson['blog'] as String
+      ..followees = resJson['following'] as int
+      ..followers = resJson['followers'] as int
+      ..items = resJson['public_repos'] as int;
     notifyListeners();
   }
 }
