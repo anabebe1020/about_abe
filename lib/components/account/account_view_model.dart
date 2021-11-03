@@ -51,6 +51,7 @@ class AccountViewModel extends ChangeNotifier {
       ..company = resJson['company'] as String
       ..location = resJson['location'] as String
       ..link = resJson['blog'] as String
+      //..mail = resJson['email']! as String
       ..followees = resJson['following'] as int
       ..followers = resJson['followers'] as int
       ..items = resJson['public_repos'] as int;

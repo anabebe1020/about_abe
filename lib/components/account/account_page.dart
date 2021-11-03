@@ -24,7 +24,7 @@ class _AccountPageState extends State<AccountPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               _GitHubArea(),
-              _QiitaArea(),
+              //_QiitaArea(),
             ],
           ),
         ),
@@ -44,9 +44,9 @@ class _GitHubArea extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            _GitHubTopArea(),
-            _GitHubCenterArea(),
-            _GitHubBottomArea(),
+            _GitHubUserArea(),
+            _GitHubBioArea(),
+            _GitHubInfoArea(),
           ],
         ),
       ),
@@ -54,25 +54,7 @@ class _GitHubArea extends StatelessWidget {
   }
 }
 
-class _GitHubTopArea extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: StyleConst().topixPaddingH,
-        vertical: 0,
-      ),
-      child: Center(
-        child: Text(
-          AppLocalizations.of(context).github.toString(),
-          style: TextStyle(fontSize: StyleConst().appFontSizeLL),
-        ),
-      ),
-    );
-  }
-}
-
-class _GitHubCenterArea extends StatelessWidget {
+class _GitHubUserArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -81,12 +63,12 @@ class _GitHubCenterArea extends StatelessWidget {
         vertical: StyleConst().topixPaddingV,
       ),
       child: SizedBox(
-        height: 140,
+        //height: 140,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            _GitHubTopLeftArea(),
-            _GitHubTopRightArea(),
+            _GitHubUserLeftArea(),
+            _GitHubUserRightArea(),
           ],
         ),
       ),
@@ -94,7 +76,7 @@ class _GitHubCenterArea extends StatelessWidget {
   }
 }
 
-class _GitHubTopLeftArea extends StatelessWidget {
+class _GitHubUserLeftArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AccountViewModel>(
@@ -105,19 +87,14 @@ class _GitHubTopLeftArea extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
-                width: 100,
-                height: 100,
+                width: 75,
+                height: 75,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     image: NetworkImage(model.github.iconUrl.toString()),
                   ),
                 ),
-              ),
-              StyleConst().horizontalSeparator,
-              Text(
-                model.github.userId.toString(),
-                style: Theme.of(context).textTheme.bodyText2,
               ),
             ],
           ),
@@ -127,12 +104,11 @@ class _GitHubTopLeftArea extends StatelessWidget {
   }
 }
 
-class _GitHubTopRightArea extends StatelessWidget {
+class _GitHubUserRightArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AccountViewModel>(
       builder: (context, model, child) {
-        final appLocal = AppLocalizations.of(context);
         return Expanded(
           child: Padding(
             padding: const EdgeInsets.only(
@@ -143,15 +119,12 @@ class _GitHubTopRightArea extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${appLocal.followees}：${model.github.followees}',
-                  style: Theme.of(context).textTheme.bodyText2,
+                  model.github.name.toString(),
+                  style: Theme.of(context).textTheme.headline4,
                 ),
+                StyleConst().horizontalSeparator,
                 Text(
-                  '${appLocal.followers}：${model.github.followers}',
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-                Text(
-                  '${appLocal.items}：${model.github.items}',
+                  model.github.userId.toString(),
                   style: Theme.of(context).textTheme.bodyText2,
                 ),
               ],
@@ -163,7 +136,7 @@ class _GitHubTopRightArea extends StatelessWidget {
   }
 }
 
-class _GitHubBottomArea extends StatelessWidget {
+class _GitHubBioArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AccountViewModel>(
@@ -178,11 +151,6 @@ class _GitHubBottomArea extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppLocalizations.of(context).overview ?? '',
-                  style: Theme.of(context).textTheme.headline5,
-                ),
-                StyleConst().horizontalSeparator,
-                Text(
                   model.github.description.toString(),
                   style: Theme.of(context).textTheme.bodyText2,
                 ),
@@ -195,6 +163,79 @@ class _GitHubBottomArea extends StatelessWidget {
   }
 }
 
+class _GitHubInfoArea extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<AccountViewModel>(
+      builder: (context, model, child) {
+        return Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: StyleConst().topixPaddingH,
+            vertical: 0,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  createIconSet(
+                    Icons.corporate_fare,
+                    model.github.company.toString(),
+                  ),
+                  StyleConst().verticalSeparator,
+                  createIconSet(
+                    Icons.add_location_outlined,
+                    model.github.location.toString(),
+                  ),
+                ],
+              ),
+              createIconSet(
+                Icons.insert_link_outlined,
+                model.github.link.toString(),
+                isLinked: true,
+              ),
+              createIconSet(
+                Icons.insert_link_outlined,
+                '@${model.github.twitter.toString()}',
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget createIconSet(IconData icon, String text, {bool isLinked = false}) {
+    return Consumer<AccountViewModel>(
+      builder: (context, model, child) {
+        final textWidget = Text(
+          text,
+          style: Theme.of(context).textTheme.bodyText2,
+        );
+        return Row(
+          children: [
+            Icon(icon),
+            StyleConst().verticalSeparator,
+            isLinked
+                ? InkWell(
+                    highlightColor: Colors.amber,
+                    splashColor: Colors.amber,
+                    child: textWidget,
+                    onTap: () async {
+                      if (await canLaunch(text)) {
+                        await launch(text);
+                      }
+                    },
+                  )
+                : textWidget
+          ],
+        );
+      },
+    );
+  }
+}
+
+/*
 class _QiitaArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -356,3 +397,4 @@ class _QiitaBottomArea extends StatelessWidget {
     );
   }
 }
+*/
