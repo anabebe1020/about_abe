@@ -36,7 +36,7 @@ class AccountViewModel extends ChangeNotifier {
   /// Get user information from QiitaAPI.
   Future<void> getGithubUserInfo() async {
     final request = HttpRequest();
-    final uri = Uri.parse('${SnsConst().githubUrl}/users/${AccountStore().github.name}');
+    final uri = Uri.parse('${SnsConst().ghApiUrl}/users/${AccountStore().github.name}');
     final headers = <String, String>{
       'content-type': 'application/json',
     };
@@ -45,12 +45,13 @@ class AccountViewModel extends ChangeNotifier {
     final resJson = json.decode(res) as Map<String, dynamic>;
     _github
       ..iconUrl = resJson['avatar_url'] as String
-      ..userId = '@${resJson['login'] as String}'
+      ..userId = resJson['login'] as String
       ..name = resJson['name'] as String
       ..description = resJson['bio'] as String
       ..company = resJson['company'] as String
       ..location = resJson['location'] as String
       ..link = resJson['blog'] as String
+      ..twitter = resJson['twitter_username'] as String
       //..mail = resJson['email']! as String
       ..followees = resJson['following'] as int
       ..followers = resJson['followers'] as int

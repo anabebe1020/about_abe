@@ -10,7 +10,9 @@ class SnsConst {
   final String qiita = 'Qiita';
   final String qiitaUrl = 'https://qiita.com/api/v2';
   final String getItemsUrl = '/authenticated_user/items?page=1&per_page=1';
-  final String githubUrl = 'https://api.github.com';
+  final String ghApiUrl = 'https://api.github.com';
+  final String ghBaseUrl = 'https://github.com';
+  final String twBaseUrl = 'https://twitter.com';
 }
 
 Color mainLightColor = HexColor('E1F8FE');
@@ -39,7 +41,7 @@ class StyleConst {
   // Application
   final Color appBarColor = mainLightColor;
   final Color appBarTextColor = mainDarkColor;
-  final String backgroundImagePath = 'images/background_image.jpg';
+  final String backgroundImagePath = 'assets/images/background_image.jpg';
   final Color backgroundLightColor = mainLightColor;
   final Color backgroundDarkColor = mainDarkColor;
   // Font
@@ -65,7 +67,7 @@ class StyleConst {
   final double snsButtonFontSize = 16; //45;
   final Color snsButtonFontColor = mainDarkColor;
   final Color sampleButtonColor = Colors.white.withOpacity(0.9);
-  final String qiitaIconPath = 'images/icon_qiita.png';
+  final String qiitaIconPath = 'assets/images/icon_qiita.png';
   final Color qiitaButtonColor = HexColor('9EFFCE').withOpacity(0.9);
   // Qiita View.
   final double qiitaDiscriptionFontSize = 20;

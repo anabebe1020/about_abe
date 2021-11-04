@@ -24,7 +24,7 @@ dependencies:
   url_launcher: ^6.0.12
 
 flutter_native_splash:
-  image: "images/splash.png"
+  image: "assets/images/splash.png"
   color: "E1F8FE"
 
 dev_dependencies:
@@ -35,5 +35,10 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/background_image.jpg
-    - images/icon_qiita.png
+    - assets/icons/
+    - assets/images/
+
+  fonts:
+    - family: SNSIcons
+      fonts:
+        - asset: assets/icons/sns_icons.ttf

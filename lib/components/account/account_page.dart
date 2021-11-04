@@ -19,37 +19,23 @@ class _AccountPageState extends State<AccountPage> {
     return Stack(
       children: <Widget>[
         SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              _GitHubArea(),
-              //_QiitaArea(),
-            ],
+          child: Padding(
+            padding: EdgeInsets.zero,
+            child: SizedBox(
+              height: 360,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  _GitHubUserArea(),
+                  _GitHubBioArea(),
+                  _GitHubInfoArea(),
+                ],
+              ),
+            ),
           ),
         ),
       ],
-    );
-  }
-}
-
-class _GitHubArea extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.zero,
-      child: SizedBox(
-        height: 360,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            _GitHubUserArea(),
-            _GitHubBioArea(),
-            _GitHubInfoArea(),
-          ],
-        ),
-      ),
     );
   }
 }
@@ -114,20 +100,9 @@ class _GitHubUserRightArea extends StatelessWidget {
             padding: const EdgeInsets.only(
               left: 20,
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  model.github.name.toString(),
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-                StyleConst().horizontalSeparator,
-                Text(
-                  model.github.userId.toString(),
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-              ],
+            child: Text(
+              model.github.name.toString(),
+              style: Theme.of(context).textTheme.headline4,
             ),
           ),
         );
@@ -168,6 +143,7 @@ class _GitHubInfoArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<AccountViewModel>(
       builder: (context, model, child) {
+        final gh = model.github;
         return Padding(
           padding: EdgeInsets.symmetric(
             horizontal: StyleConst().topixPaddingH,
@@ -180,24 +156,38 @@ class _GitHubInfoArea extends StatelessWidget {
                 children: [
                   createIconSet(
                     Icons.corporate_fare,
-                    model.github.company.toString(),
+                    gh.company.toString(),
                   ),
                   StyleConst().verticalSeparator,
                   createIconSet(
                     Icons.add_location_outlined,
-                    model.github.location.toString(),
+                    gh.location.toString(),
                   ),
                 ],
               ),
               createIconSet(
                 Icons.insert_link_outlined,
-                model.github.link.toString(),
+                gh.link.toString(),
                 isLinked: true,
+                url: gh.link.toString(),
               ),
-              createIconSet(
-                Icons.insert_link_outlined,
-                '@${model.github.twitter.toString()}',
-              ),
+              Row(
+                children: [
+                  createIconSet(
+                    SNSIcons.github,
+                    gh.userId.toString(),
+                    isLinked: true,
+                    url: '${SnsConst().ghBaseUrl}/${gh.userId.toString()}',
+                  ),
+                  StyleConst().verticalSeparator,
+                  createIconSet(
+                    SNSIcons.twitter,
+                    gh.twitter.toString(),
+                    isLinked: true,
+                    url: '${SnsConst().twBaseUrl}/${gh.twitter.toString()}',
+                  ),
+                ],
+              )
             ],
           ),
         );
@@ -205,7 +195,12 @@ class _GitHubInfoArea extends StatelessWidget {
     );
   }
 
-  Widget createIconSet(IconData icon, String text, {bool isLinked = false}) {
+  Widget createIconSet(
+    IconData icon,
+    String text, {
+    bool isLinked = false,
+    String url = '',
+  }) {
     return Consumer<AccountViewModel>(
       builder: (context, model, child) {
         final textWidget = Text(
@@ -222,8 +217,8 @@ class _GitHubInfoArea extends StatelessWidget {
                     splashColor: Colors.amber,
                     child: textWidget,
                     onTap: () async {
-                      if (await canLaunch(text)) {
-                        await launch(text);
+                      if (await canLaunch(url)) {
+                        await launch(url);
                       }
                     },
                   )
