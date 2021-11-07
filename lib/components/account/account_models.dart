@@ -21,3 +21,11 @@ class GitHubModel {
   int followers = 0;
   int items = 0;
 }
+
+class GitHubRepoModel {
+  String name = '';
+  String url = '';
+  String description = '';
+  String stars = ''; //stargazers_count
+  String language = '';
+}

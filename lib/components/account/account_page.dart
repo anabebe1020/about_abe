@@ -22,7 +22,7 @@ class _AccountPageState extends State<AccountPage> {
           child: Padding(
             padding: EdgeInsets.zero,
             child: SizedBox(
-              height: 360,
+              height: 720,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -30,6 +30,7 @@ class _AccountPageState extends State<AccountPage> {
                   _GitHubUserArea(),
                   _GitHubBioArea(),
                   _GitHubInfoArea(),
+                  _GitHubReposArea(),
                 ],
               ),
             ),
@@ -127,7 +128,7 @@ class _GitHubBioArea extends StatelessWidget {
               children: [
                 Text(
                   model.github.description.toString(),
-                  style: Theme.of(context).textTheme.bodyText2,
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ],
             ),
@@ -171,23 +172,18 @@ class _GitHubInfoArea extends StatelessWidget {
                 isLinked: true,
                 url: gh.link.toString(),
               ),
-              Row(
-                children: [
-                  createIconSet(
-                    SNSIcons.github,
-                    gh.userId.toString(),
-                    isLinked: true,
-                    url: '${SnsConst().ghBaseUrl}/${gh.userId.toString()}',
-                  ),
-                  StyleConst().verticalSeparator,
-                  createIconSet(
-                    SNSIcons.twitter,
-                    gh.twitter.toString(),
-                    isLinked: true,
-                    url: '${SnsConst().twBaseUrl}/${gh.twitter.toString()}',
-                  ),
-                ],
-              )
+              createIconSet(
+                SNSIcons.github,
+                gh.userId.toString(),
+                isLinked: true,
+                url: '${SnsConst().ghBaseUrl}/${gh.userId.toString()}',
+              ),
+              createIconSet(
+                SNSIcons.twitter,
+                gh.twitter.toString(),
+                isLinked: true,
+                url: '${SnsConst().twBaseUrl}/${gh.twitter.toString()}',
+              ),
             ],
           ),
         );
@@ -205,7 +201,7 @@ class _GitHubInfoArea extends StatelessWidget {
       builder: (context, model, child) {
         final textWidget = Text(
           text,
-          style: Theme.of(context).textTheme.bodyText2,
+          style: Theme.of(context).textTheme.bodyText1,
         );
         return Row(
           children: [
@@ -230,93 +226,20 @@ class _GitHubInfoArea extends StatelessWidget {
   }
 }
 
-/*
-class _QiitaArea extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.zero,
-      child: SizedBox(
-        height: 360,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            _QiitaTopArea(),
-            _QiitaCenterArea(),
-            _QiitaBottomArea(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _QiitaTopArea extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: StyleConst().topixPaddingH,
-        vertical: 0,
-      ),
-      child: Center(
-        child: Text(
-          AppLocalizations.of(context).qiita.toString(),
-          style: TextStyle(fontSize: StyleConst().appFontSizeLL),
-        ),
-      ),
-    );
-  }
-}
-
-class _QiitaCenterArea extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: StyleConst().topixPaddingH,
-        vertical: StyleConst().topixPaddingV,
-      ),
-      child: SizedBox(
-        height: 140,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            _QiitaTopLeftArea(),
-            _QiitaTopRightArea(),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _QiitaTopLeftArea extends StatelessWidget {
+class _GitHubReposArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AccountViewModel>(
       builder: (context, model, child) {
         return Padding(
-          padding: EdgeInsets.zero,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: NetworkImage(model.qiita.iconUrl.toString()),
-                  ),
-                ),
-              ),
-              StyleConst().horizontalSeparator,
-              Text(
-                model.qiita.userId.toString(),
-                style: Theme.of(context).textTheme.bodyText2,
-              ),
+          padding: EdgeInsets.symmetric(
+            horizontal: StyleConst().topixPaddingH,
+            vertical: 0,
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Expanded(child: _ReposTileList()),
             ],
           ),
         );
@@ -325,71 +248,80 @@ class _QiitaTopLeftArea extends StatelessWidget {
   }
 }
 
-class _QiitaTopRightArea extends StatelessWidget {
+/// Button list in body.
+class _ReposTileList extends StatelessWidget {
+  const _ReposTileList({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<AccountViewModel>(
-      builder: (context, model, child) {
-        final appLocal = AppLocalizations.of(context);
-        return Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: 20,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '${appLocal.followees}：${model.qiita.followees}',
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-                Text(
-                  '${appLocal.followers}：${model.qiita.followers}',
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-                Text(
-                  '${appLocal.items}：${model.qiita.items}',
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
+    return Consumer<AccountViewModel>(builder: (context, model, child) {
+      return ListView.builder(
+        itemCount: model.repos.length,
+        itemBuilder: (BuildContext context, int index) {
+          return _RepoTile(repo: model.repos[index]);
+        },
+        scrollDirection: Axis.horizontal,
+        //reverse: true,
+      );
+    });
   }
 }
 
-class _QiitaBottomArea extends StatelessWidget {
+class _RepoTile extends StatelessWidget {
+  const _RepoTile({Key? key, @required this.repo}) : super(key: key);
+  final GitHubRepoModel? repo;
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<AccountViewModel>(
-      builder: (context, model, child) {
-        return Expanded(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: StyleConst().topixPaddingH,
-              vertical: StyleConst().topixPaddingV,
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        minHeight: StyleConst().snsButtonHeight,
+        maxHeight: StyleConst().snsButtonHeight,
+        //maxWidth: 50.0,
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: StyleConst().topixPaddingH,
+          vertical: StyleConst().topixPaddingV,
+        ),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Theme.of(context).cardColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  AppLocalizations.of(context).overview ?? '',
-                  style: Theme.of(context).textTheme.headline5,
-                ),
-                StyleConst().horizontalSeparator,
-                Text(
-                  model.qiita.description.toString(),
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-              ],
-            ),
+            elevation: 0,
           ),
-        );
-      },
+          child: Row(
+            children: [
+              Image.asset(
+                StyleConst().qiitaIconPath,
+                width: StyleConst().topixIconSize,
+                height: StyleConst().topixIconSize,
+              ),
+              StyleConst().verticalSeparator,
+              Flexible(
+                child: Text(
+                  repo!.name,
+                  style: Theme.of(context).textTheme.button,
+                ),
+              ),
+            ],
+          ),
+          onPressed: () {
+            _launchURL(repo!.url);
+          },
+        ),
+      ),
     );
   }
+
+  Future<dynamic> _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      final Error err = ArgumentError('Could not Launch $url');
+      throw err;
+    }
+  }
 }
-*/
