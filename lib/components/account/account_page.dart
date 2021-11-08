@@ -231,17 +231,28 @@ class _GitHubReposArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<AccountViewModel>(
       builder: (context, model, child) {
-        return Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: StyleConst().topixPaddingH,
-            vertical: 0,
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Expanded(child: _ReposTileList()),
-            ],
-          ),
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                left: StyleConst().topixPaddingH,
+                top: StyleConst().topixPaddingV,
+              ),
+              child: SizedBox(
+                width: double.infinity,
+                child: Text(
+                  AppLocalizations.of(context).repos ?? '',
+                  textAlign: TextAlign.start,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+              ),
+            ),
+            const Expanded(
+              child: _ReposTileList(),
+            ),
+          ],
         );
       },
     );

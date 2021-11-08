@@ -70,17 +70,17 @@ class AccountViewModel extends ChangeNotifier {
       'content-type': 'application/json',
     };
     final res = await request.get(uri, headers) as String;
-    debugLog('body: $res', 'GITHUB');
-    final resList = json.decode(res) as List<Map<String, dynamic>>;
-    var count = 0;
+    debugLog('body: $res', 'REPOS');
+    final resList = json
+        .decode(res) //
+        .cast<Map<String, dynamic>>() as List<Map<String, dynamic>>;
     for (final res in resList) {
-      _repos[count]
+      final _repo = GitHubRepoModel()
         ..name = res['name'] as String
-        ..description = res['bio'] as String
-        ..stars = res['following'] as String
-        ..url = res['followers'] as String
-        ..language = res['public_repos'] as String;
-      count++;
+        ..stars = res['stargazers_count'] as int
+        ..url = res['url'] as String
+        ..language = res['language'] as String;
+      _repos.add(_repo);
     }
     notifyListeners();
   }

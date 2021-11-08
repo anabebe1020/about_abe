@@ -26,6 +26,6 @@ class GitHubRepoModel {
   String name = '';
   String url = '';
   String description = '';
-  String stars = ''; //stargazers_count
+  int stars = 0;
   String language = '';
 }

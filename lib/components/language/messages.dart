@@ -17,8 +17,9 @@ class Messages {
     this.qiita,
     this.followees,
     this.followers,
-    this.overview,
     this.items,
+    this.repos,
+    this.overview,
     this.job,
     this.work,
     this.skills,
@@ -52,6 +53,7 @@ class Messages {
         followees: 'フォロー',
         followers: 'フォロワー',
         items: '投稿',
+        repos: 'リポジトリ',
         overview: '説明',
         job: '役割',
         work: '業務',
@@ -75,6 +77,7 @@ class Messages {
         followees: 'Followees',
         followers: 'Followers',
         items: 'Items',
+        repos: 'Repos',
         overview: 'overview',
         job: 'Position',
         work: 'Work',
@@ -96,6 +99,7 @@ class Messages {
   final String? followees;
   final String? followers;
   final String? items;
+  final String? repos;
   final String? overview;
   final String? job;
   final String? work;
