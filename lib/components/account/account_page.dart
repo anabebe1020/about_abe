@@ -22,7 +22,7 @@ class _AccountPageState extends State<AccountPage> {
           child: Padding(
             padding: EdgeInsets.zero,
             child: SizedBox(
-              height: 720,
+              height: 640,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -49,7 +49,7 @@ class _GitHubUserArea extends StatelessWidget {
         horizontal: StyleConst().topixPaddingH,
         vertical: StyleConst().topixPaddingV,
       ),
-      child: SizedBox(
+      child: Expanded(
         //height: 140,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -153,19 +153,17 @@ class _GitHubInfoArea extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  createIconSet(
-                    Icons.corporate_fare,
-                    gh.company.toString(),
-                  ),
-                  StyleConst().verticalSeparator,
-                  createIconSet(
-                    Icons.add_location_outlined,
-                    gh.location.toString(),
-                  ),
-                ],
-              ),
+              Row(children: [
+                createIconSet(
+                  Icons.corporate_fare,
+                  gh.company.toString(),
+                ),
+                StyleConst().verticalSeparator,
+                createIconSet(
+                  Icons.add_location_outlined,
+                  gh.location.toString(),
+                ),
+              ]),
               createIconSet(
                 Icons.insert_link_outlined,
                 gh.link.toString(),
@@ -231,7 +229,7 @@ class _GitHubReposArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<AccountViewModel>(
       builder: (context, model, child) {
-        return Row(
+        return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
@@ -240,7 +238,7 @@ class _GitHubReposArea extends StatelessWidget {
                 top: StyleConst().topixPaddingV,
               ),
               child: SizedBox(
-                width: double.infinity,
+                //width: double.infinity,
                 child: Text(
                   AppLocalizations.of(context).repos ?? '',
                   textAlign: TextAlign.start,
@@ -249,9 +247,14 @@ class _GitHubReposArea extends StatelessWidget {
                 ),
               ),
             ),
-            const Expanded(
-              child: _ReposTileList(),
-            ),
+            Padding(
+                padding: EdgeInsets.only(
+                  left: StyleConst().topixPaddingH,
+                ),
+                child: const SizedBox(
+                  height: 150,
+                  child: _ReposTileList(),
+                )),
           ],
         );
       },
@@ -272,6 +275,7 @@ class _ReposTileList extends StatelessWidget {
           return _RepoTile(repo: model.repos[index]);
         },
         scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
         //reverse: true,
       );
     });
@@ -287,13 +291,14 @@ class _RepoTile extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(
         minHeight: StyleConst().snsButtonHeight,
-        maxHeight: StyleConst().snsButtonHeight,
-        //maxWidth: 50.0,
+        maxHeight: double.infinity,
+        minWidth: 220.0,
+        maxWidth: 280.0,
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: StyleConst().topixPaddingH,
-          vertical: StyleConst().topixPaddingV,
+          horizontal: 10,
+          vertical: 10,
         ),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -303,20 +308,34 @@ class _RepoTile extends StatelessWidget {
             ),
             elevation: 0,
           ),
-          child: Row(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                StyleConst().qiitaIconPath,
-                width: StyleConst().topixIconSize,
-                height: StyleConst().topixIconSize,
-              ),
-              StyleConst().verticalSeparator,
               Flexible(
                 child: Text(
                   repo!.name,
                   style: Theme.of(context).textTheme.button,
                 ),
               ),
+              //StyleConst().horizontalSeparator,
+              Row(children: [
+                Flexible(child: Icon(Icons.star, color: Colors.yellow)),
+                Flexible(
+                  child: Text(
+                    repo!.stars.toString(),
+                    style: Theme.of(context).textTheme.button,
+                  ),
+                ),
+                StyleConst().verticalSeparator,
+                Flexible(child: Icon(Icons.circle, color: Colors.cyan)),
+                Flexible(
+                  child: Text(
+                    repo!.language,
+                    style: Theme.of(context).textTheme.button,
+                  ),
+                ),
+              ])
             ],
           ),
           onPressed: () {
