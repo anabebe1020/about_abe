@@ -24,7 +24,7 @@ class AccountViewModel extends ChangeNotifier {
       'Authorization': 'Bearer ${AccountStore().qiita.token}',
     };
     final res = await request.get(uri, headers) as String;
-    //print('body: $res');
+    debugLog('Qiita User Info: $res', 'ACOUNT');
     final resJson = json.decode(res) as Map<String, dynamic>;
     _qiita
       ..iconUrl = resJson['profile_image_url'] as String
@@ -44,7 +44,7 @@ class AccountViewModel extends ChangeNotifier {
       'content-type': 'application/json',
     };
     final res = await request.get(uri, headers) as String;
-    debugLog('body: $res', 'GITHUB');
+    debugLog('GitHub User Info: $res', 'ACOUNT');
     final resJson = json.decode(res) as Map<String, dynamic>;
     _github
       ..iconUrl = resJson['avatar_url'] as String
@@ -55,7 +55,6 @@ class AccountViewModel extends ChangeNotifier {
       ..location = resJson['location'] as String
       ..link = resJson['blog'] as String
       ..twitter = resJson['twitter_username'] as String
-      //..mail = resJson['email']! as String
       ..followees = resJson['following'] as int
       ..followers = resJson['followers'] as int
       ..items = resJson['public_repos'] as int;
@@ -70,7 +69,7 @@ class AccountViewModel extends ChangeNotifier {
       'content-type': 'application/json',
     };
     final res = await request.get(uri, headers) as String;
-    debugLog('body: $res', 'REPOS');
+    debugLog('GitHub Repos: $res', 'ACOUNT');
     final resList = json
         .decode(res) //
         .cast<Map<String, dynamic>>() as List<Map<String, dynamic>>;
@@ -78,7 +77,7 @@ class AccountViewModel extends ChangeNotifier {
       final _repo = GitHubRepoModel()
         ..name = res['name'] as String
         ..stars = res['stargazers_count'] as int
-        ..url = res['url'] as String
+        ..url = res['svn_url'] as String
         ..language = res['language'] as String;
       _repos.add(_repo);
     }

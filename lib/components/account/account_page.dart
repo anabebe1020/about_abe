@@ -44,13 +44,12 @@ class _AccountPageState extends State<AccountPage> {
 class _GitHubUserArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: StyleConst().topixPaddingH,
-        vertical: StyleConst().topixPaddingV,
-      ),
-      child: Expanded(
-        //height: 140,
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: StyleConst().topixPaddingH,
+          vertical: StyleConst().topixPaddingV,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -145,44 +144,46 @@ class _GitHubInfoArea extends StatelessWidget {
     return Consumer<AccountViewModel>(
       builder: (context, model, child) {
         final gh = model.github;
-        return Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: StyleConst().topixPaddingH,
-            vertical: 0,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(children: [
+        return Expanded(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: StyleConst().topixPaddingH,
+              vertical: 0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(children: [
+                  createIconSet(
+                    Icons.corporate_fare,
+                    gh.company.toString(),
+                  ),
+                  StyleConst().verticalSeparator,
+                  createIconSet(
+                    Icons.add_location_outlined,
+                    gh.location.toString(),
+                  ),
+                ]),
                 createIconSet(
-                  Icons.corporate_fare,
-                  gh.company.toString(),
+                  Icons.insert_link_outlined,
+                  gh.link.toString(),
+                  isLinked: true,
+                  url: gh.link.toString(),
                 ),
-                StyleConst().verticalSeparator,
                 createIconSet(
-                  Icons.add_location_outlined,
-                  gh.location.toString(),
+                  SNSIcons.github,
+                  gh.userId.toString(),
+                  isLinked: true,
+                  url: '${SnsConst().ghBaseUrl}/${gh.userId.toString()}',
                 ),
-              ]),
-              createIconSet(
-                Icons.insert_link_outlined,
-                gh.link.toString(),
-                isLinked: true,
-                url: gh.link.toString(),
-              ),
-              createIconSet(
-                SNSIcons.github,
-                gh.userId.toString(),
-                isLinked: true,
-                url: '${SnsConst().ghBaseUrl}/${gh.userId.toString()}',
-              ),
-              createIconSet(
-                SNSIcons.twitter,
-                gh.twitter.toString(),
-                isLinked: true,
-                url: '${SnsConst().twBaseUrl}/${gh.twitter.toString()}',
-              ),
-            ],
+                createIconSet(
+                  SNSIcons.twitter,
+                  gh.twitter.toString(),
+                  isLinked: true,
+                  url: '${SnsConst().twBaseUrl}/${gh.twitter.toString()}',
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -229,33 +230,36 @@ class _GitHubReposArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<AccountViewModel>(
       builder: (context, model, child) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                left: StyleConst().topixPaddingH,
-                top: StyleConst().topixPaddingV,
-              ),
-              child: SizedBox(
-                //width: double.infinity,
-                child: Text(
-                  AppLocalizations.of(context).repos ?? '',
-                  textAlign: TextAlign.start,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ),
-            ),
-            Padding(
+        return Expanded(
+          flex: 2,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
                 padding: EdgeInsets.only(
                   left: StyleConst().topixPaddingH,
+                  top: StyleConst().topixPaddingV,
                 ),
-                child: const SizedBox(
-                  height: 150,
-                  child: _ReposTileList(),
-                )),
-          ],
+                child: SizedBox(
+                  //width: double.infinity,
+                  child: Text(
+                    AppLocalizations.of(context).repos ?? '',
+                    textAlign: TextAlign.start,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ),
+              ),
+              Padding(
+                  padding: EdgeInsets.only(
+                    left: StyleConst().topixPaddingH,
+                  ),
+                  child: const SizedBox(
+                    height: 150,
+                    child: _ReposTileList(),
+                  )),
+            ],
+          ),
         );
       },
     );
@@ -318,9 +322,8 @@ class _RepoTile extends StatelessWidget {
                   style: Theme.of(context).textTheme.button,
                 ),
               ),
-              //StyleConst().horizontalSeparator,
               Row(children: [
-                Flexible(child: Icon(Icons.star, color: Colors.yellow)),
+                const Flexible(child: Icon(Icons.star, color: Colors.yellow)),
                 Flexible(
                   child: Text(
                     repo!.stars.toString(),
@@ -328,7 +331,7 @@ class _RepoTile extends StatelessWidget {
                   ),
                 ),
                 StyleConst().verticalSeparator,
-                Flexible(child: Icon(Icons.circle, color: Colors.cyan)),
+                const Flexible(child: Icon(Icons.circle, color: Colors.cyan)),
                 Flexible(
                   child: Text(
                     repo!.language,
