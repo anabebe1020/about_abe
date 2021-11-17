@@ -241,7 +241,6 @@ class _GitHubReposArea extends StatelessWidget {
                   top: StyleConst().topixPaddingV,
                 ),
                 child: SizedBox(
-                  //width: double.infinity,
                   child: Text(
                     AppLocalizations.of(context).repos ?? '',
                     textAlign: TextAlign.start,
@@ -280,7 +279,6 @@ class _ReposTileList extends StatelessWidget {
         },
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
-        //reverse: true,
       );
     });
   }
@@ -294,15 +292,13 @@ class _RepoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-        minHeight: StyleConst().snsButtonHeight,
-        maxHeight: double.infinity,
-        minWidth: 220.0,
-        maxWidth: 280.0,
+        minHeight: StyleConst().repoTileHeight,
+        minWidth: StyleConst().repoTileWidth,
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: 10,
-          vertical: 10,
+          horizontal: StyleConst().repoPaddingH,
+          vertical: StyleConst().repoPaddingV,
         ),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(

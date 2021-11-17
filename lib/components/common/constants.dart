@@ -60,6 +60,11 @@ class StyleConst {
   final double topixPaddingH = 50;
   final double topixPaddingV = 20;
   final double topixIconSize = 60;
+  // Account Page
+  final double repoTileHeight = 160;
+  final double repoTileWidth = 220;
+  final double repoPaddingH = 10;
+  final double repoPaddingV = 10;
   // SNS Button.
   final double snsButtonSize = 80;
   final double snsButtonHeight = 160; //120;
@@ -70,7 +75,7 @@ class StyleConst {
   final String qiitaIconPath = 'assets/images/icon_qiita.png';
   final Color qiitaButtonColor = HexColor('9EFFCE').withOpacity(0.9);
   // Qiita View.
-  final double qiitaDiscriptionFontSize = 20;
+  //final double qiitaDiscriptionFontSize = 20;
   // History View.
   final double historycompanyNameFontSize = 26;
   final double historyDiscriptionFontSize = 20;
