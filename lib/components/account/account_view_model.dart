@@ -13,6 +13,7 @@ class AccountViewModel extends ChangeNotifier {
     await getQiitaUserInfo();
     await getGithubUserInfo();
     await getGithubMyRepos();
+    //debugLog('length:${_repos.length}', 'REPOS');
   }
 
   /// Get user information from QiitaAPI.
@@ -73,6 +74,9 @@ class AccountViewModel extends ChangeNotifier {
     final resList = json
         .decode(res) //
         .cast<Map<String, dynamic>>() as List<Map<String, dynamic>>;
+    // clear the repository array.
+    _repos.clear();
+    // adding the repository array.
     for (final res in resList) {
       final _repo = GitHubRepoModel()
         ..name = res['name'] as String

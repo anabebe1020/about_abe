@@ -127,7 +127,7 @@ class _GitHubBioArea extends StatelessWidget {
               children: [
                 Text(
                   model.github.description.toString(),
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
               ],
             ),
@@ -200,7 +200,7 @@ class _GitHubInfoArea extends StatelessWidget {
       builder: (context, model, child) {
         final textWidget = Text(
           text,
-          style: Theme.of(context).textTheme.bodyText1,
+          style: Theme.of(context).textTheme.bodyText2,
         );
         return Row(
           children: [
@@ -272,13 +272,16 @@ class _ReposTileList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AccountViewModel>(builder: (context, model, child) {
-      return ListView.builder(
-        itemCount: model.repos.length,
-        itemBuilder: (BuildContext context, int index) {
-          return _RepoTile(repo: model.repos[index]);
-        },
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
+      debugLog('length:${model.repos.length}', 'ACCOUNT');
+      return Expanded(
+        child: ListView.builder(
+          itemCount: model.repos.length,
+          itemBuilder: (BuildContext context, int index) {
+            return _RepoTile(repo: model.repos[index]);
+          },
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+        ),
       );
     });
   }
@@ -318,23 +321,32 @@ class _RepoTile extends StatelessWidget {
                   style: Theme.of(context).textTheme.button,
                 ),
               ),
-              Row(children: [
-                const Flexible(child: Icon(Icons.star, color: Colors.yellow)),
-                Flexible(
-                  child: Text(
-                    repo!.stars.toString(),
-                    style: Theme.of(context).textTheme.button,
-                  ),
+              SizedBox(
+                width: 200,
+                child: Row(
+                  children: [
+                    const Flexible(
+                      child: Icon(Icons.star, color: Colors.yellow),
+                    ),
+                    Flexible(
+                      child: Text(
+                        repo!.stars.toString(),
+                        style: Theme.of(context).textTheme.button,
+                      ),
+                    ),
+                    StyleConst().verticalSeparator,
+                    const Flexible(
+                      child: Icon(Icons.circle, color: Colors.cyan),
+                    ),
+                    Flexible(
+                      child: Text(
+                        repo!.language,
+                        style: Theme.of(context).textTheme.button,
+                      ),
+                    ),
+                  ],
                 ),
-                StyleConst().verticalSeparator,
-                const Flexible(child: Icon(Icons.circle, color: Colors.cyan)),
-                Flexible(
-                  child: Text(
-                    repo!.language,
-                    style: Theme.of(context).textTheme.button,
-                  ),
-                ),
-              ])
+              )
             ],
           ),
           onPressed: () {
