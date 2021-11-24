@@ -32,6 +32,8 @@ class HomeViewModel with ChangeNotifier {
   }
 
   /// got Info for Topix.
+  int _lgtm = 0;
+  int get lgtm => _lgtm;
   String _title = '';
   String get title => _title;
   String _url = '';
@@ -70,6 +72,7 @@ class HomeViewModel with ChangeNotifier {
 
     final list = jsonDecode(res) as List<dynamic>;
     final model = QiitaItemsModel.fromJson(list[0]);
+    _lgtm = model.lgtm;
     _title = model.title;
     _url = model.url;
     _imageUrl = model.imageUrl;

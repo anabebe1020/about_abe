@@ -104,10 +104,25 @@ class _TopixTile extends StatelessWidget {
                     height: StyleConst().topixIconSize,
                   ),
                   StyleConst().verticalSeparator,
-                  Flexible(
-                    child: Text(
-                      model.title,
-                      style: Theme.of(context).textTheme.button,
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            model.title,
+                            style: Theme.of(context).textTheme.button,
+                          ),
+                        ),
+                        StyleConst().horizontalSeparator,
+                        Flexible(
+                          child: Text(
+                            'LGTM ${model.lgtm.toString()}',
+                            style: Theme.of(context).textTheme.button,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
