@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
                   AppLocalizations.of(context).topix ?? '',
                   textAlign: TextAlign.start,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headline5,
                 ),
               ),
             ),
@@ -91,7 +91,6 @@ class _TopixTile extends StatelessWidget {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 primary: Theme.of(context).cardColor,
-                //onPrimary: ,//StyleConst().snsButtonFontColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24),
                 ),

@@ -245,7 +245,7 @@ class _GitHubReposArea extends StatelessWidget {
                     AppLocalizations.of(context).repos ?? '',
                     textAlign: TextAlign.start,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.headline4,
+                    style: Theme.of(context).textTheme.headline5,
                   ),
                 ),
               ),

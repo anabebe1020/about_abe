@@ -1,16 +1,22 @@
-# flutter_sample02
+# Description
 
-A new Flutter project.
+This is an application for the producer to introduce himself.
+It is used for portfolio and other purposes.
 
-## Getting Started
+1. Page structure
 
-This project is a starting point for a Flutter application.
+- Home: Shows the latest items of each SNS created by the creator.
+  The items are retrieved from the API of each SNS.
+- Account: This corresponds to the profile of the creator. The information is mainly obtained from GitHub API.
+- Brief history: Shows the work history of the creator. Information is obtained from FireStore.
 
-A few resources to get you started if this is your first Flutter project:
+2. Functions
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Multi-language support: Switches the display language. Currently, only Japanese and English are available.
+- Color theme: Switch the theme to either light or dark. Default is light.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. Technical Elements
+
+- Dart/Flutter/Provider
+- FireStore
+- API: GitHub/Qiita.

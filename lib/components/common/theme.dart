@@ -59,7 +59,10 @@ class AppTheme extends ChangeNotifier {
         fontSize: StyleConst().appFontSizeS,
       ),
       caption: TextStyle(color: StyleConst().appFontColorLight),
-      button: TextStyle(color: StyleConst().topixFontColorLight),
+      button: TextStyle(
+        color: StyleConst().topixFontColorLight,
+        fontSize: StyleConst().appFontSizeS,
+      ),
       overline: TextStyle(color: StyleConst().appFontColorLight),
     ),
   );
