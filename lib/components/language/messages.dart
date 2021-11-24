@@ -38,7 +38,7 @@ class Messages {
 
   /// Japanese
   factory Messages.ja() => Messages(
-        title: 'I\'m Abe',
+        title: 'About Abe',
         homeTab: 'ホーム',
         accountTab: 'アカウント',
         discographyTab: '略歴',
@@ -62,7 +62,7 @@ class Messages {
 
   /// English
   factory Messages.en() => Messages(
-        title: 'I\'m Abe',
+        title: 'About Abe',
         homeTab: 'Home',
         accountTab: 'Account',
         discographyTab: 'Discography',

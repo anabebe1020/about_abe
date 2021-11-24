@@ -1,4 +1,4 @@
-import 'package:flutter_sample02/components/importer.dart';
+import 'package:about_abe/components/importer.dart';
 
 /// DebugLog common to all apps.
 void debugLog(String message, String name) {
