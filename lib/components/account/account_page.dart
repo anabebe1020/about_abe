@@ -273,15 +273,13 @@ class _ReposTileList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<AccountViewModel>(builder: (context, model, child) {
       debugLog('length:${model.repos.length}', 'ACCOUNT');
-      return Expanded(
-        child: ListView.builder(
-          itemCount: model.repos.length,
-          itemBuilder: (BuildContext context, int index) {
-            return _RepoTile(repo: model.repos[index]);
-          },
-          scrollDirection: Axis.horizontal,
-          shrinkWrap: true,
-        ),
+      return ListView.builder(
+        itemCount: model.repos.length,
+        itemBuilder: (BuildContext context, int index) {
+          return _RepoTile(repo: model.repos[index]);
+        },
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
       );
     });
   }
