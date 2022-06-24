@@ -9,11 +9,13 @@ environment:
   sdk: ">=2.13.0 <3.0.0"
 
 dependencies:
-  cloud_firestore: ^2.5.3
+  cloud_firestore: ^3.1.18
   cupertino_icons: ^1.0.3
   #
+  firebase_core: ^1.18.0
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.9.3
   flutter_localizations:
     sdk: flutter
   flutter_native_splash: ^1.2.4
@@ -22,6 +24,14 @@ dependencies:
   pedantic_mono: ^1.14.0+1
   provider: ^6.0.1
   url_launcher: ^6.0.12
+
+flutter_icons:
+  image_path_ios: "assets/images/app_icon_ios.png"
+  image_path_android: "assets/images/app_icon_android.png"
+  android: true
+  ios: true
+  adaptive_icon_background: "#E1F8FE"
+  adaptive_icon_foreground: "assets/images/app_icon_android.png"
 
 flutter_native_splash:
   image: "assets/images/splash.png"
